@@ -1,0 +1,60 @@
+# Defensive .gitignore for a git repo whose root is $HOME.
+#
+# Because the repo root is the home directory, a bare `git add -A` would
+# otherwise stage credentials, SSH keys, WordPress configs, and SQL dumps
+# containing customer data. Strategy: ignore everything, then re-allow only
+# the specific paths that are actually tracked work.
+
+*
+
+# --- Re-allow only what is genuinely tracked ---
+!.gitignore
+!README.md
+!Sites/
+!Sites/purple bee systems/
+!Sites/purple bee systems/.agents/
+!Sites/purple bee systems/.agents/**
+
+# --- Hard denials. Keep these last so nothing above can re-expose them. ---
+
+# Credentials, keys, agent state
+.ssh/
+.gnupg/
+.aws/
+.config/
+.buzz/
+.claude/
+.codex/
+.goose/
+Library/
+.netrc
+.npmrc
+.pypirc
+
+# Key and cert material anywhere
+*.pem
+*.key
+*.p12
+*.pfx
+*.keychain
+*_rsa
+*_ed25519
+id_*
+
+# Application secrets anywhere
+**/wp-config.php
+**/.env
+**/.env.*
+**/claude_desktop_config.json
+**/*secret*
+**/*credential*
+**/token.json
+**/*token*.json
+**/client_secret*.json
+**/service-account*.json
+
+# Database dumps — these carry live customer data
+*.sql
+*.sql.gz
+*.sql.bz2
+*.dump
