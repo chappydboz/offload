@@ -25,17 +25,29 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 		$class_name .= ' align' . $block['align'];
 	}
 
+	// Helper to fetch ACF field value from ACF context or $block['data'] fallback
+	$get_block_val = function( $name ) use ( $block ) {
+		$val = get_field( $name );
+		if ( ( null === $val || false === $val || '' === $val ) && isset( $block['data'] ) && is_array( $block['data'] ) ) {
+			if ( isset( $block['data'][ $name ] ) ) {
+				$val = $block['data'][ $name ];
+			}
+		}
+		return $val;
+	};
+
 	// Fetch ACF Settings
-	$ordering_mode      = get_field( 'ordering_mode' ) ?: 'custom';
-	$custom_topic_order = get_field( 'custom_topic_order' );
-	$custom_flat_faqs   = get_field( 'custom_flat_faq_order' );
-	$selected_cat_ids   = get_field( 'selected_categories' );
-	$group_by_category  = get_field( 'group_by_category' );
-	$heading_tag        = get_field( 'heading_tag' ) ?: 'h2';
-	$accordion_mode     = get_field( 'accordion_mode' ) ?: 'multi';
-	$show_search        = get_field( 'show_search' );
-	$show_footer_cta    = get_field( 'show_footer_cta' );
-	$footer_cta_text    = get_field( 'footer_cta_text' );
+	$ordering_mode      = $get_block_val( 'ordering_mode' ) ?: 'auto';
+	$custom_topic_order = $get_block_val( 'custom_topic_order' );
+	$custom_flat_faqs   = $get_block_val( 'custom_flat_faq_order' );
+	$selected_cat_ids   = $get_block_val( 'selected_categories' );
+	$group_by_category  = $get_block_val( 'group_by_category' );
+	$heading_tag        = $get_block_val( 'heading_tag' ) ?: 'h2';
+	$accordion_mode     = $get_block_val( 'accordion_mode' ) ?: 'multi';
+	$show_search        = $get_block_val( 'show_search' );
+	$show_footer_cta    = $get_block_val( 'show_footer_cta' );
+	$footer_cta_text    = $get_block_val( 'footer_cta_text' );
+
 
 	if ( false === $group_by_category ) {
 		$group_by_category = false;

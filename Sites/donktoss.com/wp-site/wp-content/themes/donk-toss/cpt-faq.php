@@ -161,10 +161,25 @@ function donktoss_parse_and_render_gutenberg( $content ) {
 	$blocks = parse_blocks( $content );
 	$output = '';
 	foreach ( $blocks as $block ) {
-		$output .= render_block( $block );
+		if ( ! empty( $block['blockName'] ) ) {
+			if ( 'acf/faq-accordion' === $block['blockName'] && function_exists( 'donktoss_render_faq_accordion_block' ) ) {
+				ob_start();
+				$acf_block_data = isset( $block['attrs'] ) ? $block['attrs'] : array();
+				if ( ! isset( $acf_block_data['id'] ) ) {
+					$acf_block_data['id'] = 'shop-faq-' . md5( wp_json_encode( $block ) );
+				}
+				donktoss_render_faq_accordion_block( $acf_block_data );
+				$output .= ob_get_clean();
+			} else {
+				$output .= render_block( $block );
+			}
+		} elseif ( ! empty( $block['innerHTML'] ) && '' !== trim( $block['innerHTML'] ) ) {
+			$output .= $block['innerHTML'];
+		}
 	}
 	return $output;
 }
+
 
 /**
  * Render Gutenberg Shop FAQ Blocks Programmatically into WooCommerce Locations
