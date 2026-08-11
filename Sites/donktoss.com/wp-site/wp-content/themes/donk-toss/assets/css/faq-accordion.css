@@ -171,9 +171,10 @@
 }
 
 .donktoss-faq-item[open] .donktoss-faq-question-text {
-	color: #ff5722 !important;
+	color: #ffffff !important;
 	font-weight: 700 !important;
 }
+
 
 .donktoss-faq-question:focus-visible {
 	outline: 2px solid #ff5722 !important;
