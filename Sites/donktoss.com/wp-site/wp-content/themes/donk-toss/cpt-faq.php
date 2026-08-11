@@ -564,6 +564,16 @@ function donktoss_register_faq_acf_fields() {
 				'ui' => 1,
 			),
 			array(
+				'key' => 'field_faq_block_show_badges',
+				'label' => __( 'Display Keyword / Category Badges', 'donk-toss' ),
+				'name' => 'show_badges',
+				'type' => 'true_false',
+				'instructions' => __( 'Show keyword/category badge pill next to each FAQ question title.', 'donk-toss' ),
+				'default_value' => 0,
+				'ui' => 1,
+			),
+
+			array(
 				'key' => 'field_faq_block_heading_tag',
 				'label' => __( 'Category Heading Level', 'donk-toss' ),
 				'name' => 'heading_tag',

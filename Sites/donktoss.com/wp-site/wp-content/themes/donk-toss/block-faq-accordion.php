@@ -45,15 +45,22 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 	$heading_tag        = $get_block_val( 'heading_tag' ) ?: 'h2';
 	$accordion_mode     = $get_block_val( 'accordion_mode' ) ?: 'multi';
 	$show_search        = $get_block_val( 'show_search' );
+	$show_badges        = $get_block_val( 'show_badges' );
 	$show_footer_cta    = $get_block_val( 'show_footer_cta' );
 	$footer_cta_text    = $get_block_val( 'footer_cta_text' );
-
 
 	if ( empty( $group_by_category ) || '0' === (string) $group_by_category || false === $group_by_category ) {
 		$group_by_category = false;
 	} else {
 		$group_by_category = true;
 	}
+
+	if ( empty( $show_badges ) || '0' === (string) $show_badges || false === $show_badges ) {
+		$show_badges = false;
+	} else {
+		$show_badges = true;
+	}
+
 
 
 	if ( false === $show_footer_cta ) {
@@ -265,9 +272,10 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 								<details class="donktoss-faq-item" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question" data-faq-id="<?php echo esc_attr( $faq_post->ID ); ?>">
 									<summary class="donktoss-faq-question" itemprop="name">
 										<span class="donktoss-faq-question-text"><?php echo esc_html( $question ); ?></span>
-										<?php if ( ! empty( $badge ) ) : ?>
+										<?php if ( $show_badges && ! empty( $badge ) ) : ?>
 											<span class="donktoss-faq-badge"><?php echo esc_html( $badge ); ?></span>
 										<?php endif; ?>
+
 										<span class="donktoss-faq-icon" aria-hidden="true">
 											<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 												<polyline points="6 9 12 15 18 9"></polyline>

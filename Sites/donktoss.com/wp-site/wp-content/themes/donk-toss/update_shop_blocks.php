@@ -45,6 +45,9 @@ foreach ( $blocks as $slug => $info ) {
 			'_selected_categories' => 'field_faq_block_categories',
 			'group_by_category'    => '0',
 			'_group_by_category'  => 'field_faq_block_group_by_category',
+			'show_badges'          => '0',
+			'_show_badges'         => 'field_faq_block_show_badges',
+
 			'heading_tag'          => 'h3',
 			'_heading_tag'         => 'field_faq_block_heading_tag',
 			'accordion_mode'       => 'multi',
