@@ -26,6 +26,9 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 	}
 
 	// Fetch ACF Settings
+	$ordering_mode      = get_field( 'ordering_mode' ) ?: 'custom';
+	$custom_topic_order = get_field( 'custom_topic_order' );
+	$custom_flat_faqs   = get_field( 'custom_flat_faq_order' );
 	$selected_cat_ids   = get_field( 'selected_categories' );
 	$group_by_category  = get_field( 'group_by_category' );
 	$heading_tag        = get_field( 'heading_tag' ) ?: 'h2';
@@ -61,21 +64,35 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 	// Fetch terms or posts
 	$categorized_faqs = array();
 
-	if ( $group_by_category ) {
-		$term_args = array(
-			'taxonomy'   => 'faq_category',
-			'hide_empty' => true,
-			'orderby'    => 'name',
-			'order'      => 'ASC',
-		);
-		if ( ! empty( $selected_cat_ids ) ) {
-			$term_args['include'] = $selected_cat_ids;
-		}
+	if ( 'custom' === $ordering_mode && $group_by_category && ! empty( $custom_topic_order ) && is_array( $custom_topic_order ) ) {
+		// Custom Topic Drag & Drop Order Mode
+		foreach ( $custom_topic_order as $row ) {
+			$term_id = isset( $row['topic_term'] ) ? (int) $row['topic_term'] : 0;
+			if ( ! $term_id ) {
+				continue;
+			}
+			$term = get_term( $term_id, 'faq_category' );
+			if ( ! $term || is_wp_error( $term ) ) {
+				continue;
+			}
 
-		$terms = get_terms( $term_args );
+			$posts = array();
+			if ( ! empty( $row['topic_faqs'] ) && is_array( $row['topic_faqs'] ) ) {
+				// Use exact drag and dropped post order
+				foreach ( $row['topic_faqs'] as $p ) {
+					if ( is_object( $p ) && isset( $p->ID ) ) {
+						$posts[] = $p;
+					} elseif ( is_numeric( $p ) ) {
+						$post_obj = get_post( (int) $p );
+						if ( $post_obj ) {
+							$posts[] = $post_obj;
+						}
+					}
+				}
+			}
 
-		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-			foreach ( $terms as $term ) {
+			// Fallback: If no custom FAQs specified for this topic, query all FAQs for this topic
+			if ( empty( $posts ) ) {
 				$faq_query = new WP_Query( array(
 					'post_type'      => 'faq',
 					'posts_per_page' => -1,
@@ -84,40 +101,99 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 						array(
 							'taxonomy' => 'faq_category',
 							'field'    => 'term_id',
-							'terms'    => $term->term_id,
+							'terms'    => $term_id,
 						),
 					),
 				) );
-
 				if ( $faq_query->have_posts() ) {
-					$categorized_faqs[ $term->name ] = $faq_query->posts;
+					$posts = $faq_query->posts;
 				}
 				wp_reset_postdata();
 			}
-		}
-	} else {
-		$query_args = array(
-			'post_type'      => 'faq',
-			'posts_per_page' => -1,
-			'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
-		);
 
-		if ( ! empty( $selected_cat_ids ) ) {
-			$query_args['tax_query'] = array(
-				array(
-					'taxonomy' => 'faq_category',
-					'field'    => 'term_id',
-					'terms'    => $selected_cat_ids,
-				),
-			);
+			if ( ! empty( $posts ) ) {
+				$categorized_faqs[ $term->name ] = $posts;
+			}
 		}
-
-		$faq_query = new WP_Query( $query_args );
-		if ( $faq_query->have_posts() ) {
-			$categorized_faqs['All FAQs'] = $faq_query->posts;
+	} elseif ( 'custom' === $ordering_mode && ! $group_by_category && ! empty( $custom_flat_faqs ) && is_array( $custom_flat_faqs ) ) {
+		// Custom Flat Drag & Drop FAQ List Mode
+		$flat_posts = array();
+		foreach ( $custom_flat_faqs as $p ) {
+			if ( is_object( $p ) && isset( $p->ID ) ) {
+				$flat_posts[] = $p;
+			} elseif ( is_numeric( $p ) ) {
+				$post_obj = get_post( (int) $p );
+				if ( $post_obj ) {
+					$flat_posts[] = $post_obj;
+				}
+			}
 		}
-		wp_reset_postdata();
+		if ( ! empty( $flat_posts ) ) {
+			$categorized_faqs['All FAQs'] = $flat_posts;
+		}
 	}
+
+	// Fallback to automatic query if no custom data populated yet
+	if ( empty( $categorized_faqs ) ) {
+		if ( $group_by_category ) {
+			$term_args = array(
+				'taxonomy'   => 'faq_category',
+				'hide_empty' => true,
+				'orderby'    => 'name',
+				'order'      => 'ASC',
+			);
+			if ( ! empty( $selected_cat_ids ) ) {
+				$term_args['include'] = $selected_cat_ids;
+			}
+
+			$terms = get_terms( $term_args );
+
+			if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+				foreach ( $terms as $term ) {
+					$faq_query = new WP_Query( array(
+						'post_type'      => 'faq',
+						'posts_per_page' => -1,
+						'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+						'tax_query'      => array(
+							array(
+								'taxonomy' => 'faq_category',
+								'field'    => 'term_id',
+								'terms'    => $term->term_id,
+							),
+						),
+					) );
+
+					if ( $faq_query->have_posts() ) {
+						$categorized_faqs[ $term->name ] = $faq_query->posts;
+					}
+					wp_reset_postdata();
+				}
+			}
+		} else {
+			$query_args = array(
+				'post_type'      => 'faq',
+				'posts_per_page' => -1,
+				'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
+			);
+
+			if ( ! empty( $selected_cat_ids ) ) {
+				$query_args['tax_query'] = array(
+					array(
+						'taxonomy' => 'faq_category',
+						'field'    => 'term_id',
+						'terms'    => $selected_cat_ids,
+					),
+				);
+			}
+
+			$faq_query = new WP_Query( $query_args );
+			if ( $faq_query->have_posts() ) {
+				$categorized_faqs['All FAQs'] = $faq_query->posts;
+			}
+			wp_reset_postdata();
+		}
+	}
+
 
 	// Render Output
 	?>

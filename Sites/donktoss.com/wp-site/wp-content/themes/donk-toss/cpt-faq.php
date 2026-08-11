@@ -143,112 +143,9 @@ function donktoss_seed_faq_categories() {
 add_action( 'init', 'donktoss_seed_faq_categories', 10 );
 
 /**
- * Seed Initial FAQs on Admin Init if empty
- */
-function donktoss_seed_initial_faqs() {
-	if ( ! is_admin() || ! post_type_exists( 'faq' ) ) {
-		return;
-	}
-
-	// Only seed once if no FAQ posts exist at all
-	$existing_faqs = get_posts( array(
-		'post_type'      => 'faq',
-		'post_status'    => 'any',
-		'posts_per_page' => 1,
-		'fields'         => 'ids',
-	) );
-
-	if ( ! empty( $existing_faqs ) ) {
-		return;
-	}
-
-	$faqs = array(
-		array(
-			'title'    => 'What are your shipping options and delivery timelines?',
-			'category' => 'Merch & Shop',
-			'answer'   => '<p>We offer standard shipping (3-5 business days) and expedited shipping options within the US. International orders typically arrive within 7-14 business days depending on destination customs. Tracking information is automatically emailed as soon as your package ships.</p>',
-			'badge'    => 'Shipping',
-			'order'    => 1,
-		),
-		array(
-			'title'    => 'What is your return and exchange policy?',
-			'category' => 'Merch & Shop',
-			'answer'   => '<p>We accept returns and exchanges on unworn apparel and unused game gear within 30 days of purchase. Items must be in original condition. Please reach out to <a href="mailto:info@donktoss.com">info@donktoss.com</a> to initiate a return or exchange.</p>',
-			'badge'    => 'Returns',
-			'order'    => 2,
-		),
-		array(
-			'title'    => 'How do Donk Toss t-shirts and hoodies fit?',
-			'category' => 'Merch & Shop',
-			'answer'   => '<p>Our apparel runs true to standard US sizing. Shirts are crafted from premium pre-shrunk cotton blends. If you prefer an extra relaxed fit for tournament play, we suggest sizing up one size.</p>',
-			'badge'    => 'Sizing',
-			'order'    => 3,
-		),
-		array(
-			'title'    => 'Are official Donk Toss boards weather-resistant?',
-			'category' => 'Merch & Shop',
-			'answer'   => '<p>Yes! Official Donk Toss boards are engineered with cabinet-grade hardwood and sealed with UV-resistant weatherproof coatings to handle outdoor play, sun exposure, and damp grass.</p>',
-			'badge'    => 'Products',
-			'order'    => 4,
-		),
-		array(
-			'title'    => 'What are the official court dimensions and board distance for Donk Toss?',
-			'category' => 'DONK Gameplay',
-			'answer'   => '<p>Official tournament distance is exactly <strong>27 feet</strong> measured from the front edge of board A to the front edge of board B. For casual backyard play or younger players, a 20-24 foot distance is recommended.</p>',
-			'badge'    => 'Court Setup',
-			'order'    => 1,
-		),
-		array(
-			'title'    => 'How does the scoring system work in Donk Toss?',
-			'category' => 'DONK Gameplay',
-			'answer'   => '<p>Games are played to <strong>21 points</strong> (win by 2). Scoring is as follows: 1 point for landing on the board, 3 points for a toss through the Donk hole. Cancellation scoring applies—only the net point difference between opposing players is awarded per frame.</p>',
-			'badge'    => 'Scoring',
-			'order'    => 2,
-		),
-		array(
-			'title'    => 'Do bounces off the ground count as valid points?',
-			'category' => 'DONK Gameplay',
-			'answer'   => '<p>No. Any toss that contacts the ground before touching the board is a foul / dead ball and must be immediately cleared from the board prior to the next throw.</p>',
-			'badge'    => 'Foul Rules',
-			'order'    => 3,
-		),
-		array(
-			'title'    => 'Can I host an official Donk Toss sanctioned tournament?',
-			'category' => 'DONK Gameplay',
-			'answer'   => '<p>Yes! We welcome official community organizers and tournament directors. Visit our Events section or email <a href="mailto:info@donktoss.com">info@donktoss.com</a> to receive the official Tournament Director handbook and bracket kits.</p>',
-			'badge'    => 'Tournaments',
-			'order'    => 4,
-		),
-	);
-
-	foreach ( $faqs as $faq_data ) {
-		$post_id = wp_insert_post( array(
-			'post_title'   => $faq_data['title'],
-			'post_content' => $faq_data['answer'],
-			'post_status'  => 'publish',
-			'post_type'    => 'faq',
-			'menu_order'   => $faq_data['order'],
-		) );
-
-		if ( $post_id && ! is_wp_error( $post_id ) ) {
-			$term = get_term_by( 'name', $faq_data['category'], 'faq_category' );
-			if ( $term ) {
-				wp_set_post_terms( $post_id, array( $term->term_id ), 'faq_category' );
-			}
-			if ( function_exists( 'update_field' ) ) {
-				update_field( 'faq_answer', $faq_data['answer'], $post_id );
-				if ( ! empty( $faq_data['badge'] ) ) {
-					update_field( 'faq_badge', $faq_data['badge'], $post_id );
-				}
-			}
-		}
-	}
-}
-add_action( 'admin_init', 'donktoss_seed_initial_faqs' );
-
-/**
  * Register ACF Fields for FAQ CPT & FAQ Accordion Block
  */
+
 
 function donktoss_register_faq_acf_fields() {
 	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
@@ -296,16 +193,107 @@ function donktoss_register_faq_acf_fields() {
 	) );
 
 	// 2. FAQ Accordion Gutenberg Block Settings
-	acf_add_local_field_group( array(
-		'key' => 'group_donktoss_faq_accordion_block',
-		'title' => __( 'FAQ Accordion Block Settings', 'donk-toss' ),
-		'fields' => array(
+			array(
+				'key' => 'field_faq_block_ordering_mode',
+				'label' => __( 'Ordering Mode', 'donk-toss' ),
+				'name' => 'ordering_mode',
+				'type' => 'select',
+				'instructions' => __( 'Choose how topics and FAQs are ordered in this block instance.', 'donk-toss' ),
+				'choices' => array(
+					'custom' => 'Custom Drag & Drop Order (Reorder Topics & FAQs below)',
+					'auto'   => 'Automatic (Default by Menu Order & Category Name)',
+				),
+				'default_value' => 'custom',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_faq_block_custom_topics',
+				'label' => __( 'Drag & Drop Topics & FAQ Order', 'donk-toss' ),
+				'name' => 'custom_topic_order',
+				'type' => 'repeater',
+				'instructions' => __( 'Drag & drop topic rows up or down using the left handle to change topic order. Pick FAQs for each topic and drag & drop them to set question order.', 'donk-toss' ),
+				'collapsed' => 'field_faq_topic_term',
+				'min' => 0,
+				'max' => 0,
+				'layout' => 'block',
+				'button_label' => __( 'Add Topic Group', 'donk-toss' ),
+				'sub_fields' => array(
+					array(
+						'key' => 'field_faq_topic_term',
+						'label' => __( 'Select Topic / Category', 'donk-toss' ),
+						'name' => 'topic_term',
+						'type' => 'taxonomy',
+						'taxonomy' => 'faq_category',
+						'field_type' => 'select',
+						'allow_null' => 0,
+						'add_term' => 0,
+						'save_terms' => 0,
+						'load_terms' => 0,
+						'return_format' => 'id',
+						'multiple' => 0,
+					),
+					array(
+						'key' => 'field_faq_topic_faqs',
+						'label' => __( 'Select & Drag/Drop FAQs for this Topic', 'donk-toss' ),
+						'name' => 'topic_faqs',
+						'type' => 'relationship',
+						'instructions' => __( 'Select FAQs for this topic. Drag & drop items in the selection box to set their exact display order. Leave empty to display all FAQs for this topic.', 'donk-toss' ),
+						'post_type' => array( 'faq' ),
+						'filters' => array( 'search' ),
+						'elements' => array( 'title' ),
+						'min' => 0,
+						'max' => 0,
+						'return_format' => 'object',
+					),
+				),
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_faq_block_ordering_mode',
+							'operator' => '==',
+							'value' => 'custom',
+						),
+						array(
+							'field' => 'field_faq_block_group_by_category',
+							'operator' => '==',
+							'value' => '1',
+						),
+					),
+				),
+			),
+			array(
+				'key' => 'field_faq_block_custom_flat_faqs',
+				'label' => __( 'Drag & Drop FAQ Order (Flat List)', 'donk-toss' ),
+				'name' => 'custom_flat_faq_order',
+				'type' => 'relationship',
+				'instructions' => __( 'Select FAQs and drag & drop them in the right box to set their exact display order.', 'donk-toss' ),
+				'post_type' => array( 'faq' ),
+				'filters' => array( 'search' ),
+				'elements' => array( 'title' ),
+				'min' => 0,
+				'max' => 0,
+				'return_format' => 'object',
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_faq_block_ordering_mode',
+							'operator' => '==',
+							'value' => 'custom',
+						),
+						array(
+							'field' => 'field_faq_block_group_by_category',
+							'operator' => '==',
+							'value' => '0',
+						),
+					),
+				),
+			),
 			array(
 				'key' => 'field_faq_block_categories',
-				'label' => __( 'Select FAQ Topics / Categories', 'donk-toss' ),
+				'label' => __( 'Automatic Mode Category Selection', 'donk-toss' ),
 				'name' => 'selected_categories',
 				'type' => 'taxonomy',
-				'instructions' => __( 'Select one or more topics to display. Leave blank to display all FAQs.', 'donk-toss' ),
+				'instructions' => __( 'Used when Ordering Mode is set to Automatic.', 'donk-toss' ),
 				'taxonomy' => 'faq_category',
 				'field_type' => 'checkbox',
 				'allow_null' => 1,
@@ -314,7 +302,17 @@ function donktoss_register_faq_acf_fields() {
 				'load_terms' => 0,
 				'return_format' => 'id',
 				'multiple' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_faq_block_ordering_mode',
+							'operator' => '==',
+							'value' => 'auto',
+						),
+					),
+				),
 			),
+
 			array(
 				'key' => 'field_faq_block_group_by_category',
 				'label' => __( 'Display Category Headings', 'donk-toss' ),
