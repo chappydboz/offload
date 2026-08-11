@@ -282,28 +282,38 @@ add_action( 'woocommerce_after_cart_table', 'donktoss_render_cart_faq_block', 30
 add_action( 'woocommerce_cart_collaterals', 'donktoss_render_cart_faq_block', 30 );
 
 /**
- * Filter the_content to guarantee Cart page FAQ block rendering when Block Cart is used
+ * Filter the_content to guarantee bottom in-line placement under main page content for Shop & Cart pages
  */
-function donktoss_append_faq_block_to_cart_content( $content ) {
+function donktoss_append_faq_block_to_shop_pages( $content ) {
 	if ( is_admin() || ! is_main_query() || ! in_the_loop() ) {
 		return $content;
 	}
 
-	if ( is_cart() || is_page( 'cart' ) || is_page( 29 ) ) {
+	if ( is_shop() || is_post_type_archive( 'product' ) || is_page( 'shop' ) || is_page( 28 ) ) {
+		static $shop_content_rendered = false;
+		if ( ! $shop_content_rendered ) {
+			$shop_content_rendered = true;
+			ob_start();
+			donktoss_render_woocommerce_shop_faq_blocks();
+			$faq_html = ob_get_clean();
+			return $content . $faq_html;
+		}
+	} elseif ( is_cart() || is_page( 'cart' ) || is_page( 29 ) ) {
 		ob_start();
 		donktoss_render_cart_faq_block();
-		$html = ob_get_clean();
-		return $content . $html;
+		$faq_html = ob_get_clean();
+		return $content . $faq_html;
 	}
 
 	return $content;
 }
-add_filter( 'the_content', 'donktoss_append_faq_block_to_cart_content', 25 );
+add_filter( 'the_content', 'donktoss_append_faq_block_to_shop_pages', 30 );
 
-// Hook into WooCommerce locations
-add_action( 'woocommerce_after_main_content', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
+// Hook into WooCommerce locations for Checkout & Products
 add_action( 'woocommerce_after_checkout_form', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_single_product_summary', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
+add_action( 'astra_content_bottom', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
+
 
 
 

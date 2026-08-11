@@ -1204,15 +1204,20 @@ html {
    ========================================================================== */
 
 .donktoss-woocommerce-faq-wrap {
-  margin-top: 3.5rem !important;
-  margin-bottom: 2.5rem !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 3.5rem auto 2.5rem auto !important;
   padding: 2.25rem !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 20px !important;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
   clear: both !important;
+  box-sizing: border-box !important;
+  flex: 0 0 100% !important;
+  float: none !important;
 }
+
 
 .donktoss-woocommerce-faq-wrap h2,
 .donktoss-woocommerce-faq-wrap h3 {
