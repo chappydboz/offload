@@ -152,18 +152,35 @@ function donktoss_seed_shop_content_blocks() {
 add_action( 'init', 'donktoss_seed_shop_content_blocks', 20 );
 
 /**
+ * Parse and render Gutenberg block content reliably
+ */
+function donktoss_parse_and_render_gutenberg( $content ) {
+	if ( empty( $content ) ) {
+		return '';
+	}
+	$blocks = parse_blocks( $content );
+	$output = '';
+	foreach ( $blocks as $block ) {
+		$output .= render_block( $block );
+	}
+	return $output;
+}
+
+/**
  * Render Gutenberg Shop FAQ Blocks Programmatically into WooCommerce Locations
  */
 function donktoss_render_woocommerce_shop_faq_blocks() {
+	static $rendered_locations = array();
+
 	if ( is_admin() ) {
 		return;
 	}
 
 	$block_slug = '';
 
-	if ( is_shop() || is_post_type_archive( 'product' ) ) {
+	if ( is_shop() || is_post_type_archive( 'product' ) || is_page( 'shop' ) || is_page( 28 ) ) {
 		$block_slug = 'shop-homepage-faq';
-	} elseif ( is_cart() ) {
+	} elseif ( is_cart() || is_page( 'cart' ) || is_page( 29 ) ) {
 		$block_slug = 'cart-faq';
 	} elseif ( is_checkout() && ! is_order_received_page() ) {
 		$block_slug = 'checkout-faq';
@@ -171,9 +188,12 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 		$block_slug = 'single-product-faq';
 	}
 
-	if ( empty( $block_slug ) ) {
+	if ( empty( $block_slug ) || isset( $rendered_locations[ $block_slug ] ) ) {
 		return;
 	}
+
+	// Mark location as rendered
+	$rendered_locations[ $block_slug ] = true;
 
 	// Check for per-product override if on single product page
 	if ( is_product() ) {
@@ -182,7 +202,7 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 			$custom_product_block = get_field( 'product_custom_faq_block', $post->ID );
 			if ( $custom_product_block && is_object( $custom_product_block ) && ! empty( $custom_product_block->post_content ) ) {
 				echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-custom">';
-				echo do_blocks( $custom_product_block->post_content );
+				echo donktoss_parse_and_render_gutenberg( $custom_product_block->post_content );
 				echo '</div>';
 				return;
 			}
@@ -194,7 +214,7 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 	echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-' . esc_attr( $block_slug ) . '">';
 
 	if ( $shop_block_post && ! empty( $shop_block_post->post_content ) ) {
-		echo do_blocks( $shop_block_post->post_content );
+		echo donktoss_parse_and_render_gutenberg( $shop_block_post->post_content );
 	} else {
 		// Fallback rendering
 		if ( function_exists( 'donktoss_render_faq_accordion_block' ) ) {
@@ -211,13 +231,37 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 	echo '</div>';
 }
 
+/**
+ * Filter the_content to guarantee Cart page FAQ block rendering when Block Cart is used
+ */
+function donktoss_append_faq_block_to_cart_content( $content ) {
+	if ( is_admin() || ! is_main_query() || ! in_the_loop() ) {
+		return $content;
+	}
+
+	if ( is_cart() || is_page( 'cart' ) || is_page( 29 ) ) {
+		static $cart_content_rendered = false;
+		if ( ! $cart_content_rendered ) {
+			$cart_content_rendered = true;
+			$shop_block_post = get_page_by_path( 'cart-faq', OBJECT, 'donk_shop_block' );
+			$faq_html = '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-cart-faq">';
+			if ( $shop_block_post && ! empty( $shop_block_post->post_content ) ) {
+				$faq_html .= donktoss_parse_and_render_gutenberg( $shop_block_post->post_content );
+			}
+			$faq_html .= '</div>';
+			return $content . $faq_html;
+		}
+	}
+
+	return $content;
+}
+add_filter( 'the_content', 'donktoss_append_faq_block_to_cart_content', 25 );
+
 // Hook into WooCommerce locations
-add_action( 'woocommerce_after_shop_loop', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_main_content', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
-add_action( 'woocommerce_after_cart', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_checkout_form', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_single_product_summary', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
-add_action( 'woocommerce_after_single_product', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
+
 
 
 
@@ -448,10 +492,10 @@ function donktoss_register_faq_acf_fields() {
 			),
 			array(
 				'key' => 'field_faq_block_categories',
-				'label' => __( 'Automatic Mode Category Selection', 'donk-toss' ),
+				'label' => __( 'Select FAQ Topics / Categories', 'donk-toss' ),
 				'name' => 'selected_categories',
 				'type' => 'taxonomy',
-				'instructions' => __( 'Used when Ordering Mode is set to Automatic.', 'donk-toss' ),
+				'instructions' => __( 'Select one or more topics to display (e.g. Merch & Shop). Leave blank to display all FAQs.', 'donk-toss' ),
 				'taxonomy' => 'faq_category',
 				'field_type' => 'checkbox',
 				'allow_null' => 1,
@@ -460,16 +504,8 @@ function donktoss_register_faq_acf_fields() {
 				'load_terms' => 0,
 				'return_format' => 'id',
 				'multiple' => 1,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_faq_block_ordering_mode',
-							'operator' => '==',
-							'value' => 'auto',
-						),
-					),
-				),
 			),
+
 
 			array(
 				'key' => 'field_faq_block_group_by_category',
