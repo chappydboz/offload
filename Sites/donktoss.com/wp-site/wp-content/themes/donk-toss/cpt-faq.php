@@ -193,6 +193,10 @@ function donktoss_register_faq_acf_fields() {
 	) );
 
 	// 2. FAQ Accordion Gutenberg Block Settings
+	acf_add_local_field_group( array(
+		'key' => 'group_donktoss_faq_accordion_block',
+		'title' => __( 'FAQ Accordion Block Settings', 'donk-toss' ),
+		'fields' => array(
 			array(
 				'key' => 'field_faq_block_ordering_mode',
 				'label' => __( 'Ordering Mode', 'donk-toss' ),
@@ -206,6 +210,7 @@ function donktoss_register_faq_acf_fields() {
 				'default_value' => 'custom',
 				'ui' => 1,
 			),
+
 			array(
 				'key' => 'field_faq_block_custom_topics',
 				'label' => __( 'Drag & Drop Topics & FAQ Order', 'donk-toss' ),
