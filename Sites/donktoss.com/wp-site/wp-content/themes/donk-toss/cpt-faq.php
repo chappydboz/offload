@@ -70,6 +70,148 @@ function donktoss_register_faq_cpt() {
 add_action( 'init', 'donktoss_register_faq_cpt', 0 );
 
 /**
+ * Register Custom Post Type: Shop Content Blocks (Gutenberg Blocks for WooCommerce Pages)
+ */
+function donktoss_register_shop_block_cpt() {
+	$labels = array(
+		'name'               => _x( 'Shop Content Blocks', 'Post Type General Name', 'donk-toss' ),
+		'singular_name'      => _x( 'Shop Content Block', 'Post Type Singular Name', 'donk-toss' ),
+		'menu_name'          => __( 'Shop Content Blocks', 'donk-toss' ),
+		'all_items'          => __( 'Shop Content Blocks', 'donk-toss' ),
+		'add_new_item'       => __( 'Add New Shop Content Block', 'donk-toss' ),
+		'add_new'            => __( 'Add New', 'donk-toss' ),
+		'new_item'           => __( 'New Block', 'donk-toss' ),
+		'edit_item'          => __( 'Edit Gutenberg Block', 'donk-toss' ),
+		'update_item'        => __( 'Update Block', 'donk-toss' ),
+		'view_item'          => __( 'View Block', 'donk-toss' ),
+		'search_items'       => __( 'Search Blocks', 'donk-toss' ),
+		'not_found'          => __( 'No Blocks found', 'donk-toss' ),
+	);
+
+	$args = array(
+		'label'               => __( 'Shop Content Block', 'donk-toss' ),
+		'description'         => __( 'Gutenberg Blocks inserted programmatically into WooCommerce Shop locations', 'donk-toss' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'revisions', 'custom-fields' ),
+		'hierarchical'        => false,
+		'public'              => false,
+		'show_ui'             => true,
+		'show_in_menu'        => 'edit.php?post_type=faq',
+		'show_in_admin_bar'   => true,
+		'can_export'          => true,
+		'exclude_from_search' => true,
+		'publicly_queryable'  => false,
+		'capability_type'     => 'post',
+		'show_in_rest'        => true,
+	);
+
+	register_post_type( 'donk_shop_block', $args );
+}
+add_action( 'init', 'donktoss_register_shop_block_cpt', 0 );
+
+/**
+ * Auto-seed Default Gutenberg Shop FAQ Content Blocks
+ */
+function donktoss_seed_shop_content_blocks() {
+	if ( ! post_type_exists( 'donk_shop_block' ) ) {
+		return;
+	}
+
+	$default_blocks = array(
+		'shop-homepage-faq' => array(
+			'title'   => 'Shop Archive / Homepage FAQ Block',
+			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Frequently Asked Questions</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"1","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eView all FAQs \u003ca href=\u0022/faq/\u0022\u003ehere\u003c/a\u003e. Have a question not answered here? Email us at \u003ca href=\u0022mailto:info@donktoss.com\u0022\u003einfo@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
+		),
+		'checkout-faq' => array(
+			'title'   => 'Checkout Page FAQ Block',
+			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Frequently Asked Questions &amp; Store Policies</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"0","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eQuestions about your order? Visit our \u003ca href=\u0022/faq/\u0022\u003eOfficial FAQs\u003c/a\u003e or email \u003ca href=\u0022mailto:shop@donktoss.com\u0022\u003eshop@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
+		),
+		'single-product-faq' => array(
+			'title'   => 'Single Product Pages FAQ Block',
+			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Product FAQs &amp; Support</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"1","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eView all FAQs \u003ca href=\u0022/faq/\u0022\u003ehere\u003c/a\u003e. Need support? Email \u003ca href=\u0022mailto:shop@donktoss.com\u0022\u003eshop@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
+		),
+	);
+
+	foreach ( $default_blocks as $slug => $data ) {
+		$existing = get_page_by_path( $slug, OBJECT, 'donk_shop_block' );
+		if ( ! $existing ) {
+			wp_insert_post( array(
+				'post_name'    => $slug,
+				'post_title'   => $data['title'],
+				'post_content' => $data['content'],
+				'post_status'  => 'publish',
+				'post_type'    => 'donk_shop_block',
+			) );
+		}
+	}
+}
+add_action( 'init', 'donktoss_seed_shop_content_blocks', 20 );
+
+/**
+ * Render Gutenberg Shop FAQ Blocks Programmatically into WooCommerce Locations
+ */
+function donktoss_render_woocommerce_shop_faq_blocks() {
+	if ( is_admin() ) {
+		return;
+	}
+
+	$block_slug = '';
+
+	if ( is_shop() || is_post_type_archive( 'product' ) ) {
+		$block_slug = 'shop-homepage-faq';
+	} elseif ( is_checkout() && ! is_order_received_page() ) {
+		$block_slug = 'checkout-faq';
+	} elseif ( is_product() ) {
+		$block_slug = 'single-product-faq';
+	}
+
+	if ( empty( $block_slug ) ) {
+		return;
+	}
+
+	// Check for per-product override if on single product page
+	if ( is_product() ) {
+		global $post;
+		if ( $post && function_exists( 'get_field' ) ) {
+			$custom_product_block = get_field( 'product_custom_faq_block', $post->ID );
+			if ( $custom_product_block && is_object( $custom_product_block ) && ! empty( $custom_product_block->post_content ) ) {
+				echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-custom">';
+				echo do_blocks( $custom_product_block->post_content );
+				echo '</div>';
+				return;
+			}
+		}
+	}
+
+	$shop_block_post = get_page_by_path( $block_slug, OBJECT, 'donk_shop_block' );
+
+	echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-' . esc_attr( $block_slug ) . '">';
+
+	if ( $shop_block_post && ! empty( $shop_block_post->post_content ) ) {
+		echo do_blocks( $shop_block_post->post_content );
+	} else {
+		// Fallback rendering
+		if ( function_exists( 'donktoss_render_faq_accordion_block' ) ) {
+			$fallback_block = array(
+				'id' => 'auto-' . $block_slug,
+				'anchor' => '',
+				'className' => '',
+				'align' => '',
+			);
+			donktoss_render_faq_accordion_block( $fallback_block );
+		}
+	}
+
+	echo '</div>';
+}
+
+// Hook into WooCommerce locations
+add_action( 'woocommerce_after_shop_loop', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
+add_action( 'woocommerce_after_checkout_form', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
+add_action( 'woocommerce_after_single_product_summary', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
+
+
+/**
  * Register Taxonomy: FAQ Category (FAQ Topics)
  */
 function donktoss_register_faq_taxonomy() {
