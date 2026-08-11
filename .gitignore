@@ -11,9 +11,18 @@
 !.gitignore
 !README.md
 !Sites/
+!Sites/donktoss.com/
+!Sites/donktoss.com/wp-site/
+!Sites/donktoss.com/wp-site/wp-content/
+!Sites/donktoss.com/wp-site/wp-content/themes/
+!Sites/donktoss.com/wp-site/wp-content/themes/donk-toss/
+!Sites/donktoss.com/wp-site/wp-content/themes/donk-toss/*
+!Sites/donktoss.com/wp-site/wp-content/themes/donk-toss/**/*
+
 !Sites/purple bee systems/
 !Sites/purple bee systems/.agents/
 !Sites/purple bee systems/.agents/**
+
 
 # --- Hard denials. Keep these last so nothing above can re-expose them. ---
 
