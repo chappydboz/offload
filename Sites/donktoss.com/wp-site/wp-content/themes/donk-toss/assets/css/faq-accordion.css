@@ -131,7 +131,7 @@
 	display: flex !important;
 	align-items: center !important;
 	justify-content: space-between !important;
-	padding: 16px 20px !important;
+	padding: 18px 24px !important;
 	font-size: 1.05rem !important;
 	font-weight: 600 !important;
 	color: #1f2937 !important;
@@ -223,15 +223,16 @@
 	color: #ff5722 !important;
 }
 
-
 /* Answer Container */
 .donktoss-faq-answer {
-	padding: 0 20px 20px 20px;
+	padding: 8px 24px 22px 24px !important;
 	color: #4b5563;
 	font-size: 0.98rem;
 	line-height: 1.65;
 	animation: donktossFaqFadeIn 0.25s ease-out;
+	box-sizing: border-box !important;
 }
+
 
 .donktoss-faq-answer-inner > *:first-child {
 	margin-top: 0;
