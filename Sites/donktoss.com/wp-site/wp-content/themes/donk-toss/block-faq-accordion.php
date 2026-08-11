@@ -49,11 +49,12 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 	$footer_cta_text    = $get_block_val( 'footer_cta_text' );
 
 
-	if ( false === $group_by_category ) {
+	if ( empty( $group_by_category ) || '0' === (string) $group_by_category || false === $group_by_category ) {
 		$group_by_category = false;
 	} else {
 		$group_by_category = true;
 	}
+
 
 	if ( false === $show_footer_cta ) {
 		$show_footer_cta = false;
