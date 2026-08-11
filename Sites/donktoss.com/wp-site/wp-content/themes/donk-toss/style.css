@@ -854,3 +854,347 @@ body.single-event #main {
     padding: 1.5rem;
   }
 }
+
+/* ==========================================================================
+   Donk Toss Rules & Resources Page - Responsive Modern Layout & In-Page Nav
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Page Hero Header */
+.donktoss-rr-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.donktoss-rr-title {
+  color: #ffffff !important;
+  font-size: 2.75rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 0.75rem !important;
+  letter-spacing: -0.02em;
+}
+
+.donktoss-rr-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.15rem;
+  max-width: 720px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.6;
+}
+
+/* In-Page Sticky Navigation Bar */
+.donktoss-rr-nav-sticky-wrap {
+  position: sticky;
+  top: 20px;
+  z-index: 99;
+  margin-bottom: 2.5rem;
+}
+
+.donktoss-rr-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(45, 18, 82, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.6rem;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  flex-wrap: wrap;
+}
+
+.donktoss-rr-nav-link {
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.donktoss-rr-nav-link:hover,
+.donktoss-rr-nav-link.active {
+  background: #ff5722;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(255, 87, 34, 0.35);
+}
+
+/* Quick Action Cards Grid */
+.donktoss-rr-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.donktoss-rr-quick-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donktoss-rr-quick-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ff5722;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.donktoss-rr-card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.donktoss-rr-card-title {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.donktoss-rr-card-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Page Section Wrappers */
+.donktoss-rr-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.donktoss-rr-section-heading {
+  color: #ffffff !important;
+  font-size: 1.85rem !important;
+  font-weight: 800 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #ff5722;
+  padding-bottom: 10px;
+}
+
+/* Rules Grid Layout */
+.donktoss-rr-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.donktoss-rr-rule-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.donktoss-rr-rule-card h3 {
+  color: #ff5722 !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.donktoss-rr-rule-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.donktoss-rr-rule-card li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Scoring Positions Feature Cards */
+.donktoss-rr-scoring-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.donktoss-rr-score-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 87, 34, 0.4);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.donktoss-rr-score-pts {
+  color: #ff5722;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: block;
+}
+
+.donktoss-rr-score-name {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+.donktoss-rr-score-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.82rem;
+}
+
+/* Resources & Downloads Cards */
+.donktoss-rr-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.donktoss-rr-resource-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s ease;
+}
+
+.donktoss-rr-resource-card:hover {
+  border-color: #ff5722;
+}
+
+.donktoss-rr-resource-card h3 {
+  color: #ffffff !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.donktoss-rr-resource-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.donktoss-rr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ff5722;
+  color: #ffffff !important;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(255, 87, 34, 0.3);
+}
+
+.donktoss-rr-btn:hover {
+  background: #e64a19;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.45);
+}
+
+.donktoss-rr-btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+.donktoss-rr-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Shop Products Grid */
+.donktoss-rr-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.donktoss-rr-shop-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.donktoss-rr-shop-card:hover {
+  transform: translateY(-4px);
+  border-color: #ff5722;
+}
+
+.donktoss-rr-shop-card h3 {
+  color: #ffffff !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.donktoss-rr-shop-card .price {
+  color: #ff5722;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Rules & Nav Adjustments */
+@media (max-width: 768px) {
+  .donktoss-rr-title {
+    font-size: 2.1rem !important;
+  }
+  .donktoss-rr-nav-bar {
+    border-radius: 16px;
+    padding: 0.4rem;
+  }
+  .donktoss-rr-nav-link {
+    font-size: 0.82rem;
+    padding: 6px 12px;
+  }
+  .donktoss-rr-section {
+    padding: 1.5rem;
+  }
+  .donktoss-rr-section-heading {
+    font-size: 1.5rem !important;
+  }
+}
