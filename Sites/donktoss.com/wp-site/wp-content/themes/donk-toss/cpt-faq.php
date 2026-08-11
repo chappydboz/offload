@@ -120,7 +120,7 @@ function donktoss_seed_shop_content_blocks() {
 	$default_blocks = array(
 		'shop-homepage-faq' => array(
 			'title'   => 'Shop Archive / Homepage FAQ Block',
-			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Frequently Asked Questions</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"1","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eView all FAQs \u003ca href=\u0022/faq/\u0022\u003ehere\u003c/a\u003e. Have a question not answered here? Email us at \u003ca href=\u0022mailto:info@donktoss.com\u0022\u003einfo@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
+			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Frequently Asked Questions</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"0","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eView all FAQs \u003ca href=\u0022/faq/\u0022\u003ehere\u003c/a\u003e. Have a question not answered here? Email us at \u003ca href=\u0022mailto:info@donktoss.com\u0022\u003einfo@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
 		),
 		'cart-faq' => array(
 			'title'   => 'Cart Page FAQ Block',
@@ -132,7 +132,7 @@ function donktoss_seed_shop_content_blocks() {
 		),
 		'single-product-faq' => array(
 			'title'   => 'Single Product Pages FAQ Block',
-			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Product FAQs &amp; Support</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"1","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eView all FAQs \u003ca href=\u0022/faq/\u0022\u003ehere\u003c/a\u003e. Need support? Email \u003ca href=\u0022mailto:shop@donktoss.com\u0022\u003eshop@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
+			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Product FAQs &amp; Support</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"0","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eView all FAQs \u003ca href=\u0022/faq/\u0022\u003ehere\u003c/a\u003e. Need support? Email \u003ca href=\u0022mailto:shop@donktoss.com\u0022\u003eshop@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
 		),
 	);
 
