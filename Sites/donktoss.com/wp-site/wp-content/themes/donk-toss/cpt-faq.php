@@ -122,6 +122,10 @@ function donktoss_seed_shop_content_blocks() {
 			'title'   => 'Shop Archive / Homepage FAQ Block',
 			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Frequently Asked Questions</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"1","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eView all FAQs \u003ca href=\u0022/faq/\u0022\u003ehere\u003c/a\u003e. Have a question not answered here? Email us at \u003ca href=\u0022mailto:info@donktoss.com\u0022\u003einfo@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
 		),
+		'cart-faq' => array(
+			'title'   => 'Cart Page FAQ Block',
+			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Frequently Asked Questions &amp; Shipping Info</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"0","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eQuestions about your cart or order? Visit our \u003ca href=\u0022/faq/\u0022\u003eOfficial FAQs\u003c/a\u003e or email \u003ca href=\u0022mailto:shop@donktoss.com\u0022\u003eshop@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
+		),
 		'checkout-faq' => array(
 			'title'   => 'Checkout Page FAQ Block',
 			'content' => '<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Frequently Asked Questions &amp; Store Policies</h2><!-- /wp:heading --><!-- wp:acf/faq-accordion {"name":"acf/faq-accordion","data":{"ordering_mode":"custom","group_by_category":"0","heading_tag":"h3","accordion_mode":"multi","show_search":"0","show_footer_cta":"1","footer_cta_text":"\u003cp\u003eQuestions about your order? Visit our \u003ca href=\u0022/faq/\u0022\u003eOfficial FAQs\u003c/a\u003e or email \u003ca href=\u0022mailto:shop@donktoss.com\u0022\u003eshop@donktoss.com\u003c/a\u003e.\u003c/p\u003e"},"align":"","mode":"preview"} /-->',
@@ -159,6 +163,8 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 
 	if ( is_shop() || is_post_type_archive( 'product' ) ) {
 		$block_slug = 'shop-homepage-faq';
+	} elseif ( is_cart() ) {
+		$block_slug = 'cart-faq';
 	} elseif ( is_checkout() && ! is_order_received_page() ) {
 		$block_slug = 'checkout-faq';
 	} elseif ( is_product() ) {
@@ -208,9 +214,11 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 // Hook into WooCommerce locations
 add_action( 'woocommerce_after_shop_loop', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_main_content', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
+add_action( 'woocommerce_after_cart', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_checkout_form', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_single_product_summary', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
 add_action( 'woocommerce_after_single_product', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
+
 
 
 
