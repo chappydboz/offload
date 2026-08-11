@@ -265,16 +265,19 @@
 
 /* Block Footer Call-to-Action (CTA) */
 .donktoss-faq-footer-cta {
-	margin-top: 32px !important;
-	padding: 16px 0 !important;
+	margin-top: 42px !important;
+	padding-top: 24px !important;
+	padding-bottom: 8px !important;
 	background: transparent !important;
 	border: none !important;
+	border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
 	border-radius: 0 !important;
 	box-shadow: none !important;
 	text-align: center !important;
 	font-size: 1.05rem !important;
 	color: #ffffff !important;
 }
+
 
 .donktoss-faq-footer-cta p {
 	margin: 0 !important;

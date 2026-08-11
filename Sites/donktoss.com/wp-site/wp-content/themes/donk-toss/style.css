@@ -1289,29 +1289,53 @@ html {
   font-weight: 700 !important;
 }
 
-.donktoss-faq-question-text {
-  flex: 1 !important;
-  padding-right: 14px !important;
-  line-height: 1.45 !important;
-  display: inline-block !important;
-  align-self: center !important;
-  transition: color 0.2s ease !important;
+/* WooCommerce Embedded Shop FAQ Sections - Dark Mode / White Question Text */
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Chevron Icon - Vertically Centered */
-.donktoss-faq-icon {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  align-self: center !important;
-  height: 24px !important;
-  width: 24px !important;
-  color: #6b7280 !important;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease !important;
-  flex-shrink: 0 !important;
+.donktoss-woocommerce-faq-wrap .donktoss-faq-question-text {
+  color: #ffffff !important;
 }
 
-.donktoss-faq-item[open] .donktoss-faq-icon {
-  transform: rotate(180deg) !important;
+.donktoss-woocommerce-faq-wrap .donktoss-faq-icon {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Hover Rollover State - Orange */
+.donktoss-woocommerce-faq-wrap .donktoss-faq-question:hover .donktoss-faq-question-text,
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item:hover .donktoss-faq-question-text {
   color: #ff5722 !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-question:hover .donktoss-faq-icon,
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item:hover .donktoss-faq-icon {
+  color: #ff5722 !important;
+}
+
+/* Activated / Open State - Orange */
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] {
+  border-color: rgba(255, 87, 34, 0.5) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] .donktoss-faq-question-text {
+  color: #ff5722 !important;
+  font-weight: 700 !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] .donktoss-faq-icon {
+  color: #ff5722 !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-answer {
+  color: #e2e8f0 !important;
+}
+
+/* Footer CTA Spacing */
+.donktoss-faq-footer-cta {
+  margin-top: 42px !important;
+  padding-top: 24px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
 }
