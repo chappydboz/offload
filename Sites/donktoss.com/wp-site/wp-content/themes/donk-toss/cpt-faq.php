@@ -207,8 +207,11 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 
 // Hook into WooCommerce locations
 add_action( 'woocommerce_after_shop_loop', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
+add_action( 'woocommerce_after_main_content', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_checkout_form', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_single_product_summary', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
+add_action( 'woocommerce_after_single_product', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
+
 
 
 /**
