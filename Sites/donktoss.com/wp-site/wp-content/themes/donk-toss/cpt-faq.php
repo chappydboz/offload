@@ -158,7 +158,11 @@ function donktoss_parse_and_render_gutenberg( $content ) {
 	if ( empty( $content ) ) {
 		return '';
 	}
-	$blocks = parse_blocks( $content );
+
+	// Decode HTML entities if block comment comments contain &quot;
+	$clean_content = html_entity_decode( $content, ENT_QUOTES, 'UTF-8' );
+
+	$blocks = parse_blocks( $clean_content );
 	$output = '';
 	foreach ( $blocks as $block ) {
 		if ( ! empty( $block['blockName'] ) ) {
@@ -179,6 +183,7 @@ function donktoss_parse_and_render_gutenberg( $content ) {
 	}
 	return $output;
 }
+
 
 
 /**
@@ -247,6 +252,36 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 }
 
 /**
+ * Render FAQ block on Cart page via hooks or content filter
+ */
+function donktoss_render_cart_faq_block() {
+	static $cart_rendered = false;
+
+	if ( is_admin() || $cart_rendered ) {
+		return;
+	}
+
+	if ( is_cart() || is_page( 'cart' ) || is_page( 29 ) ) {
+		$cart_rendered = true;
+		$shop_block_post = get_page_by_path( 'cart-faq', OBJECT, 'donk_shop_block' );
+		echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-cart-faq">';
+		if ( $shop_block_post && ! empty( $shop_block_post->post_content ) ) {
+			echo donktoss_parse_and_render_gutenberg( $shop_block_post->post_content );
+		} else {
+			if ( function_exists( 'donktoss_render_faq_accordion_block' ) ) {
+				donktoss_render_faq_accordion_block( array( 'id' => 'auto-cart-faq' ) );
+			}
+		}
+		echo '</div>';
+	}
+}
+
+// Attach to Cart page hooks
+add_action( 'woocommerce_after_cart', 'donktoss_render_cart_faq_block', 30 );
+add_action( 'woocommerce_after_cart_table', 'donktoss_render_cart_faq_block', 30 );
+add_action( 'woocommerce_cart_collaterals', 'donktoss_render_cart_faq_block', 30 );
+
+/**
  * Filter the_content to guarantee Cart page FAQ block rendering when Block Cart is used
  */
 function donktoss_append_faq_block_to_cart_content( $content ) {
@@ -255,17 +290,10 @@ function donktoss_append_faq_block_to_cart_content( $content ) {
 	}
 
 	if ( is_cart() || is_page( 'cart' ) || is_page( 29 ) ) {
-		static $cart_content_rendered = false;
-		if ( ! $cart_content_rendered ) {
-			$cart_content_rendered = true;
-			$shop_block_post = get_page_by_path( 'cart-faq', OBJECT, 'donk_shop_block' );
-			$faq_html = '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-cart-faq">';
-			if ( $shop_block_post && ! empty( $shop_block_post->post_content ) ) {
-				$faq_html .= donktoss_parse_and_render_gutenberg( $shop_block_post->post_content );
-			}
-			$faq_html .= '</div>';
-			return $content . $faq_html;
-		}
+		ob_start();
+		donktoss_render_cart_faq_block();
+		$html = ob_get_clean();
+		return $content . $html;
 	}
 
 	return $content;
@@ -276,6 +304,7 @@ add_filter( 'the_content', 'donktoss_append_faq_block_to_cart_content', 25 );
 add_action( 'woocommerce_after_main_content', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_checkout_form', 'donktoss_render_woocommerce_shop_faq_blocks', 30 );
 add_action( 'woocommerce_after_single_product_summary', 'donktoss_render_woocommerce_shop_faq_blocks', 25 );
+
 
 
 
