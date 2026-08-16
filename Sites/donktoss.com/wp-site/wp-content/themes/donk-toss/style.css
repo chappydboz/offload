@@ -1680,6 +1680,8 @@ html {
 .woocommerce-cart .cross-sells .onsale,
 .woocommerce-cart .cross-sells .ast-onsale-card,
 .woocommerce-cart .cross-sells .donktoss-stock-badge,
+.woocommerce-cart .donktoss-stock-badge,
+.woocommerce-cart li.product .donktoss-stock-badge,
 .woocommerce-cart .cross-sells .stock-badge,
 .woocommerce-cart .cross-sells .ast-badge-tax,
 .woocommerce-cart .cross-sells .star-rating,
@@ -1725,7 +1727,8 @@ html {
   width: 160px !important;
   min-width: 160px !important;
   max-width: 160px !important;
-  height: auto !important;
+  height: 160px !important;
+  flex-shrink: 0 !important;
   border-radius: 10px !important;
   object-fit: cover !important;
   display: block !important;
