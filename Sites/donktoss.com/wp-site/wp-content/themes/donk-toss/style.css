@@ -1413,8 +1413,7 @@ html {
 .woocommerce-checkout p.form-row label,
 .woocommerce-checkout #ship-to-different-address,
 .woocommerce-checkout #ship-to-different-address label,
-.woocommerce-checkout #ship-to-different-address span,
-.woocommerce-checkout label.checkbox {
+.woocommerce-checkout #ship-to-different-address span {
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 0.95rem !important;
@@ -1914,4 +1913,41 @@ html {
 .donktoss-faq-footer-cta h3,
 .kt-blocks-accordion-title {
   color: #ffffff !important;
+}
+
+/* WooCommerce Checkout Payment Section & Layout Fixes */
+.woocommerce-checkout #payment,
+.woocommerce-checkout #payment ul.payment_methods,
+.woocommerce-checkout #payment ul.payment_methods li,
+.woocommerce-checkout #payment div.payment_box,
+.woocommerce-checkout #payment div.place-order,
+.woocommerce-checkout .woocommerce-terms-and-conditions-wrapper {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.woocommerce-checkout #payment,
+.woocommerce-checkout #payment .place-order,
+.woocommerce-checkout .woocommerce-terms-and-conditions-wrapper,
+.woocommerce-checkout p.form-row.terms {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  float: none !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* Checkbox alignment & text visibility */
+.woocommerce-checkout label.checkbox {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+}
+
+.woocommerce-checkout label.checkbox input[type="checkbox"] {
+  margin: 0 !important;
+  flex-shrink: 0 !important;
 }
