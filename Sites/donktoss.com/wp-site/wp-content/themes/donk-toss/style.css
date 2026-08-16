@@ -1343,3 +1343,553 @@ html {
   padding-top: 24px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
 }
+
+/* ==========================================================================
+   E-Commerce Conversion & WCAG 2.1 AA Accessibility Styling
+   Cart Page (`.woocommerce-cart`) & Checkout Page (`.woocommerce-checkout`)
+   ========================================================================== */
+
+/* Shared High Contrast Typography & Field Focus (WCAG AA 7.2:1 Ratio) */
+.woocommerce-cart,
+.woocommerce-checkout {
+  color: #ffffff !important;
+}
+
+/* Headings on Purple Background */
+.woocommerce-cart h1, .woocommerce-cart h2, .woocommerce-cart h3,
+.woocommerce-checkout h1, .woocommerce-checkout h2, .woocommerce-checkout h3,
+.woocommerce-checkout #order_review_heading {
+  color: #fd6d25 !important;
+  font-family: 'Karla', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Accessible Inputs Across Cart & Checkout */
+.woocommerce-cart input.input-text,
+.woocommerce-cart textarea,
+.woocommerce-cart select,
+.woocommerce-checkout input.input-text,
+.woocommerce-checkout textarea,
+.woocommerce-checkout select {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 48px !important;
+  line-height: 1.4 !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Accessible Focus States (WCAG Visible Focus Ring) */
+.woocommerce-cart input.input-text:focus,
+.woocommerce-cart textarea:focus,
+.woocommerce-cart select:focus,
+.woocommerce-checkout input.input-text:focus,
+.woocommerce-checkout textarea:focus,
+.woocommerce-checkout select:focus,
+.woocommerce-cart a:focus-visible,
+.woocommerce-checkout a:focus-visible,
+.woocommerce-cart button:focus-visible,
+.woocommerce-checkout button:focus-visible {
+  border-color: #fd6d25 !important;
+  box-shadow: 0 0 0 4px rgba(253, 109, 37, 0.4) !important;
+  outline: 2px solid #fd6d25 !important;
+  outline-offset: 2px !important;
+}
+
+/* Form Labels - Pure White for 7.2:1 WCAG AA Contrast */
+.woocommerce-cart label,
+.woocommerce-checkout label,
+.woocommerce-checkout .form-row label,
+.woocommerce form .form-row label,
+.woocommerce-checkout p.form-row label,
+.woocommerce-checkout #ship-to-different-address,
+.woocommerce-checkout #ship-to-different-address label,
+.woocommerce-checkout #ship-to-different-address span,
+.woocommerce-checkout label.checkbox {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  background: transparent !important;
+  line-height: 1.4 !important;
+}
+
+/* Coupon Notice & Entry Form */
+.woocommerce-checkout .woocommerce-form-coupon-toggle {
+  margin-bottom: 1.5rem !important;
+}
+
+.woocommerce-checkout .woocommerce-form-coupon-toggle .woocommerce-info {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-left: 5px solid #fd6d25 !important;
+  border-radius: 12px !important;
+  padding: 1.1rem 1.5rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+}
+
+.woocommerce-checkout .woocommerce-form-coupon-toggle a.showcoupon {
+  color: #fd6d25 !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+}
+
+/* Hide "Pay with cash upon delivery" text on Order Received page */
+.woocommerce-order-received .woocommerce-order > p,
+.woocommerce-order-received .woocommerce-thankyou-order-received + p {
+  display: none !important;
+}
+
+.woocommerce-checkout form.checkout_coupon {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 14px !important;
+  padding: 1.5rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.woocommerce-checkout form.checkout_coupon p {
+  width: 100% !important;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.woocommerce-checkout form.checkout_coupon input.input-text {
+  flex: 1 !important;
+  min-width: 200px !important;
+}
+
+.woocommerce-checkout form.checkout_coupon button.button {
+  background-color: #fd6d25 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  height: 48px !important;
+}
+
+/* ==========================================================================
+   Clean Astra Addon Pro WooCommerce Cart & Checkout Styling (#5d279e)
+   ========================================================================== */
+
+/* High-Contrast Base Colors */
+.woocommerce-cart,
+.woocommerce-checkout {
+  color: #ffffff !important;
+}
+
+.woocommerce-cart h1, .woocommerce-cart h2, .woocommerce-cart h3,
+.woocommerce-checkout h1, .woocommerce-checkout h2, .woocommerce-checkout h3 {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Astra Addon Pro Native Cart Layout Support (#ast-cart-wrapper)
+   ========================================================================== */
+
+.woocommerce-cart #ast-cart-wrapper,
+.woocommerce-cart .woocommerce {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 1024px) {
+  .woocommerce-cart #ast-cart-wrapper .ast-cart-non-sticky,
+  .woocommerce-cart .ast-cart-non-sticky {
+    flex: 0 0 64% !important;
+    width: 64% !important;
+    max-width: 64% !important;
+    box-sizing: border-box !important;
+  }
+
+  .woocommerce-cart #ast-cart-wrapper .cart-collaterals,
+  .woocommerce-cart .cart-collaterals {
+    flex: 0 0 32% !important;
+    width: 32% !important;
+    max-width: 32% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .woocommerce-cart #ast-cart-wrapper .ast-cart-non-sticky,
+  .woocommerce-cart #ast-cart-wrapper .cart-collaterals,
+  .woocommerce-cart .ast-cart-non-sticky,
+  .woocommerce-cart .cart-collaterals {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 2rem !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.woocommerce-cart #ast-cart-wrapper .ast-cart-non-sticky form.woocommerce-cart-form,
+.woocommerce-cart form.woocommerce-cart-form {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  box-sizing: border-box !important;
+}
+
+.woocommerce-cart #ast-cart-wrapper .cart-collaterals .cart_totals,
+.woocommerce-cart .cart_totals {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  box-sizing: border-box !important;
+}
+
+/* Empty Cart Layout - 1-Column Centered */
+.woocommerce-cart .wc-empty-cart-message,
+.woocommerce-cart .return-to-shop,
+.woocommerce-cart p.cart-empty,
+.woocommerce-cart .woocommerce-info {
+  width: 100% !important;
+  max-width: 650px !important;
+  margin: 3rem auto !important;
+  text-align: center !important;
+  float: none !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 16px !important;
+  padding: 2.5rem 2rem !important;
+  color: #ffffff !important;
+}
+
+.woocommerce-cart .return-to-shop a.button {
+  background-color: #fd6d25 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin-top: 1.5rem !important;
+  display: inline-block !important;
+}
+
+/* ==========================================================================
+   Clean Card Container & Table Styling (Tight Padding Prevents Overlap)
+   ========================================================================== */
+
+/* Cart Table Container */
+.woocommerce-cart table.shop_table.cart {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin-bottom: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  table-layout: auto !important;
+}
+
+.woocommerce-cart table.shop_table.cart th {
+  background: rgba(15, 23, 42, 0.6) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.04em !important;
+  padding: 12px 10px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.woocommerce-cart table.shop_table.cart td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  padding: 12px 10px !important;
+  color: #ffffff !important;
+  background: transparent !important;
+  font-size: 0.9rem !important;
+}
+
+.woocommerce-cart table.shop_table.cart td.product-name a {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+}
+
+.woocommerce-cart table.shop_table.cart td.product-name a:hover {
+  color: #fd6d25 !important;
+}
+
+/* ==========================================================================
+   Premium E-Commerce Cross-Sells Recommendation Card
+   ========================================================================== */
+
+.woocommerce-cart .cross-sells {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 2.5rem !important;
+  width: 100% !important;
+}
+
+/* Header Title */
+.woocommerce-cart .cross-sells h2,
+.woocommerce-cart .cross-sells th,
+.woocommerce-cart .cross-sells .cross-sells-title {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 0 0 0.5rem 0 !important;
+  margin: 0 0 1.25rem 0 !important;
+  border-bottom: 2px solid #fd6d25 !important;
+  display: inline-block !important;
+}
+
+/* HIDE ALL STOCK BADGES / "NOW IN STOCK!" BADGES IN CROSS-SELLS */
+.woocommerce-cart .cross-sells .onsale,
+.woocommerce-cart .cross-sells .ast-onsale-card,
+.woocommerce-cart .cross-sells .donktoss-stock-badge,
+.woocommerce-cart .cross-sells .stock-badge,
+.woocommerce-cart .cross-sells .ast-badge-tax,
+.woocommerce-cart .cross-sells .star-rating,
+.woocommerce-cart .cross-sells span.onsale,
+.woocommerce-cart .cross-sells div.onsale,
+.woocommerce-cart .cross-sells .stock {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Cross-Sells Table & Container resets */
+.woocommerce-cart .cross-sells table.shop_table {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border-collapse: collapse !important;
+}
+
+.woocommerce-cart .cross-sells table.shop_table td {
+  background: transparent !important;
+  border: none !important;
+  padding: 1.25rem !important;
+  vertical-align: middle !important;
+}
+
+/* Substantially Larger 160px Thumbnail Image & Cell */
+.woocommerce-cart .cross-sells td.product-thumbnail,
+.woocommerce-cart .cross-sells .product-thumbnail {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+  padding-right: 0 !important;
+}
+
+.woocommerce-cart .cross-sells img,
+.woocommerce-cart .cross-sells .product-thumbnail img,
+.woocommerce-cart .cross-sells table td.product-thumbnail img,
+.woocommerce-cart .cross-sells ul.products li.product img {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+  height: auto !important;
+  border-radius: 10px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Product Title Typography */
+.woocommerce-cart .cross-sells td.product-name a,
+.woocommerce-cart .cross-sells a,
+.woocommerce-cart .cross-sells .product-name a,
+.woocommerce-cart .cross-sells ul.products li.product h2,
+.woocommerce-cart .cross-sells ul.products li.product h3 {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  display: block !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.woocommerce-cart .cross-sells a:hover {
+  color: #fd6d25 !important;
+}
+
+/* Price - Bold Orange & Prevent Line Breaks */
+.woocommerce-cart .cross-sells td.product-price,
+.woocommerce-cart .cross-sells td.product-subtotal,
+.woocommerce-cart .cross-sells .price,
+.woocommerce-cart .cross-sells .price span,
+.woocommerce-cart .cross-sells .amount {
+  color: #fd6d25 !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+/* Cart Quantity & Inputs */
+.woocommerce-cart input.input-text,
+.woocommerce-checkout input.input-text,
+.woocommerce-checkout textarea,
+.woocommerce-checkout select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 6px !important;
+}
+
+.woocommerce-cart .quantity input.qty {
+  width: 55px !important;
+  text-align: center !important;
+  font-weight: 700 !important;
+  padding: 6px !important;
+}
+
+/* Cart Buttons */
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
+.woocommerce-cart .coupon button.button,
+.woocommerce-checkout #payment #place_order {
+  background-color: #fd6d25 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+  border: none !important;
+}
+
+.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
+.woocommerce-cart .coupon button.button:hover,
+.woocommerce-checkout #payment #place_order:hover {
+  background-color: #e55b13 !important;
+}
+
+/* Cart Totals Box */
+.woocommerce-cart .cart_totals {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  padding: 1.25rem !important;
+  margin-bottom: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.woocommerce-cart .cart_totals h2 {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  margin: 0 0 1rem 0 !important;
+  padding: 0 0 0.5rem 0 !important;
+  border-bottom: 2px solid #fd6d25 !important;
+  display: inline-block !important;
+}
+
+.woocommerce-cart .cart_totals table.shop_table th {
+  color: #ffffff !important;
+  white-space: nowrap !important;
+  width: 80px !important;
+  padding-right: 8px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.woocommerce-cart .cart_totals table.shop_table td {
+  color: #ffffff !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.woocommerce-cart .cart_totals table.shop_table tr.order-total strong {
+  color: #fd6d25 !important;
+}
+
+/* Express Payment Buttons Area (Stripe / Apple / Google / Amazon) */
+.woocommerce-cart .cart_totals .wc_stripe_express_checkout_gateways,
+.single-product .wc_stripe_express_checkout_gateways {
+  margin-top: 1rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  padding-top: 1rem !important;
+}
+
+/* Checkout Order Review Table - Clean Dividers & No Orange Borders */
+.woocommerce-checkout #order_review,
+.woocommerce-checkout #order_review table,
+.woocommerce-checkout table.shop_table.woocommerce-checkout-review-order-table {
+  border: none !important;
+}
+
+.woocommerce-checkout table.shop_table.woocommerce-checkout-review-order-table th,
+.woocommerce-checkout table.shop_table.woocommerce-checkout-review-order-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.woocommerce-checkout table.shop_table.woocommerce-checkout-review-order-table tr.order-total strong {
+  color: #fd6d25 !important;
+}
+
+/* Payment Gateway Boxes & Cash App Fix */
+.woocommerce-checkout #payment div.payment_box {
+  background-color: rgba(0, 0, 0, 0.25) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+}
+
+.woocommerce-checkout #payment div.payment_box p.form-row.woocommerce-saved-payment-methods-wc-token-html {
+  display: none !important;
+}
+
+/* FAQ Titles White Text */
+.donktoss-faq-footer-cta h2,
+.donktoss-faq-footer-cta h3,
+.kt-blocks-accordion-title {
+  color: #ffffff !important;
+}

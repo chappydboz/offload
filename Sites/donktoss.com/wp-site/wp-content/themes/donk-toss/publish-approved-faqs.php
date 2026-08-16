@@ -68,10 +68,11 @@ $approved_faqs = array(
 	array(
 		'title'    => 'What is your return policy if an item arrives damaged?',
 		'category' => 'Merch & Shop',
-		'answer'   => '<p>We only offer returns or replacements for products that arrive damaged or faulty upon delivery. If your order arrives damaged, please email us at <a href="mailto:shop@donktoss.com">shop@donktoss.com</a> with your order number and photos of the damage so we can promptly issue a replacement.</p>',
+		'answer'   => '<p>All sales are final. We only offer returns, exchanges, or replacements for products that arrive damaged or defective upon delivery. If your order arrives damaged, please email us at <a href="mailto:shop@donktoss.com">shop@donktoss.com</a> with your order number and photos of the damage so we can promptly issue a replacement.</p>',
 		'badge'    => 'Returns',
 		'order'    => 4,
 	),
+
 	array(
 		'title'    => 'How do I track my order once it\'s placed?',
 		'category' => 'Merch & Shop',
