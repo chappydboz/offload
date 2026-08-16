@@ -1717,10 +1717,12 @@ html {
 
 /* Substantially Larger 160px Thumbnail Image & Cell */
 .woocommerce-cart .cross-sells td.product-thumbnail,
-.woocommerce-cart .cross-sells .product-thumbnail {
+.woocommerce-cart .cross-sells .product-thumbnail,
+.woocommerce-cart .cross-sells .astra-shop-thumbnail-wrap {
   width: 160px !important;
   min-width: 160px !important;
   max-width: 160px !important;
+  flex-shrink: 0 !important;
   padding-right: 0 !important;
 }
 
