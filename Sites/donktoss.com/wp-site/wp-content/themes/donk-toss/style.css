@@ -1792,6 +1792,19 @@ html {
   padding: 6px !important;
 }
 
+.woocommerce-cart .quantity .minus,
+.woocommerce-cart .quantity .plus,
+.woocommerce-cart .quantity .qty {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+.woocommerce-cart .quantity .minus:focus,
+.woocommerce-cart .quantity .plus:focus,
+.woocommerce-cart .quantity .qty:focus {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  outline: none !important;
+}
+
 /* Cart Buttons */
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-cart .coupon button.button,
