@@ -1937,6 +1937,12 @@ html {
   margin-left: 0 !important;
 }
 
+.woocommerce-checkout #payment fieldset {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 /* Checkbox alignment & text visibility */
 .woocommerce-checkout label.checkbox {
   display: inline-flex !important;
