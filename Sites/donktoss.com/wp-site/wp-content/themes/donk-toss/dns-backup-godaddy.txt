@@ -1,0 +1,47 @@
+; Domain: donktoss.com
+; Exported (y-m-d hh:mm:ss): 2026-08-16 19:45:32
+; GoDaddy DNS Zone File Backup
+
+$ORIGIN donktoss.com.
+
+; SOA Record
+@	3600	 IN 	SOA	ns15.domaincontrol.com.	dns.jomax.net. (
+					2026052803
+					28800
+					7200
+					604800
+					3600
+					) 
+
+; A Record
+@	1800	 IN 	A	142.11.209.19
+instagram	3600	 IN 	A	15.197.225.128
+instagram	3600	 IN 	A	3.33.251.168
+youtube	600	 IN 	A	15.197.142.173
+youtube	600	 IN 	A	3.33.152.147
+
+; TXT Record
+@	3600	 IN 	TXT	"google-site-verification=Zty8HxJQWZprsYKuqWfXqJ4yjUcgiDqskjKNVMyqBcA"
+@	3600	 IN 	TXT	"mandrill_verify.o3VbAWmuhPmbMu6xISlNqQ"
+@	1800	 IN 	TXT	"v=spf1 +ip4:142.11.209.19 +include:spf.improvmx.com include:spf.improvmx.com ~all"
+default._domainkey	1800	 IN 	TXT	"v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArd4TDOJUvZFQxvi/WENODPr9D3WdMNbDrj608zgxKsu4XocozHi2TI02+6YtZaWTKCwUrEtp+UxMF71+1/PMNypF0tEhmCdiqAiH4MLovXZfs7bYbCY5P3CFfk2mgbZQyCGjVcSqfHD2I0LLbFnbVmr/J80m6TOAcE9iQ8WJTRKHBFyN9968jwXLStIzG8cD7"	"x70QIg6hgNBkkjLpCjdlRVIZkmRU2DtFqdNefLiw/c+0yeDc9q6qUFColNp0FD3WKkopkSvHyqat9jQ7SPGvvFLSYqJH0uj41hL63aHj0YWnc2POEOlXbA3kDLDfMtKscS2aCpJM6kd44nM2utTHQIDAQAB;"
+_dmarc	1800	 IN 	TXT	"v=DMARC1; p=none;"
+
+; CNAME Record
+dkimprovmx1._domainkey	1800	 IN 	CNAME	dkimprovmx1.improvmx.com.
+dkimprovmx2._domainkey	1800	 IN 	CNAME	dkimprovmx2.improvmx.com.
+k2._domainkey	3600	 IN 	CNAME	dkim2.mcsv.net.
+k3._domainkey	3600	 IN 	CNAME	dkim3.mcsv.net.
+mte1._domainkey	3600	 IN 	CNAME	dkim1.mandrillapp.com.
+mte2._domainkey	3600	 IN 	CNAME	dkim2.mandrillapp.com.
+pay	3600	 IN 	CNAME	paylinks.commerce.godaddy.com.
+www	3600	 IN 	CNAME	@
+_domainconnect	3600	 IN 	CNAME	_domainconnect.gd.domaincontrol.com.
+
+; NS Record
+@	3600	 IN 	NS	ns15.domaincontrol.com.
+@	3600	 IN 	NS	ns16.domaincontrol.com.
+
+; MX Record
+@	1800	 IN 	MX	10	mx1.improvmx.com.
+@	1800	 IN 	MX	20	mx2.improvmx.com.
