@@ -1597,43 +1597,50 @@ html {
    ========================================================================== */
 
 /* Cart Table Container */
+.woocommerce-cart .entry-content table.shop_table.cart,
 .woocommerce-cart table.shop_table.cart {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-  margin-bottom: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-  table-layout: auto !important;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  table-layout: auto;
 }
 
+.woocommerce-cart .entry-content table.shop_table.cart thead,
+.woocommerce-cart .entry-content table.shop_table.cart thead tr,
+.woocommerce-cart .entry-content table.shop_table.cart thead th,
 .woocommerce-cart table.shop_table.cart th {
-  background: rgba(15, 23, 42, 0.6) !important;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  font-size: 0.8rem !important;
-  letter-spacing: 0.04em !important;
-  padding: 12px 10px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-top: none !important;
-  border-left: none !important;
-  border-right: none !important;
+  background: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
+.woocommerce-cart .entry-content table.shop_table.cart tbody,
+.woocommerce-cart .entry-content table.shop_table.cart tbody tr,
 .woocommerce-cart table.shop_table.cart td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-top: none !important;
-  border-left: none !important;
-  border-right: none !important;
-  padding: 12px 10px !important;
-  color: #ffffff !important;
-  background: transparent !important;
-  font-size: 0.9rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 12px 10px;
+  color: #ffffff;
+  background: transparent;
+  font-size: 0.9rem;
 }
 
 .woocommerce-cart table.shop_table.cart td.product-name a {
@@ -1956,4 +1963,88 @@ html {
 .woocommerce-checkout label.checkbox input[type="checkbox"] {
   margin: 0 !important;
   flex-shrink: 0 !important;
+}
+
+/* ==========================================================================
+   WooCommerce Alert Banners & Notices (Full Width & CTA Button Spacing)
+   ========================================================================== */
+.entry-content .woocommerce .woocommerce-notices-wrapper,
+.woocommerce .woocommerce-notices-wrapper,
+.woocommerce-notices-wrapper {
+  width: 100%;
+  flex: 1 1 100%;
+  max-width: 100%;
+  clear: both;
+  margin: 0 0 1.5rem 0;
+}
+
+.entry-content .woocommerce-message,
+.entry-content .woocommerce-error,
+.entry-content .woocommerce-info,
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 1rem 1.5rem 1rem 3.5rem;
+  position: relative;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  border-radius: 6px;
+}
+
+/* Push CTA Button to the right with proper separation from notice text */
+.entry-content .woocommerce-message a.button,
+.entry-content .woocommerce-error a.button,
+.entry-content .woocommerce-info a.button,
+.woocommerce .entry-content .woocommerce-message .button,
+.woocommerce-message a.button,
+.woocommerce-error a.button,
+.woocommerce-info a.button,
+.woocommerce-message a.button.wc-forward {
+  margin-left: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  order: 2;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.6rem 1.25rem;
+  background-color: #fd6d25;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  line-height: 1.4;
+}
+
+.entry-content .woocommerce-message a.button:hover,
+.entry-content .woocommerce-error a.button:hover,
+.entry-content .woocommerce-info a.button:hover,
+.woocommerce .entry-content .woocommerce-message .button:hover,
+.woocommerce-message a.button:hover,
+.woocommerce-error a.button:hover,
+.woocommerce-info a.button:hover,
+.woocommerce-message a.button.wc-forward:hover {
+  background-color: #e55b13;
+  color: #ffffff;
+}
+
+.entry-content .woocommerce-message::before,
+.entry-content .woocommerce-error::before,
+.entry-content .woocommerce-info::before,
+.woocommerce-message::before,
+.woocommerce-error::before,
+.woocommerce-info::before {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
 }
