@@ -1406,6 +1406,10 @@ html {
 }
 
 /* Form Labels - Pure White for 7.2:1 WCAG AA Contrast & Always Visible */
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row label:not(.checkbox):not(.radio):not(.woocommerce-form__label-for-checkbox),
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce-checkout form .form-row label,
+body .woocommerce-checkout .form-row label,
+body .woocommerce-checkout label,
 .woocommerce-cart label,
 .woocommerce-checkout label,
 .woocommerce-checkout .form-row label,
@@ -1422,7 +1426,7 @@ html {
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 0.95rem !important;
-  position: relative !important;
+  position: static !important;
   top: auto !important;
   left: auto !important;
   transform: none !important;
@@ -1434,10 +1438,23 @@ html {
   clip-path: none !important;
   height: auto !important;
   width: auto !important;
+  max-width: 100% !important;
   overflow: visible !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
+  -webkit-user-select: auto !important;
   margin-bottom: 6px !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
   background: transparent !important;
   line-height: 1.4 !important;
+}
+
+/* Ensure inputs are not cramped under labels */
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row input.input-text,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row select,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row textarea {
+  padding: 12px 14px !important;
 }
 
 /* Coupon Notice & Entry Form */
