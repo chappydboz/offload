@@ -1542,7 +1542,7 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   width: 100%;
 }
 
-/* YOUR ORDER Heading - Crisp White with Orange Shadow, No Bottom Line */
+/* YOUR ORDER Heading - Crisp White with 2px 2px Orange Drop Shadow */
 .woocommerce-checkout #order_review_heading,
 .woocommerce-checkout h3#order_review_heading {
   font-size: 1.75rem;
@@ -1550,7 +1550,7 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  text-shadow: 0 2px 8px rgba(253, 109, 37, 0.5), 0 0 2px rgba(253, 109, 37, 0.4);
+  text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25);
   margin-top: 0;
   margin-bottom: 1.25rem;
   padding-bottom: 0;
