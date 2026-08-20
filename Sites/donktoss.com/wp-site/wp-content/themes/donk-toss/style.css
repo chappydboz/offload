@@ -1450,7 +1450,7 @@ body .woocommerce-checkout label,
   line-height: 1.4 !important;
 }
 
-/* Site-Wide Breadcrumbs Spacing */
+/* Site-Wide Breadcrumbs Spacing & 20px Container Alignment */
 .ast-breadcrumbs-wrapper,
 .ast-breadcrumbs,
 .donktoss-breadcrumbs {
@@ -1461,7 +1461,11 @@ body .woocommerce-checkout label,
   text-transform: uppercase !important;
   margin-top: 1.25rem !important;
   margin-bottom: 0.85rem !important;
-  padding: 0 !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  box-sizing: border-box !important;
   display: block !important;
 }
 
@@ -1542,12 +1546,12 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   width: 100% !important;
 }
 
-/* YOUR ORDER Heading - Clean Brand Orange, No Bottom Line */
+/* YOUR ORDER Heading - Crisp White, No Bottom Line */
 .woocommerce-checkout #order_review_heading,
 .woocommerce-checkout h3#order_review_heading {
   font-size: 1.75rem !important;
   font-weight: 800 !important;
-  color: #fd6d25 !important;
+  color: #ffffff !important;
   text-transform: uppercase !important;
   letter-spacing: 0.04em !important;
   margin-top: 0 !important;
