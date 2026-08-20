@@ -1528,8 +1528,7 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 }
 
 .ast-modern-checkout .woocommerce form.woocommerce-checkout .ast-checkout-form-heading h3,
-.woocommerce-checkout .woocommerce-billing-fields > h3:first-child,
-.woocommerce-checkout #order_review_heading {
+.woocommerce-checkout .woocommerce-billing-fields > h3:first-child {
   font-size: 1.75rem !important;
   font-weight: 800 !important;
   color: #ffffff !important;
@@ -1539,6 +1538,22 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   margin-bottom: 0.25rem !important;
   padding-bottom: 0.6rem !important;
   border-bottom: 2px solid #fd6d25 !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* YOUR ORDER Heading - Clean Brand Orange, No Bottom Line */
+.woocommerce-checkout #order_review_heading,
+.woocommerce-checkout h3#order_review_heading {
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  color: #fd6d25 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.25rem !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
   display: block !important;
   width: 100% !important;
 }
