@@ -1955,9 +1955,32 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   font-weight: 600 !important;
 }
 
-.woocommerce-checkout .woocommerce-form-coupon-toggle a.showcoupon {
+.woocommerce-checkout .woocommerce-form-coupon-toggle a.showcoupon,
+.woocommerce-checkout .woocommerce-form-coupon-toggle .showcoupon,
+.woocommerce-cart .woocommerce-form-coupon-toggle a.showcoupon,
+#ast-coupon-trigger,
+.woocommerce-checkout #ast-coupon-trigger,
+.woocommerce-cart #ast-coupon-trigger,
+#ast-checkout-coupon p#ast-coupon-trigger,
+.showcoupon {
   color: #fd6d25 !important;
+  font-size: 1.1rem !important;
   font-weight: 700 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  transition: color 0.2s ease !important;
+}
+
+#ast-coupon-trigger:hover,
+.woocommerce-checkout #ast-coupon-trigger:hover,
+.woocommerce-cart #ast-coupon-trigger:hover,
+#ast-checkout-coupon p#ast-coupon-trigger:hover,
+.woocommerce-checkout .woocommerce-form-coupon-toggle a.showcoupon:hover,
+.showcoupon:hover {
+  color: #ff8547 !important;
   text-decoration: underline !important;
 }
 
