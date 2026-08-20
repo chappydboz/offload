@@ -1520,17 +1520,35 @@ body .woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_
   vertical-align: middle;
 }
 
+/* Transparent Payment Box - No Background, No Border, No Arrow */
+body.ast-modern-checkout .woocommerce #payment ul.payment_methods div.payment_box,
+body.woocommerce-checkout #payment ul.payment_methods div.payment_box,
+body.woocommerce-page.woocommerce-checkout #payment div.payment_box,
+.woocommerce-page.woocommerce-checkout #payment div.payment_box,
 .ast-modern-checkout .woocommerce #payment ul.payment_methods div.payment_box,
-.woocommerce-checkout #payment div.payment_box {
-  width: 100%;
-  margin: 12px 0 0 0;
-  padding: 0;
-  background: transparent;
-  background-color: transparent;
-  border: none;
-  border-top: none;
-  border-radius: 0;
-  box-sizing: border-box;
+.woocommerce-checkout #payment div.payment_box,
+.woocommerce-checkout .wc_payment_methods div.payment_box,
+#payment div.payment_box,
+div.payment_box {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 12px 0 0 0 !important;
+  width: 100% !important;
+}
+
+body.ast-modern-checkout .woocommerce #payment ul.payment_methods div.payment_box::before,
+body.woocommerce-checkout #payment div.payment_box::before,
+.woocommerce-checkout #payment div.payment_box::before,
+div.payment_box::before,
+div.payment_box:before {
+  display: none !important;
+  border: none !important;
+  content: none !important;
 }
 
 .woocommerce-checkout #payment .woocommerce-SavedPaymentMethods-saveNew,
