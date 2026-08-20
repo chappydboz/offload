@@ -1759,7 +1759,8 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 
 /* YOUR ORDER Heading - Exact Match to FAQ Heading Style */
 .woocommerce-checkout #order_review_heading,
-.woocommerce-checkout h3#order_review_heading {
+.woocommerce-checkout h3#order_review_heading,
+form #order_review_heading:not(.elementor-widget-woocommerce-checkout-page #order_review_heading) {
   font-family: 'Karla', sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
@@ -1769,6 +1770,7 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25);
   margin-top: 0;
   margin-bottom: 1.25rem;
+  padding-top: 0.65em;
   padding-bottom: 0;
   border-bottom: none;
   display: block;
