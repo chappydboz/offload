@@ -92,3 +92,26 @@ function donktoss_custom_thankyou_text( $text, $order ) {
 	return $text;
 }
 add_filter( 'woocommerce_thankyou_order_received_text', 'donktoss_custom_thankyou_text', 10, 2 );
+
+/**
+ * Ensure Checkout Field Labels Always Display Above Fields (Remove screen-reader-text)
+ */
+function donktoss_show_all_checkout_field_labels( $args, $key, $value ) {
+	if ( isset( $args['label_class'] ) && is_array( $args['label_class'] ) ) {
+		$args['label_class'] = array_diff( $args['label_class'], array( 'screen-reader-text' ) );
+	}
+	return $args;
+}
+add_filter( 'woocommerce_form_field_args', 'donktoss_show_all_checkout_field_labels', 9999, 3 );
+add_filter( 'woocommerce_checkout_fields', function( $fields ) {
+	foreach ( array( 'billing', 'shipping', 'account', 'order' ) as $section ) {
+		if ( isset( $fields[ $section ] ) && is_array( $fields[ $section ] ) ) {
+			foreach ( $fields[ $section ] as $key => &$field ) {
+				if ( isset( $field['label_class'] ) && is_array( $field['label_class'] ) ) {
+					$field['label_class'] = array_diff( $field['label_class'], array( 'screen-reader-text' ) );
+				}
+			}
+		}
+	}
+	return $fields;
+}, 9999, 1 );
