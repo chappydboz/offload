@@ -1405,12 +1405,14 @@ html {
   outline-offset: 2px !important;
 }
 
-/* Form Labels - Pure White for 7.2:1 WCAG AA Contrast */
+/* Form Labels - Pure White for 7.2:1 WCAG AA Contrast & Always Visible */
 .woocommerce-cart label,
 .woocommerce-checkout label,
 .woocommerce-checkout .form-row label,
 .woocommerce form .form-row label,
 .woocommerce-checkout p.form-row label,
+.ast-checkout-labels-as-placeholders form #customer_details .form-row label,
+.ast-checkout-labels-as-placeholders form .form-row label,
 .woocommerce-checkout #ship-to-different-address,
 .woocommerce-checkout #ship-to-different-address label,
 .woocommerce-checkout #ship-to-different-address span {
@@ -1422,6 +1424,8 @@ html {
   left: auto !important;
   transform: none !important;
   display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   margin-bottom: 6px !important;
   background: transparent !important;
   line-height: 1.4 !important;
