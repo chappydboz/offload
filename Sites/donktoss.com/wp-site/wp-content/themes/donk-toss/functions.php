@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.1.7' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.1.8' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -155,3 +155,23 @@ add_action( 'wp_footer', function() {
 		<?php
 	}
 }, 99 );
+
+/**
+ * Insert 'Shop' into Breadcrumbs on WooCommerce Checkout & Cart Pages:
+ * HOME > SHOP > CHECKOUT
+ */
+function donktoss_checkout_shop_breadcrumb( $items, $args ) {
+	if ( ( function_exists( 'is_checkout' ) && is_checkout() ) || is_page( 'checkout' ) || ( function_exists( 'is_cart' ) && is_cart() ) || is_page( 'cart' ) ) {
+		$shop_page_id = function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'shop' ) : 0;
+		$shop_url     = $shop_page_id > 0 ? get_permalink( $shop_page_id ) : home_url( '/shop/' );
+		$shop_link    = sprintf( '<a href="%s"><span>%s</span></a>', esc_url( $shop_url ), __( 'Shop', 'donk-toss' ) );
+
+		if ( ! empty( $items ) && is_array( $items ) ) {
+			array_splice( $items, 1, 0, array( $shop_link ) );
+		} else {
+			$items[] = $shop_link;
+		}
+	}
+	return $items;
+}
+add_filter( 'astra_breadcrumb_trail_items', 'donktoss_checkout_shop_breadcrumb', 20, 2 );
