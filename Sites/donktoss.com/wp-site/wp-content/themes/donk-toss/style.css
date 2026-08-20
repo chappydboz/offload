@@ -1523,11 +1523,13 @@ body .woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_
 .ast-modern-checkout .woocommerce #payment ul.payment_methods div.payment_box,
 .woocommerce-checkout #payment div.payment_box {
   width: 100%;
-  margin: 14px 0 0 0;
-  padding: 16px;
-  background-color: rgba(0, 0, 0, 0.25);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  margin: 12px 0 0 0;
+  padding: 0;
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-top: none;
+  border-radius: 0;
   box-sizing: border-box;
 }
 
