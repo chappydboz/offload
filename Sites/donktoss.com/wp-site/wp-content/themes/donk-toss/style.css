@@ -1604,6 +1604,56 @@ label[for="wc-stripe_cashapp-new-payment-method"] {
   max-width: 100%;
 }
 
+/* Checkout Place Order Button - Prominent, Generous Spacing Matching Cart */
+.woocommerce-checkout #payment .woocommerce-privacy-policy-text,
+.woocommerce-checkout .woocommerce-privacy-policy-text {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.woocommerce-checkout #payment .place-order {
+  margin-top: 1.75rem;
+  padding: 0;
+  width: 100%;
+}
+
+.woocommerce-checkout #payment #place_order,
+.ast-modern-checkout .woocommerce #payment #place_order,
+.woocommerce-checkout button#place_order,
+button#place_order {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  background-color: #fd6d25;
+  border: none;
+  border-radius: 6px;
+  padding: 16px 28px;
+  min-height: 56px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 16px rgba(253, 109, 37, 0.3);
+  margin-top: 1.25rem;
+}
+
+.woocommerce-checkout #payment #place_order:hover,
+.ast-modern-checkout .woocommerce #payment #place_order:hover,
+.woocommerce-checkout button#place_order:hover,
+button#place_order:hover {
+  background-color: #e55b13;
+  box-shadow: 0 6px 20px rgba(253, 109, 37, 0.45);
+  transform: translateY(-1px);
+}
+
 /* Site-Wide Breadcrumbs Spacing - Flush with Content Container */
 .ast-breadcrumbs-wrapper,
 .ast-breadcrumbs,
