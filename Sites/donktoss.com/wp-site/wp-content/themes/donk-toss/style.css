@@ -1681,6 +1681,15 @@ button#place_order:hover {
 }
 
 /* Site-Wide Main Page Titles (H1) - Dominant, Prominent, Well-Spaced */
+body header.entry-header .entry-title,
+body.page header.entry-header .entry-title,
+body.page .entry-header h1.entry-title,
+body.page h1.entry-title,
+body.single header.entry-header .entry-title,
+body.single h1.entry-title,
+body .entry-header h1.entry-title,
+body .ast-article-single .entry-title,
+body .site-main .entry-title,
 h1.entry-title,
 .entry-header .entry-title,
 .ast-single-post-order .entry-title,
@@ -1690,7 +1699,7 @@ h1.entry-title,
 .woocommerce-cart h1.page-title,
 .donktoss-page-title {
   font-family: 'Karla', sans-serif;
-  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-size: clamp(2.75rem, 6vw, 3.75rem);
   font-weight: 900;
   color: #ffffff;
   line-height: 1.1;
