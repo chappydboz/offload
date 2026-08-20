@@ -1529,27 +1529,30 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 
 .ast-modern-checkout .woocommerce form.woocommerce-checkout .ast-checkout-form-heading h3,
 .woocommerce-checkout .woocommerce-billing-fields > h3:first-child {
+  font-family: 'Karla', sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+  text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25);
   margin-top: 0;
   margin-bottom: 0.25rem;
   padding-bottom: 0.6rem;
-  border-bottom: 2px solid #fd6d25;
+  border-bottom: 2px solid var(--ast-global-color-2, #fd6d25);
   display: block;
   width: 100%;
 }
 
-/* YOUR ORDER Heading - Crisp White with 2px 2px Orange Drop Shadow */
+/* YOUR ORDER Heading - Exact Match to FAQ Heading Style */
 .woocommerce-checkout #order_review_heading,
 .woocommerce-checkout h3#order_review_heading {
+  font-family: 'Karla', sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25);
   margin-top: 0;
   margin-bottom: 1.25rem;
