@@ -1525,7 +1525,10 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 }
 
 .ast-modern-checkout .woocommerce form.woocommerce-checkout .ast-checkout-form-heading h3,
-.woocommerce-checkout .woocommerce-billing-fields > h3:first-child {
+.woocommerce-checkout .woocommerce-billing-fields > h3:first-child,
+.woocommerce-checkout .ast-payment-option-heading h3,
+.woocommerce-checkout #payment_heading,
+.ast-payment-option-heading h3 {
   font-family: 'Karla', sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
@@ -1533,12 +1536,18 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   text-transform: uppercase;
   letter-spacing: 0.03em;
   text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25);
-  margin-top: 0;
-  margin-bottom: 0.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.6rem;
   border-bottom: 2px solid var(--ast-global-color-2, #fd6d25);
   display: block;
   width: 100%;
+}
+
+.ast-modern-checkout .woocommerce form.woocommerce-checkout .ast-checkout-form-heading h3,
+.woocommerce-checkout .woocommerce-billing-fields > h3:first-child {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
 }
 
 /* YOUR ORDER Heading - Exact Match to FAQ Heading Style */
