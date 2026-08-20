@@ -2440,12 +2440,133 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   color: #fd6d25 !important;
 }
 
-/* Payment Gateway Boxes & Cash App Fix */
-.woocommerce-checkout #payment div.payment_box {
-  background-color: rgba(0, 0, 0, 0.25) !important;
-  color: #ffffff !important;
+/* ==========================================================================
+   Mobile & Tablet Checkout Order Review Accordion / Container Fixes
+   ========================================================================== */
+.ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap,
+.woocommerce-checkout .woocommerce .ast-mobile-order-review-wrap,
+.woocommerce-checkout .ast-mobile-order-review-wrap,
+.ast-mobile-order-review-wrap {
+  background: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 8px !important;
-  padding: 1rem !important;
+  margin: 1.5rem 0 2rem 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 921px) {
+  .ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap,
+  .woocommerce-checkout .woocommerce .ast-mobile-order-review-wrap,
+  .woocommerce-checkout .ast-mobile-order-review-wrap,
+  .ast-mobile-order-review-wrap {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap #ast-order-review-toggle,
+.woocommerce-checkout .ast-mobile-order-review-wrap #ast-order-review-toggle,
+#ast-order-review-toggle {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  padding: 14px 18px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap #ast-order-review-toggle .ast-order-review-toggle-button-wrap,
+#ast-order-review-toggle .ast-order-review-toggle-button-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap #ast-order-review-toggle .ast-order-review-toggle-button-wrap .ast-order-review-toggle-text,
+#ast-order-review-toggle .ast-order-review-toggle-text {
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+}
+
+.ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap #ast-order-review-toggle .ahfb-svg-iconset,
+#ast-order-review-toggle .ahfb-svg-iconset {
+  fill: #fd6d25 !important;
+  color: #fd6d25 !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap #ast-order-review-toggle .ast-order-review-total,
+#ast-order-review-toggle .ast-order-review-total {
+  color: #fd6d25 !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+}
+
+.ast-modern-checkout .woocommerce #ast-order-review-content,
+.woocommerce-checkout #ast-order-review-content,
+#ast-order-review-content {
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 0 18px 16px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-sizing: border-box !important;
+}
+
+.ast-modern-checkout .woocommerce #ast-order-review-content .woocommerce-checkout-review-order-table,
+.woocommerce-checkout #ast-order-review-content .woocommerce-checkout-review-order-table,
+#ast-order-review-content .woocommerce-checkout-review-order-table {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+#ast-order-review-content .woocommerce-checkout-review-order-table th,
+#ast-order-review-content .woocommerce-checkout-review-order-table td {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  padding: 12px 0 !important;
+}
+
+#ast-order-review-content .woocommerce-checkout-review-order-table .product-name,
+#ast-order-review-content .woocommerce-checkout-review-order-table .product-name a,
+#ast-order-review-content .woocommerce-checkout-review-order-table .product-total,
+#ast-order-review-content .woocommerce-checkout-review-order-table .cart-subtotal,
+#ast-order-review-content .woocommerce-checkout-review-order-table .order-total {
+  color: #ffffff !important;
+}
+
+#ast-order-review-content .woocommerce-checkout-review-order-table tr.order-total strong,
+#ast-order-review-content .woocommerce-checkout-review-order-table tr.order-total .amount {
+  color: #fd6d25 !important;
+  font-weight: 800 !important;
 }
 
 .woocommerce-checkout #payment div.payment_box p.form-row.woocommerce-saved-payment-methods-wc-token-html {
