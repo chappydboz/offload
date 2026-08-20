@@ -1562,8 +1562,16 @@ body .woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_
 
 .woocommerce-checkout #payment .woocommerce-SavedPaymentMethods-saveNew label,
 .woocommerce-checkout div.payment_box p.form-row.woocommerce-SavedPaymentMethods-saveNew label,
-.woocommerce-SavedPaymentMethods-saveNew label {
+.ast-modern-checkout .woocommerce #payment .woocommerce-SavedPaymentMethods-saveNew label,
+.woocommerce-SavedPaymentMethods-saveNew label,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row.woocommerce-SavedPaymentMethods-saveNew label,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row.woocommerce-SavedPaymentMethods-saveNew label:not(.checkbox),
+label[for^="wc-stripe_"][for$="-new-payment-method"],
+label[for="wc-stripe_cashapp-new-payment-method"] {
   display: inline;
+  opacity: 1;
+  visibility: visible;
+  position: static;
   font-size: 0.95rem;
   font-weight: 500;
   color: #ffffff;
@@ -1571,6 +1579,11 @@ body .woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_
   margin: 0;
   padding: 0;
   line-height: 1.35;
+  pointer-events: auto;
+  user-select: auto;
+  -webkit-user-select: auto;
+  white-space: normal;
+  max-width: 100%;
 }
 
 /* Site-Wide Breadcrumbs Spacing - Flush with Content Container */
