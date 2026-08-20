@@ -1646,43 +1646,51 @@ h3#ship-to-different-address {
 /* 4. Match State Select2 Dropdown Height & Center Text Vertically */
 .woocommerce-checkout .select2-container--default .select2-selection--single,
 .woocommerce form .form-row .select2-container--default .select2-selection--single,
+.woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single,
 span.select2-selection.select2-selection--single,
-body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row .select2-container--default .select2-selection--single {
-  height: 48px;
-  min-height: 48px;
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  box-sizing: border-box;
-  margin: 0;
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row .select2-container--default .select2-selection--single,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single {
+  height: 48px !important;
+  min-height: 48px !important;
+  max-height: 48px !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 14px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
 }
 
 .woocommerce-checkout .select2-container--default .select2-selection--single .select2-selection__rendered,
 .woocommerce form .form-row .select2-container--default .select2-selection--single .select2-selection__rendered,
+.woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single .select2-selection__rendered,
 span.select2-selection.select2-selection--single .select2-selection__rendered,
-body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row .select2-container--default .select2-selection--single .select2-selection__rendered {
-  color: #1e293b;
-  font-size: 16px;
-  line-height: 46px;
-  padding-left: 0;
-  padding-right: 20px;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  width: 100%;
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row .select2-container--default .select2-selection--single .select2-selection__rendered,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #1e293b !important;
+  font-size: 16px !important;
+  line-height: 46px !important;
+  height: 46px !important;
+  padding-left: 0 !important;
+  padding-right: 20px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
 }
 
 .woocommerce-checkout .select2-container--default .select2-selection--single .select2-selection__arrow,
 .woocommerce form .form-row .select2-container--default .select2-selection--single .select2-selection__arrow,
-span.select2-selection.select2-selection--single .select2-selection__arrow {
-  height: 46px;
-  top: 0;
-  right: 12px;
-  display: flex;
-  align-items: center;
+.woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single .select2-selection__arrow,
+span.select2-selection.select2-selection--single .select2-selection__arrow,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 46px !important;
+  top: 0 !important;
+  right: 12px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 /* 5. Klaviyo Checkbox & Fine Print Consent Text */
