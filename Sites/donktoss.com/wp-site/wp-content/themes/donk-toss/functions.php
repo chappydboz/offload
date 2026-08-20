@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.0.5' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.0.6' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -115,3 +115,43 @@ add_filter( 'woocommerce_checkout_fields', function( $fields ) {
 	}
 	return $fields;
 }, 9999, 1 );
+
+/**
+ * Klaviyo SMS Consent Disclosure - Fine Print & Toggle on Checkbox Click
+ */
+add_action( 'init', function() {
+	if ( function_exists( 'kl_mobile_compliance_text' ) ) {
+		remove_action( 'woocommerce_after_checkout_billing_form', 'kl_mobile_compliance_text' );
+	}
+} );
+
+add_action( 'woocommerce_after_checkout_billing_form', function() {
+	$klaviyo_settings = get_option( 'klaviyo_settings' );
+	if ( ! empty( $klaviyo_settings['klaviyo_sms_consent_disclosure_text'] ) && ! empty( $klaviyo_settings['klaviyo_sms_subscribe_checkbox'] ) ) {
+		echo '<div id="klaviyo_sms_disclosure_box" class="kl_sms_consent_disclosure_text" style="display:none; font-size:11px; line-height:1.45; color:rgba(255,255,255,0.65); margin-top:8px; margin-bottom:14px; padding:8px 12px; background:rgba(0,0,0,0.2); border-left:2px solid #fd6d25; border-radius:4px;">' . esc_html( $klaviyo_settings['klaviyo_sms_consent_disclosure_text'] ) . '</div>';
+	}
+}, 99 );
+
+add_action( 'wp_footer', function() {
+	if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+		?>
+		<script>
+		jQuery(function($) {
+			function toggleKlaviyoSms() {
+				var $cb = $('#kl_sms_consent_checkbox');
+				var $box = $('#klaviyo_sms_disclosure_box');
+				if ($cb.length && $box.length) {
+					if ($cb.is(':checked')) {
+						$box.slideDown(150);
+					} else {
+						$box.slideUp(150);
+					}
+				}
+			}
+			$(document).on('change', '#kl_sms_consent_checkbox', toggleKlaviyoSms);
+			toggleKlaviyoSms();
+		});
+		</script>
+		<?php
+	}
+}, 99 );
