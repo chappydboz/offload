@@ -2481,6 +2481,7 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
+  border-bottom: none !important;
   color: #ffffff !important;
   padding: 14px 18px !important;
   font-weight: 700 !important;
@@ -2490,6 +2491,13 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   justify-content: space-between !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  transition: border-bottom 0.2s ease !important;
+}
+
+.ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap #ast-order-review-toggle.active,
+.woocommerce-checkout .ast-mobile-order-review-wrap #ast-order-review-toggle.active,
+#ast-order-review-toggle.active {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 .ast-modern-checkout .woocommerce .ast-mobile-order-review-wrap #ast-order-review-toggle .ast-order-review-toggle-button-wrap,
@@ -2527,9 +2535,17 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 #ast-order-review-content {
   background: transparent !important;
   background-color: transparent !important;
-  padding: 0 18px 16px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  padding: 0 !important;
+  border: none !important;
+  border-top: none !important;
+  margin: 0 !important;
   box-sizing: border-box !important;
+}
+
+.ast-modern-checkout .woocommerce #ast-order-review-toggle.active ~ #ast-order-review-content,
+.woocommerce-checkout #ast-order-review-toggle.active ~ #ast-order-review-content,
+#ast-order-review-toggle.active ~ #ast-order-review-content {
+  padding: 0 18px 16px !important;
 }
 
 .ast-modern-checkout .woocommerce #ast-order-review-content .woocommerce-checkout-review-order-table,
