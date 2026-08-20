@@ -1445,43 +1445,71 @@ body .woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_
   line-height: 1.4 !important;
 }
 
-/* Payment Methods Radio Button & Title Inline Alignment */
+/* Payment Methods Radio Button & Title Alignment (Consistent Checked & Unchecked) */
+.ast-modern-checkout .woocommerce #payment ul.payment_methods,
+.woocommerce-checkout #payment ul.payment_methods,
+.woocommerce-checkout .wc_payment_methods {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  list-style: none;
+}
+
+.ast-modern-checkout .woocommerce #payment ul.payment_methods > li:not(.woocommerce-info),
 .woocommerce-checkout #payment ul.payment_methods li,
 .woocommerce-checkout .wc_payment_methods li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 1.25rem;
-  padding: 0;
+  padding: 16px;
+  margin: 0;
+  min-height: unset;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   list-style: none;
+  box-sizing: border-box;
 }
 
+.ast-modern-checkout .woocommerce #payment ul.payment_methods > li:last-child,
+.woocommerce-checkout #payment ul.payment_methods li:last-child,
+.woocommerce-checkout .wc_payment_methods li:last-child {
+  border-bottom: none;
+}
+
+.ast-modern-checkout .woocommerce #payment ul.payment_methods input[type="radio"],
 .woocommerce-checkout #payment ul.payment_methods li input[type="radio"],
 .woocommerce-checkout .wc_payment_methods li input[type="radio"],
 .woocommerce-checkout #payment input[type="radio"] {
-  width: 18px;
-  height: 18px;
-  min-width: 18px;
-  min-height: 18px;
-  margin: 0 10px 0 0;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 0 12px 0 0;
   cursor: pointer;
   accent-color: #fd6d25;
   vertical-align: middle;
   flex-shrink: 0;
+  align-self: center;
 }
 
+.ast-modern-checkout .woocommerce #payment ul.payment_methods .wc_payment_method label,
+.ast-modern-checkout .woocommerce #payment ul.payment_methods .wc_payment_method > [type=radio]:not(:checked) + label,
+.ast-modern-checkout .woocommerce #payment ul.payment_methods .wc_payment_method > [type=radio]:checked + label,
 .woocommerce-checkout #payment ul.payment_methods li label,
 .woocommerce-checkout .wc_payment_methods li label {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: #ffffff;
   cursor: pointer;
   margin: 0;
   padding: 0;
   line-height: 1.2;
+  width: auto;
+  vertical-align: middle;
 }
 
 .woocommerce-checkout #payment ul.payment_methods li label img,
@@ -1492,9 +1520,15 @@ body .woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_
   vertical-align: middle;
 }
 
+.ast-modern-checkout .woocommerce #payment ul.payment_methods div.payment_box,
 .woocommerce-checkout #payment div.payment_box {
   width: 100%;
-  margin-top: 10px;
+  margin: 14px 0 0 0;
+  padding: 16px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /* Site-Wide Breadcrumbs Spacing - Flush with Content Container */
