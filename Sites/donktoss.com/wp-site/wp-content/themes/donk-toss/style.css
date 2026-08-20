@@ -1643,16 +1643,16 @@ h3#ship-to-different-address {
   flex-shrink: 0 !important;
 }
 
-/* 4. Match State Select2 Dropdown Height & Center Text Vertically */
+/* 4. Match State Select2 Dropdown Height & Center Text Vertically (49.8px) */
 .woocommerce-checkout .select2-container--default .select2-selection--single,
 .woocommerce form .form-row .select2-container--default .select2-selection--single,
 .woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single,
 span.select2-selection.select2-selection--single,
 body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row .select2-container--default .select2-selection--single,
 body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single {
-  height: 48px;
-  min-height: 48px;
-  max-height: 48px;
+  height: 49.8px;
+  min-height: 49.8px;
+  max-height: 49.8px;
   background-color: #ffffff;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
@@ -1671,8 +1671,8 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single .select2-selection__rendered {
   color: #1e293b;
   font-size: 16px;
-  line-height: 46px;
-  height: 46px;
+  line-height: 47.8px;
+  height: 47.8px;
   padding-left: 0;
   padding-right: 20px;
   margin: 0;
@@ -1686,7 +1686,7 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 .woocommerce form .form-row.ast-animate-input .select2-container--default .select2-selection--single .select2-selection__arrow,
 span.select2-selection.select2-selection--single .select2-selection__arrow,
 body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row .select2-container--default .select2-selection--single .select2-selection__arrow {
-  height: 46px;
+  height: 47.8px;
   top: 0;
   right: 12px;
   display: flex;
