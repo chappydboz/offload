@@ -1701,6 +1701,61 @@ h1.entry-title,
   display: block;
 }
 
+/* Standard Page Headings (Privacy Policy, Terms, etc.) - Orange Solid Drop Shadow & Underline */
+.page .entry-content h2.wp-block-heading,
+.page .entry-content h2,
+.privacy-policy .entry-content h2 {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25);
+  margin-top: 2.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--ast-global-color-2, #fd6d25);
+  display: block;
+  width: 100%;
+}
+
+.page .entry-content h3.wp-block-heading,
+.page .entry-content h3,
+.privacy-policy .entry-content h3 {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.page .entry-content p,
+.privacy-policy .entry-content p,
+.page .entry-content li {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.page .entry-content strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.page .entry-content a {
+  color: #fd6d25;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.page .entry-content a:hover {
+  color: #ff8547;
+}
+
 /* Ensure inputs are not cramped under labels & consistent 48px height */
 body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row input.input-text,
 body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row select,
