@@ -1710,9 +1710,15 @@ h1.entry-title,
   display: block;
 }
 
-/* Privacy Policy Page Headings - Orange Solid Drop Shadow & Underline */
+/* Policy & Legal Pages (Privacy Policy, Mobile TOS, Terms, etc.) - Headings & Typography */
 .privacy-policy .entry-content h2.wp-block-heading,
-.privacy-policy .entry-content h2 {
+.privacy-policy .entry-content h2,
+.page-slug-privacy-policy .entry-content h2,
+.page-slug-mobile-tos .entry-content h2,
+.page-slug-terms-and-conditions .entry-content h2,
+.page-slug-cookie-policy .entry-content h2,
+.page-slug-disclaimer .entry-content h2,
+.page-slug-shipping-and-returns .entry-content h2 {
   font-family: 'Karla', sans-serif;
   font-size: 1.75rem;
   font-weight: 800;
@@ -1729,7 +1735,13 @@ h1.entry-title,
 }
 
 .privacy-policy .entry-content h3.wp-block-heading,
-.privacy-policy .entry-content h3 {
+.privacy-policy .entry-content h3,
+.page-slug-privacy-policy .entry-content h3,
+.page-slug-mobile-tos .entry-content h3,
+.page-slug-terms-and-conditions .entry-content h3,
+.page-slug-cookie-policy .entry-content h3,
+.page-slug-disclaimer .entry-content h3,
+.page-slug-shipping-and-returns .entry-content h3 {
   font-family: 'Karla', sans-serif;
   font-size: 1.3rem;
   font-weight: 800;
@@ -1741,24 +1753,54 @@ h1.entry-title,
 }
 
 .privacy-policy .entry-content p,
-.privacy-policy .entry-content li {
+.privacy-policy .entry-content li,
+.page-slug-privacy-policy .entry-content p,
+.page-slug-privacy-policy .entry-content li,
+.page-slug-mobile-tos .entry-content p,
+.page-slug-mobile-tos .entry-content li,
+.page-slug-terms-and-conditions .entry-content p,
+.page-slug-terms-and-conditions .entry-content li,
+.page-slug-cookie-policy .entry-content p,
+.page-slug-cookie-policy .entry-content li,
+.page-slug-disclaimer .entry-content p,
+.page-slug-disclaimer .entry-content li,
+.page-slug-shipping-and-returns .entry-content p,
+.page-slug-shipping-and-returns .entry-content li {
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.05rem;
   line-height: 1.7;
 }
 
-.privacy-policy .entry-content strong {
+.privacy-policy .entry-content strong,
+.page-slug-privacy-policy .entry-content strong,
+.page-slug-mobile-tos .entry-content strong,
+.page-slug-terms-and-conditions .entry-content strong,
+.page-slug-cookie-policy .entry-content strong,
+.page-slug-disclaimer .entry-content strong,
+.page-slug-shipping-and-returns .entry-content strong {
   color: #ffffff;
   font-weight: 700;
 }
 
-.privacy-policy .entry-content a {
+.privacy-policy .entry-content a,
+.page-slug-privacy-policy .entry-content a,
+.page-slug-mobile-tos .entry-content a,
+.page-slug-terms-and-conditions .entry-content a,
+.page-slug-cookie-policy .entry-content a,
+.page-slug-disclaimer .entry-content a,
+.page-slug-shipping-and-returns .entry-content a {
   color: #fd6d25;
   text-decoration: underline;
   transition: color 0.2s ease;
 }
 
-.privacy-policy .entry-content a:hover {
+.privacy-policy .entry-content a:hover,
+.page-slug-privacy-policy .entry-content a:hover,
+.page-slug-mobile-tos .entry-content a:hover,
+.page-slug-terms-and-conditions .entry-content a:hover,
+.page-slug-cookie-policy .entry-content a:hover,
+.page-slug-disclaimer .entry-content a:hover,
+.page-slug-shipping-and-returns .entry-content a:hover {
   color: #ff8547;
 }
 

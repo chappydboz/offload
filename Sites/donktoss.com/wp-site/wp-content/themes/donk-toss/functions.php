@@ -191,3 +191,16 @@ function donktoss_checkout_shop_breadcrumb( $items, $args ) {
 	return $items;
 }
 add_filter( 'astra_breadcrumb_trail_items', 'donktoss_checkout_shop_breadcrumb', 20, 2 );
+
+/**
+ * Add page-slug class to <body> for precise scoped styling
+ */
+add_filter( 'body_class', function( $classes ) {
+	if ( is_page() ) {
+		global $post;
+		if ( isset( $post->post_name ) ) {
+			$classes[] = 'page-slug-' . sanitize_html_class( $post->post_name );
+		}
+	}
+	return $classes;
+} );
