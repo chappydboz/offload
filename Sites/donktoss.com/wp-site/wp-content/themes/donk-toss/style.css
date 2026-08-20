@@ -1407,19 +1407,17 @@ html {
 
 /* Form Labels - Pure White for 7.2:1 WCAG AA Contrast & Always Visible */
 body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce form .form-row label:not(.checkbox):not(.radio):not(.woocommerce-form__label-for-checkbox),
-body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce-checkout form .form-row label,
-body .woocommerce-checkout .form-row label,
-body .woocommerce-checkout label,
-.woocommerce-cart label,
-.woocommerce-checkout label,
-.woocommerce-checkout .form-row label,
-.woocommerce form .form-row label,
-.woocommerce-checkout p.form-row label,
+body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-checkout) .woocommerce-checkout form .form-row label:not(.checkbox):not(.radio),
+body .woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_checkbox_field):not(.kl_sms_consent_checkbox_field) label:not(.checkbox):not(.radio),
+.woocommerce-cart .form-row label:not(.checkbox):not(.radio),
+.woocommerce-checkout .form-row:not(.form-row-checkbox):not(.kl_newsletter_checkbox_field):not(.kl_sms_consent_checkbox_field) label:not(.checkbox):not(.radio),
+.woocommerce form .form-row:not(.form-row-checkbox) label:not(.checkbox):not(.radio),
+.woocommerce-checkout p.form-row:not(.form-row-checkbox) label:not(.checkbox):not(.radio),
 .woocommerce-checkout label.screen-reader-text,
 .woocommerce-checkout .form-row label.screen-reader-text,
 .woocommerce-checkout p.form-row label.screen-reader-text,
-.ast-checkout-labels-as-placeholders form #customer_details .form-row label,
-.ast-checkout-labels-as-placeholders form .form-row label {
+.ast-checkout-labels-as-placeholders form #customer_details .form-row label:not(.checkbox):not(.radio),
+.ast-checkout-labels-as-placeholders form .form-row label:not(.checkbox):not(.radio) {
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 0.95rem !important;
@@ -1445,6 +1443,58 @@ body .woocommerce-checkout label,
   padding: 0 !important;
   background: transparent !important;
   line-height: 1.4 !important;
+}
+
+/* Payment Methods Radio Button & Title Inline Alignment */
+.woocommerce-checkout #payment ul.payment_methods li,
+.woocommerce-checkout .wc_payment_methods li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li input[type="radio"],
+.woocommerce-checkout .wc_payment_methods li input[type="radio"],
+.woocommerce-checkout #payment input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  margin: 0 10px 0 0;
+  cursor: pointer;
+  accent-color: #fd6d25;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li label,
+.woocommerce-checkout .wc_payment_methods li label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+.woocommerce-checkout #payment ul.payment_methods li label img,
+.woocommerce-checkout .wc_payment_methods li label img {
+  max-height: 24px;
+  width: auto;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.woocommerce-checkout #payment div.payment_box {
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* Site-Wide Breadcrumbs Spacing - Flush with Content Container */
