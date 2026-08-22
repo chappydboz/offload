@@ -2831,11 +2831,31 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
    ========================================================================== */
 
 /* 1. Page Wrap & Main Container Polish */
-.page-slug-affiliate-area .site-content,
-.page-slug-my-account .site-content,
-.woocommerce-account .site-content {
-  max-width: 1240px;
-  margin: 0 auto;
+body.page-slug-affiliate-area .ast-container,
+body.page-slug-affiliate-area .site-content,
+body.page-slug-my-account .ast-container,
+body.page-slug-my-account .site-content,
+body.woocommerce-account .ast-container,
+body.woocommerce-account .site-content,
+body.woocommerce-account #content,
+body.page-slug-my-account #content {
+  max-width: 1280px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+body.woocommerce-account #primary,
+body.page-slug-my-account #primary,
+body.page-slug-affiliate-area #primary {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* 2. Affiliate Area Navigation Tabs (#affwp-affiliate-dashboard-tabs) */
@@ -3354,15 +3374,42 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   font-weight: 700 !important;
 }
 
-/* 9. WooCommerce My Account Sidebar Navigation Overhaul */
+/* 9. WooCommerce My Account Modern 2-Column Grid Layout & Sidebar Navigation */
+.woocommerce-account .woocommerce {
+  display: grid !important;
+  grid-template-columns: 280px 1fr !important;
+  gap: 36px !important;
+  align-items: start !important;
+  width: 100% !important;
+  margin-top: 1.5rem !important;
+}
+
 .woocommerce-account .woocommerce-MyAccount-navigation {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 14px !important;
   padding: 0 !important;
   overflow: hidden !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
-  margin-bottom: 2rem !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+}
+
+@media (max-width: 920px) {
+  .woocommerce-account .woocommerce {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
 }
 
 /* User Avatar & Greeting Header */
@@ -3519,6 +3566,58 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   fill: #ff6b6b !important;
   stroke: #ff6b6b !important;
   filter: drop-shadow(0 0 6px rgba(229, 62, 62, 0.45)) !important;
+}
+
+/* WooCommerce Account Notices & Action Messages */
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-message,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-info,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-error,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-NoticeGroup,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Message {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-left: 4px solid var(--ast-global-color-2, #fd6d25) !important;
+  border-radius: 10px !important;
+  padding: 18px 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  margin-bottom: 24px !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-message .button,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-info .button,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-error .button,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Message .button {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  font-family: 'Karla', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  padding: 12px 20px !important;
+  text-decoration: none !important;
+  border: none !important;
+  float: none !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-message .button:hover,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-info .button:hover,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-error .button:hover,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Message .button:hover {
+  background: #ff8547 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(253, 109, 37, 0.35) !important;
 }
 
 /* 10. Pagination Synergy */
