@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.6.0' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.6.1' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -267,11 +267,11 @@ function donktoss_render_affiliate_qr_code( $affiliate_id ) {
 }
 
 /**
- * Remove duplicate Astra Addon hamburger icon on Affiliate Area WooCommerce account menu item
+ * Set dedicated icon for Affiliate Area WooCommerce account menu item
  */
 add_filter( 'astra_addon_woo_account_menu_icon', function( $icon, $endpoint ) {
-	if ( 'affiliate-area' === $endpoint ) {
-		return '';
+	if ( 'affiliate-area' === $endpoint && class_exists( 'Astra_Builder_UI_Controller' ) ) {
+		return Astra_Builder_UI_Controller::fetch_svg_icon( 'users', false );
 	}
 	return $icon;
 }, 20, 2 );

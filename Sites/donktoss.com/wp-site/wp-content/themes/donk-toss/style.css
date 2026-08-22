@@ -3654,26 +3654,6 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
 }
 
-/* Affiliate Area Link Special Badge / Highlight */
-.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a:not(:hover):not(.is-active a) {
-  background: rgba(253, 109, 37, 0.08) !important;
-  border-color: rgba(253, 109, 37, 0.2) !important;
-}
-
-.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a .ast-svg-icon,
-.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a svg {
-  fill: var(--ast-global-color-2, #fd6d25) !important;
-  stroke: var(--ast-global-color-2, #fd6d25) !important;
-}
-
-/* Hide duplicate/extra hamburger menu icon on Affiliate Area link */
-.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a svg + svg,
-.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a .ast-svg-icon + .ast-svg-icon,
-.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a > svg.ast-mobile-svg,
-.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a > svg[class*="bars"] {
-  display: none !important;
-}
-
 /* Log Out Item */
 .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout {
   margin-top: 8px !important;
