@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.7.0' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.7.1' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -275,6 +275,11 @@ add_filter( 'astra_addon_woo_account_menu_icon', function( $icon, $endpoint ) {
 	}
 	return $icon;
 }, 20, 2 );
+
+/**
+ * Hide star reviews and rating templates on single product pages
+ */
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
 
 /**
  * Render custom product label badge inside Gutenberg WooCommerce Product Collection / Image blocks

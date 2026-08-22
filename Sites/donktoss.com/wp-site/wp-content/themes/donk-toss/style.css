@@ -4160,3 +4160,23 @@ ul.products li.product .ast-on-card-button {
   cursor: pointer !important;
   z-index: 10 !important;
 }
+
+/* ==========================================================================
+   16. Hide Product Reviews & Star Ratings (Product Pages)
+   ========================================================================== */
+.single-product .aiosrs-rating-wrap,
+.single-product .aiosrs-star-rating-wrap,
+.single-product .aiosrs-rating-summary-wrap,
+.single-product .woocommerce-product-rating,
+.single-product .star-rating,
+.single-product .woocommerce-review-link,
+.single-product #tab-title-reviews,
+.single-product #reviews,
+.single-product .woocommerce-Reviews {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
