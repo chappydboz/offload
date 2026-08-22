@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.5' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.6' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -255,3 +255,13 @@ function donktoss_render_affiliate_qr_code( $affiliate_id ) {
 	</div>
 	<?php
 }
+
+/**
+ * Remove duplicate Astra Addon hamburger icon on Affiliate Area WooCommerce account menu item
+ */
+add_filter( 'astra_addon_woo_account_menu_icon', function( $icon, $endpoint ) {
+	if ( 'affiliate-area' === $endpoint ) {
+		return '';
+	}
+	return $icon;
+}, 20, 2 );

@@ -3551,6 +3551,14 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   stroke: var(--ast-global-color-2, #fd6d25) !important;
 }
 
+/* Hide duplicate/extra hamburger menu icon on Affiliate Area link */
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a svg + svg,
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a .ast-svg-icon + .ast-svg-icon,
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a > svg.ast-mobile-svg,
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a > svg[class*="bars"] {
+  display: none !important;
+}
+
 /* Log Out Item */
 .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout {
   margin-top: 8px !important;
@@ -3570,27 +3578,52 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   filter: drop-shadow(0 0 6px rgba(229, 62, 62, 0.45)) !important;
 }
 
-/* WooCommerce Account Notices & Action Messages */
+/* WooCommerce Account Notices & Action Messages (with generous padding for icon) */
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error,
+.woocommerce-NoticeGroup,
+.woocommerce-Message,
 .woocommerce-MyAccount-content .woocommerce-message,
 .woocommerce-MyAccount-content .woocommerce-info,
 .woocommerce-MyAccount-content .woocommerce-error,
 .woocommerce-MyAccount-content .woocommerce-NoticeGroup,
 .woocommerce-MyAccount-content .woocommerce-Message {
+  position: relative !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-left: 4px solid var(--ast-global-color-2, #fd6d25) !important;
   border-radius: 10px !important;
-  padding: 18px 24px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: wrap !important;
-  gap: 16px !important;
+  padding: 18px 24px 18px 58px !important;
+  display: block !important;
   color: #ffffff !important;
   font-size: 1rem !important;
+  line-height: 1.5 !important;
   margin-bottom: 24px !important;
+  box-sizing: border-box !important;
 }
 
+.woocommerce-message::before,
+.woocommerce-info::before,
+.woocommerce-error::before,
+.woocommerce-MyAccount-content .woocommerce-message::before,
+.woocommerce-MyAccount-content .woocommerce-info::before,
+.woocommerce-MyAccount-content .woocommerce-error::before {
+  position: absolute !important;
+  top: 18px !important;
+  left: 20px !important;
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  font-size: 1.25rem !important;
+  display: inline-block !important;
+}
+
+.woocommerce-message .button,
+.woocommerce-info .button,
+.woocommerce-error .button,
+.woocommerce-Message .button,
 .woocommerce-MyAccount-content .woocommerce-message .button,
 .woocommerce-MyAccount-content .woocommerce-info .button,
 .woocommerce-MyAccount-content .woocommerce-error .button,
@@ -3603,16 +3636,20 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   font-size: 0.9rem !important;
   text-transform: uppercase !important;
   letter-spacing: 0.03em !important;
-  padding: 12px 20px !important;
+  padding: 10px 18px !important;
   text-decoration: none !important;
   border: none !important;
-  float: none !important;
-  margin: 0 !important;
+  float: right !important;
+  margin: -4px 0 0 12px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
 }
 
+.woocommerce-message .button:hover,
+.woocommerce-info .button:hover,
+.woocommerce-error .button:hover,
+.woocommerce-Message .button:hover,
 .woocommerce-MyAccount-content .woocommerce-message .button:hover,
 .woocommerce-MyAccount-content .woocommerce-info .button:hover,
 .woocommerce-MyAccount-content .woocommerce-error .button:hover,
