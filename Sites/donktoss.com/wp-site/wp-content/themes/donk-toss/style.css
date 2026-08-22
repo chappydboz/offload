@@ -2832,74 +2832,19 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 
 /* 1. Page Wrap & Main Container Polish */
 body.page-slug-affiliate-area .site-content .ast-container,
-body.page-slug-my-account .site-content .ast-container,
-body.woocommerce-account .site-content .ast-container,
-body.woocommerce-page .site-content .ast-container,
-.site-header-focus-item + .ast-breadcrumbs-wrapper,
-.ast-breadcrumbs-wrapper {
-  max-width: 1280px !important;
+body.woocommerce-account .site-content .ast-container {
+  max-width: 1000px !important;
   width: 100% !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 35px !important;
-  padding-right: 35px !important;
   box-sizing: border-box !important;
 }
 
 body.woocommerce-account #primary,
-body.woocommerce-page #primary,
-body.page-slug-my-account #primary,
 body.page-slug-affiliate-area #primary {
   width: 100% !important;
   max-width: 100% !important;
   float: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Breadcrumbs & Page Titles Alignment */
-.ast-breadcrumbs-wrapper {
-  margin-top: 1.5rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-.ast-breadcrumbs-wrapper .ast-breadcrumbs {
-  padding: 0 !important;
-  margin: 0 !important;
-  line-height: 1.4 !important;
-}
-
-.ast-breadcrumbs .trail-items li,
-.ast-breadcrumbs .trail-items li a,
-.ast-breadcrumbs .trail-items li span {
-  font-family: 'Karla', sans-serif !important;
-  font-size: 0.85rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.ast-breadcrumbs .trail-items li a:hover {
-  color: var(--ast-global-color-2, #fd6d25) !important;
-}
-
-body.woocommerce-account header.entry-header,
-body.page-slug-my-account header.entry-header,
-body.page-slug-affiliate-area header.entry-header {
-  margin-bottom: 1.5rem !important;
-  padding: 0 !important;
-}
-
-body.woocommerce-account header.entry-header .entry-title,
-body.page-slug-my-account header.entry-header .entry-title,
-body.page-slug-affiliate-area header.entry-header .entry-title {
-  font-family: 'Karla', sans-serif !important;
-  font-size: 2.5rem !important;
-  font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.04em !important;
-  color: #ffffff !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -3422,11 +3367,11 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
 
 /* 9. WooCommerce My Account Modern 2-Column Grid Layout & Sidebar Navigation */
 .woocommerce-account .woocommerce,
-.woocommerce-page .woocommerce,
+.woocommerce-account .entry-content .woocommerce,
 .woocommerce-edit-address .woocommerce,
 .woocommerce-view-order .woocommerce,
 body.page-slug-my-account .woocommerce,
-body .woocommerce:has(.woocommerce-MyAccount-navigation) {
+body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   display: grid !important;
   grid-template-columns: 280px 1fr !important;
   gap: 36px !important;
@@ -3435,13 +3380,12 @@ body .woocommerce:has(.woocommerce-MyAccount-navigation) {
   margin-top: 1.5rem !important;
 }
 
-.woocommerce > .woocommerce-notices-wrapper,
-.woocommerce-notices-wrapper {
+.woocommerce-account .woocommerce > .woocommerce-notices-wrapper {
   grid-column: 1 / -1 !important;
   width: 100% !important;
 }
 
-.woocommerce > .woocommerce-MyAccount-navigation,
+.woocommerce-account .woocommerce > .woocommerce-MyAccount-navigation,
 .woocommerce-MyAccount-navigation {
   grid-column: 1 !important;
   width: 280px !important;
@@ -3456,7 +3400,7 @@ body .woocommerce:has(.woocommerce-MyAccount-navigation) {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
 }
 
-.woocommerce > .woocommerce-MyAccount-content,
+.woocommerce-account .woocommerce > .woocommerce-MyAccount-content,
 .woocommerce-MyAccount-content {
   grid-column: 2 !important;
   width: 100% !important;
@@ -3468,19 +3412,19 @@ body .woocommerce:has(.woocommerce-MyAccount-navigation) {
 
 @media (max-width: 920px) {
   .woocommerce-account .woocommerce,
-  .woocommerce-page .woocommerce,
+  .woocommerce-account .entry-content .woocommerce,
   .woocommerce-edit-address .woocommerce,
-  body .woocommerce:has(.woocommerce-MyAccount-navigation) {
+  body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
-  .woocommerce > .woocommerce-MyAccount-navigation,
+  .woocommerce-account .woocommerce > .woocommerce-MyAccount-navigation,
   .woocommerce-MyAccount-navigation {
     grid-column: 1 !important;
     max-width: 100% !important;
     width: 100% !important;
   }
-  .woocommerce > .woocommerce-MyAccount-content,
+  .woocommerce-account .woocommerce > .woocommerce-MyAccount-content,
   .woocommerce-MyAccount-content {
     grid-column: 1 !important;
     width: 100% !important;
