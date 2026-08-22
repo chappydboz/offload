@@ -3897,3 +3897,134 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
 .affwp-card__tooltip:hover {
   opacity: 0.8 !important;
 }
+
+/* 14. AffiliateWP Notices, Stripe Alerts, Payout Summary Cards & Badges */
+.affwp-stripe-notice,
+.affwp-stripe-notice--info,
+.affwp-stripe-notice--success,
+.affwp-stripe-notice--error,
+.affwp-notice,
+.affwp-stripe-payouts__status,
+.affwp-payout-method-context {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-left: 4px solid var(--ast-global-color-2, #fd6d25) !important;
+  border-radius: 8px !important;
+  padding: 16px 20px !important;
+  color: #ffffff !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 24px !important;
+  box-sizing: border-box !important;
+}
+
+.affwp-stripe-notice p,
+.affwp-stripe-notice .affwp-stripe-notice__message,
+.affwp-notice p,
+.affwp-stripe-payouts__status p,
+.affwp-payout-method-context p,
+.affwp-payout-method-context__heading,
+.affwp-payout-method-context__detail {
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.affwp-stripe-notice a,
+.affwp-stripe-notice .affwp-stripe-notice__link,
+.affwp-notice a,
+.affwp-stripe-payouts__actions a {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+}
+
+.affwp-stripe-notice a:hover,
+.affwp-notice a:hover,
+.affwp-stripe-payouts__actions a:hover {
+  color: #ff8547 !important;
+}
+
+/* Payouts Summary Stat Cards */
+.affwp-payout-summary {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 18px !important;
+  margin-bottom: 28px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.affwp-payout-summary__stat {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 20px 24px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  box-sizing: border-box !important;
+  flex: none !important;
+}
+
+.affwp-payout-summary__label {
+  display: block !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 4px !important;
+}
+
+.affwp-payout-summary__value {
+  display: block !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.affwp-payout-summary__meta {
+  display: block !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 0.85rem !important;
+  margin-top: 4px !important;
+}
+
+/* AffiliateWP Badges */
+.affwp-badge,
+.affwp-badge--neutral,
+.affwp-badge--info {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 999px !important;
+  padding: 4px 12px !important;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+}
+
+.affwp-badge--success {
+  background: rgba(46, 204, 113, 0.15) !important;
+  color: #2ecc71 !important;
+  border-color: rgba(46, 204, 113, 0.3) !important;
+}
+
+.affwp-badge--warning {
+  background: rgba(243, 156, 18, 0.15) !important;
+  color: #f39c12 !important;
+  border-color: rgba(243, 156, 18, 0.3) !important;
+}
+
+.affwp-badge--danger {
+  background: rgba(231, 76, 60, 0.15) !important;
+  color: #e74c3c !important;
+  border-color: rgba(231, 76, 60, 0.3) !important;
+}
