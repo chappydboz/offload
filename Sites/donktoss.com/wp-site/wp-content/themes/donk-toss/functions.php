@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.4.6' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.4.8' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -25,7 +25,7 @@ require_once get_theme_file_path( '/cpt-faq.php' );
 
 
 /**
- * Enqueue styles
+ * Enqueue styles (priority 100 ensures child styles load after all plugin stylesheets)
  */
 function child_enqueue_styles() {
 
@@ -33,7 +33,7 @@ function child_enqueue_styles() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 100 );
 
 /**
  * Live Broadcast High-Traffic Performance Optimizations
@@ -196,10 +196,12 @@ add_filter( 'astra_breadcrumb_trail_items', 'donktoss_checkout_shop_breadcrumb',
  * Add page-slug class to <body> for precise scoped styling
  */
 add_filter( 'body_class', function( $classes ) {
-	if ( is_page() ) {
-		global $post;
-		if ( isset( $post->post_name ) ) {
-			$classes[] = 'page-slug-' . sanitize_html_class( $post->post_name );
+	if ( is_page() || is_singular() ) {
+		$post_obj = get_queried_object();
+		if ( $post_obj && isset( $post_obj->post_name ) ) {
+			$classes[] = 'page-slug-' . sanitize_html_class( $post_obj->post_name );
+		} elseif ( isset( $GLOBALS['post']->post_name ) ) {
+			$classes[] = 'page-slug-' . sanitize_html_class( $GLOBALS['post']->post_name );
 		}
 	}
 	return $classes;

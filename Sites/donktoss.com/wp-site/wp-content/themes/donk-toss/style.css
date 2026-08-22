@@ -3034,24 +3034,15 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   box-shadow: 0 5px 15px rgba(253, 109, 37, 0.45) !important;
 }
 
-/* 6. High-Contrast Data Tables (Fixing Invisible Dark Text in Coupons, Stats, Referrals) */
-.affwp-table,
-table.affwp-table,
-.woocommerce-table,
-table.woocommerce-orders-table,
-table.woocommerce-table {
-  width: 100% !important;
-  border-collapse: separate !important;
-  border-spacing: 0 !important;
-  background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
 /* 6. High-Contrast Data Tables (Fixing Invisible Dark Text in Coupons, Stats, Referrals, Payouts, Visits) */
-body #affwp-affiliate-dashboard table,
-body .page-slug-affiliate-area table,
-body .entry-content table.affwp-table,
 body table.affwp-table,
+body .affwp-table,
+body #affwp-affiliate-dashboard table,
+body .affwp-tab-content table,
+body .affwp-table-wrap table,
+body #affwp-custom-links-table,
+body .page-slug-affiliate-area table,
+body .entry-content table,
 body .woocommerce-account table,
 body .woocommerce-table {
   width: 100% !important;
