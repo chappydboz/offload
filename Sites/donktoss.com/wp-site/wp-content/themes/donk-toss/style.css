@@ -3183,6 +3183,52 @@ body table.affwp-table .affwp-table-no-data {
   }
 }
 
+/* Custom Link Actions & Table Action Buttons Icon High Contrast */
+.affwp-custom-link-actions button,
+.affwp-custom-link-actions .button,
+button.affwp-tooltip-button-copy,
+button.affwp-tooltip-edit,
+.affwp-copy-button,
+.affwp-row-actions button {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--ast-global-color-2, #fd6d25) !important;
+  border-radius: 6px !important;
+  padding: 8px 10px !important;
+  min-height: 36px !important;
+  min-width: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.affwp-custom-link-actions button:hover,
+.affwp-custom-link-actions .button:hover,
+button.affwp-tooltip-button-copy:hover,
+button.affwp-tooltip-edit:hover,
+.affwp-copy-button:hover,
+.affwp-row-actions button:hover {
+  background: #ff8547 !important;
+  border-color: #ff8547 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+.affwp-custom-link-action,
+.affwp-copy-custom-link,
+.affwp-edit-custom-link,
+.affwp-row-action,
+.affwp-custom-link-actions svg,
+.affwp-custom-link-actions path,
+button.affwp-tooltip svg,
+button.affwp-tooltip path {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
 /* 7. QR Code Styling & Presentation */
 .affwp-qr-code-card,
 .affwp-qr-code-wrapper {
