@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.0' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.1' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -203,6 +203,10 @@ add_filter( 'body_class', function( $classes ) {
 		} elseif ( isset( $GLOBALS['post']->post_name ) ) {
 			$classes[] = 'page-slug-' . sanitize_html_class( $GLOBALS['post']->post_name );
 		}
+	}
+	if ( function_exists( 'is_account_page' ) && ( is_account_page() || is_wc_endpoint_url() ) ) {
+		$classes[] = 'woocommerce-account';
+		$classes[] = 'page-slug-my-account';
 	}
 	return $classes;
 } );

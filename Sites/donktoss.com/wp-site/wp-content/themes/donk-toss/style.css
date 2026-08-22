@@ -3375,7 +3375,12 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
 }
 
 /* 9. WooCommerce My Account Modern 2-Column Grid Layout & Sidebar Navigation */
-.woocommerce-account .woocommerce {
+.woocommerce-account .woocommerce,
+.woocommerce-page .woocommerce,
+.woocommerce-edit-address .woocommerce,
+.woocommerce-view-order .woocommerce,
+body.page-slug-my-account .woocommerce,
+body .woocommerce:has(.woocommerce-MyAccount-navigation) {
   display: grid !important;
   grid-template-columns: 280px 1fr !important;
   gap: 36px !important;
@@ -3384,9 +3389,9 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   margin-top: 1.5rem !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation {
+.woocommerce-MyAccount-navigation {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 280px !important;
   float: none !important;
   margin: 0 !important;
   background: rgba(255, 255, 255, 0.05) !important;
@@ -3397,7 +3402,7 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-content {
+.woocommerce-MyAccount-content {
   width: 100% !important;
   max-width: 100% !important;
   float: none !important;
@@ -3406,14 +3411,20 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
 }
 
 @media (max-width: 920px) {
-  .woocommerce-account .woocommerce {
+  .woocommerce-account .woocommerce,
+  .woocommerce-page .woocommerce,
+  .woocommerce-edit-address .woocommerce,
+  body .woocommerce:has(.woocommerce-MyAccount-navigation) {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
+  }
+  .woocommerce-MyAccount-navigation {
+    max-width: 100% !important;
   }
 }
 
 /* User Avatar & Greeting Header */
-.woocommerce-account .ast-wooaccount-user-wrapper {
+.woocommerce-MyAccount-navigation .ast-wooaccount-user-wrapper {
   display: flex !important;
   align-items: center !important;
   gap: 16px !important;
@@ -3425,8 +3436,8 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   width: 100% !important;
 }
 
-.woocommerce-account .ast-wooaccount-user-wrapper img.avatar,
-.woocommerce-account .ast-wooaccount-user-wrapper img {
+.woocommerce-MyAccount-navigation .ast-wooaccount-user-wrapper img.avatar,
+.woocommerce-MyAccount-navigation .ast-wooaccount-user-wrapper img {
   width: 52px !important;
   height: 52px !important;
   border-radius: 50% !important;
@@ -3436,7 +3447,7 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   object-fit: cover !important;
 }
 
-.woocommerce-account .ast-wooaccount-user-wrapper .ast-username {
+.woocommerce-MyAccount-navigation .ast-wooaccount-user-wrapper .ast-username {
   display: flex !important;
   flex-direction: column !important;
   gap: 2px !important;
@@ -3447,7 +3458,7 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   letter-spacing: 0.05em !important;
 }
 
-.woocommerce-account .ast-wooaccount-user-wrapper .ast-username strong {
+.woocommerce-MyAccount-navigation .ast-wooaccount-user-wrapper .ast-username strong {
   color: #ffffff !important;
   font-size: 1.15rem !important;
   font-weight: 800 !important;
@@ -3456,7 +3467,7 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
 }
 
 /* Menu Items List */
-.woocommerce-account .woocommerce-MyAccount-navigation ul {
+.woocommerce-MyAccount-navigation ul {
   list-style: none !important;
   margin: 0 !important;
   padding: 14px 12px !important;
@@ -3466,7 +3477,7 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   border: none !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li {
+.woocommerce-MyAccount-navigation li {
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
@@ -3474,7 +3485,7 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
 }
 
 /* Menu Item Links */
-.woocommerce-account .woocommerce-MyAccount-navigation li a {
+.woocommerce-MyAccount-navigation li a {
   display: flex !important;
   align-items: center !important;
   gap: 14px !important;
@@ -3490,8 +3501,8 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   background: transparent !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li a .ast-svg-icon,
-.woocommerce-account .woocommerce-MyAccount-navigation li a svg {
+.woocommerce-MyAccount-navigation li a .ast-svg-icon,
+.woocommerce-MyAccount-navigation li a svg {
   width: 20px !important;
   height: 20px !important;
   fill: rgba(255, 255, 255, 0.7) !important;
@@ -3501,27 +3512,27 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   display: inline-flex !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li a span.ast-woo-nav-link-name {
+.woocommerce-MyAccount-navigation li a span.ast-woo-nav-link-name {
   flex-grow: 1 !important;
 }
 
 /* Hover State */
-.woocommerce-account .woocommerce-MyAccount-navigation li a:hover {
+.woocommerce-MyAccount-navigation li a:hover {
   background: rgba(255, 255, 255, 0.08) !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
   color: #ffffff !important;
   transform: translateX(4px) !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li a:hover .ast-svg-icon,
-.woocommerce-account .woocommerce-MyAccount-navigation li a:hover svg {
+.woocommerce-MyAccount-navigation li a:hover .ast-svg-icon,
+.woocommerce-MyAccount-navigation li a:hover svg {
   fill: var(--ast-global-color-2, #fd6d25) !important;
   stroke: var(--ast-global-color-2, #fd6d25) !important;
   filter: drop-shadow(0 0 6px rgba(253, 109, 37, 0.45)) !important;
 }
 
 /* Active State */
-.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a {
+.woocommerce-MyAccount-navigation li.is-active a {
   background: linear-gradient(135deg, #fd6d25 0%, #ff8547 100%) !important;
   border-color: #fd6d25 !important;
   color: #ffffff !important;
@@ -3530,50 +3541,50 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   transform: none !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a .ast-svg-icon,
-.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a svg {
+.woocommerce-MyAccount-navigation li.is-active a .ast-svg-icon,
+.woocommerce-MyAccount-navigation li.is-active a svg {
   fill: #ffffff !important;
   stroke: #ffffff !important;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
 }
 
 /* Affiliate Area Link Special Badge / Highlight */
-.woocommerce-account .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a:not(:hover):not(.is-active a) {
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a:not(:hover):not(.is-active a) {
   background: rgba(253, 109, 37, 0.08) !important;
   border-color: rgba(253, 109, 37, 0.2) !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a .ast-svg-icon,
-.woocommerce-account .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a svg {
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a .ast-svg-icon,
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a svg {
   fill: var(--ast-global-color-2, #fd6d25) !important;
   stroke: var(--ast-global-color-2, #fd6d25) !important;
 }
 
 /* Log Out Item */
-.woocommerce-account .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout {
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout {
   margin-top: 8px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
   padding-top: 8px !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout a:hover {
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout a:hover {
   background: rgba(229, 62, 62, 0.12) !important;
   border-color: rgba(229, 62, 62, 0.3) !important;
   color: #ff6b6b !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout a:hover svg {
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout a:hover svg {
   fill: #ff6b6b !important;
   stroke: #ff6b6b !important;
   filter: drop-shadow(0 0 6px rgba(229, 62, 62, 0.45)) !important;
 }
 
 /* WooCommerce Account Notices & Action Messages */
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-message,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-info,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-error,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-NoticeGroup,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Message {
+.woocommerce-MyAccount-content .woocommerce-message,
+.woocommerce-MyAccount-content .woocommerce-info,
+.woocommerce-MyAccount-content .woocommerce-error,
+.woocommerce-MyAccount-content .woocommerce-NoticeGroup,
+.woocommerce-MyAccount-content .woocommerce-Message {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-left: 4px solid var(--ast-global-color-2, #fd6d25) !important;
@@ -3589,10 +3600,10 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   margin-bottom: 24px !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-message .button,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-info .button,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-error .button,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Message .button {
+.woocommerce-MyAccount-content .woocommerce-message .button,
+.woocommerce-MyAccount-content .woocommerce-info .button,
+.woocommerce-MyAccount-content .woocommerce-error .button,
+.woocommerce-MyAccount-content .woocommerce-Message .button {
   background: var(--ast-global-color-2, #fd6d25) !important;
   color: #ffffff !important;
   border-radius: 6px !important;
@@ -3611,10 +3622,10 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   justify-content: center !important;
 }
 
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-message .button:hover,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-info .button:hover,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-error .button:hover,
-.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Message .button:hover {
+.woocommerce-MyAccount-content .woocommerce-message .button:hover,
+.woocommerce-MyAccount-content .woocommerce-info .button:hover,
+.woocommerce-MyAccount-content .woocommerce-error .button:hover,
+.woocommerce-MyAccount-content .woocommerce-Message .button:hover {
   background: #ff8547 !important;
   transform: translateY(-1px) !important;
   box-shadow: 0 4px 12px rgba(253, 109, 37, 0.35) !important;
