@@ -131,7 +131,7 @@
 	display: flex !important;
 	align-items: center !important;
 	justify-content: space-between !important;
-	padding: 18px 24px !important;
+	padding: 16px 20px !important;
 	font-size: 1.05rem !important;
 	font-weight: 600 !important;
 	color: #1f2937 !important;
@@ -171,10 +171,9 @@
 }
 
 .donktoss-faq-item[open] .donktoss-faq-question-text {
-	color: #ffffff !important;
+	color: #ff5722 !important;
 	font-weight: 700 !important;
 }
-
 
 .donktoss-faq-question:focus-visible {
 	outline: 2px solid #ff5722 !important;
@@ -224,16 +223,15 @@
 	color: #ff5722 !important;
 }
 
+
 /* Answer Container */
 .donktoss-faq-answer {
-	padding: 8px 24px 22px 24px !important;
+	padding: 0 20px 20px 20px;
 	color: #4b5563;
 	font-size: 0.98rem;
 	line-height: 1.65;
 	animation: donktossFaqFadeIn 0.25s ease-out;
-	box-sizing: border-box !important;
 }
-
 
 .donktoss-faq-answer-inner > *:first-child {
 	margin-top: 0;
@@ -267,19 +265,16 @@
 
 /* Block Footer Call-to-Action (CTA) */
 .donktoss-faq-footer-cta {
-	margin-top: 42px !important;
-	padding-top: 24px !important;
-	padding-bottom: 8px !important;
+	margin-top: 32px !important;
+	padding: 16px 0 !important;
 	background: transparent !important;
 	border: none !important;
-	border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
 	border-radius: 0 !important;
 	box-shadow: none !important;
 	text-align: center !important;
 	font-size: 1.05rem !important;
 	color: #ffffff !important;
 }
-
 
 .donktoss-faq-footer-cta p {
 	margin: 0 !important;
