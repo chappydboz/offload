@@ -2825,3 +2825,520 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   top: 1rem;
   left: 1.25rem;
 }
+
+/* ==========================================================================
+   DONK TOSS PORTAL & DASHBOARD DESIGN SYSTEM (AffiliateWP & WooCommerce)
+   ========================================================================== */
+
+/* 1. Page Wrap & Main Container Polish */
+.page-slug-affiliate-area .site-content,
+.page-slug-my-account .site-content,
+.woocommerce-account .site-content {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* 2. Affiliate Area Navigation Tabs (#affwp-affiliate-dashboard-tabs) */
+#affwp-affiliate-dashboard {
+  margin-top: 1rem;
+}
+
+#affwp-affiliate-dashboard-tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  list-style: none !important;
+  margin: 0 0 2rem 0 !important;
+  padding: 0 !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.08) !important;
+  padding-bottom: 1.25rem !important;
+}
+
+#affwp-affiliate-dashboard-tabs li.affwp-affiliate-dashboard-tab {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: inline-flex !important;
+}
+
+#affwp-affiliate-dashboard-tabs li.affwp-affiliate-dashboard-tab a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 18px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out !important;
+  line-height: 1.2 !important;
+}
+
+#affwp-affiliate-dashboard-tabs li.affwp-affiliate-dashboard-tab a:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: var(--ast-global-color-2, #fd6d25) !important;
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  transform: translateY(-1px) !important;
+}
+
+#affwp-affiliate-dashboard-tabs li.affwp-affiliate-dashboard-tab.active a {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  border-color: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(253, 109, 37, 0.35) !important;
+}
+
+/* 3. Section Titles & Headings in Dashboards */
+#affwp-affiliate-dashboard h3,
+#affwp-affiliate-dashboard h4,
+.affwp-tab-content > h4,
+.woocommerce-MyAccount-content h2,
+.woocommerce-MyAccount-content h3 {
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25) !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.25rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid var(--ast-global-color-2, #fd6d25) !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+/* 4. Card Containers (Affiliate Link, QR Code, Settings, Creatives) */
+.affwp-card,
+.affwp-tab-content,
+#affwp-affiliate-dashboard-url-generator .affwp-card,
+#affwp-affiliate-dashboard-profile-form,
+.woocommerce-MyAccount-content .woocommerce-Addresses,
+.woocommerce-MyAccount-content .woocommerce-Address,
+.woocommerce-MyAccount-content .woocommerce-EditAccountForm {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+.affwp-card h3,
+.affwp-card h4 {
+  border-bottom: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  padding-bottom: 0 !important;
+}
+
+.affwp-card p,
+.affwp-tab-content p,
+.woocommerce-MyAccount-content p {
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* 5. Inputs, Buttons & Copy Actions */
+#affwp-affiliate-dashboard input[type="text"],
+#affwp-affiliate-dashboard input[type="url"],
+#affwp-affiliate-dashboard input[type="email"],
+#affwp-affiliate-dashboard input[type="password"],
+#affwp-affiliate-dashboard select,
+#affwp-affiliate-dashboard textarea,
+.woocommerce-MyAccount-content input[type="text"],
+.woocommerce-MyAccount-content input[type="email"],
+.woocommerce-MyAccount-content input[type="password"],
+.woocommerce-MyAccount-content select,
+.woocommerce-MyAccount-content textarea {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  padding: 12px 16px !important;
+  min-height: 48px !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+}
+
+#affwp-affiliate-dashboard input:focus,
+#affwp-affiliate-dashboard select:focus,
+#affwp-affiliate-dashboard textarea:focus,
+.woocommerce-MyAccount-content input:focus,
+.woocommerce-MyAccount-content select:focus,
+.woocommerce-MyAccount-content textarea:focus {
+  border-color: var(--ast-global-color-2, #fd6d25) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 0 0 3px rgba(253, 109, 37, 0.25) !important;
+  outline: none !important;
+}
+
+/* Affiliate Referral Link Box & Copy Button */
+.affwp-affiliate-link__input-wrap,
+.affwp-copy-url-wrap {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: center !important;
+  margin-top: 12px !important;
+}
+
+#affwp-affiliate-dashboard input[type="submit"],
+#affwp-affiliate-dashboard button,
+#affwp-affiliate-dashboard .button,
+.affwp-copy-url-button,
+.woocommerce-MyAccount-content input[type="submit"],
+.woocommerce-MyAccount-content .button,
+.woocommerce-MyAccount-content a.button {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  border: 1px solid var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  padding: 12px 24px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  min-height: 48px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out !important;
+  box-shadow: 0 3px 10px rgba(253, 109, 37, 0.3) !important;
+}
+
+#affwp-affiliate-dashboard input[type="submit"]:hover,
+#affwp-affiliate-dashboard button:hover,
+#affwp-affiliate-dashboard .button:hover,
+.affwp-copy-url-button:hover,
+.woocommerce-MyAccount-content input[type="submit"]:hover,
+.woocommerce-MyAccount-content .button:hover,
+.woocommerce-MyAccount-content a.button:hover {
+  background: #ff8547 !important;
+  border-color: #ff8547 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 5px 15px rgba(253, 109, 37, 0.45) !important;
+}
+
+/* 6. High-Contrast Data Tables (Fixing Invisible Dark Text in Coupons, Stats, Referrals) */
+.affwp-table,
+table.affwp-table,
+.woocommerce-table,
+table.woocommerce-orders-table,
+table.woocommerce-table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  margin: 1.5rem 0 !important;
+}
+
+.affwp-table thead,
+table.affwp-table thead,
+.woocommerce-table thead,
+table.woocommerce-orders-table thead {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.affwp-table thead th,
+table.affwp-table thead th,
+.woocommerce-table thead th,
+table.woocommerce-orders-table thead th {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  padding: 14px 18px !important;
+  border: none !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15) !important;
+  text-align: left !important;
+}
+
+.affwp-table tbody td,
+table.affwp-table tbody td,
+.woocommerce-table tbody td,
+table.woocommerce-orders-table tbody td {
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  padding: 14px 18px !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  vertical-align: middle !important;
+}
+
+.affwp-table tbody tr:nth-child(even),
+table.affwp-table tbody tr:nth-child(even),
+.woocommerce-table tbody tr:nth-child(even),
+table.woocommerce-orders-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.affwp-table tbody tr:hover,
+table.affwp-table tbody tr:hover,
+.woocommerce-table tbody tr:hover,
+table.woocommerce-orders-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.07) !important;
+}
+
+.affwp-table tbody td a,
+table.affwp-table tbody td a,
+.woocommerce-table tbody td a,
+table.woocommerce-orders-table tbody td a {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  transition: color 0.2s ease !important;
+}
+
+.affwp-table tbody td a:hover,
+table.affwp-table tbody td a:hover,
+.woocommerce-table tbody td a:hover,
+table.woocommerce-orders-table tbody td a:hover {
+  color: #ff8547 !important;
+}
+
+.affwp-table .affwp-table-no-data,
+table.affwp-table .affwp-table-no-data {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-align: center !important;
+  font-style: italic !important;
+  padding: 24px !important;
+}
+
+/* 7. QR Code Styling & Presentation */
+.affwp-qr-code-card,
+.affwp-qr-code-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+
+.affwp-qr-code-wrapper img,
+#affwp-affiliate-dashboard img[src*="qr"],
+#affwp-affiliate-dashboard svg[class*="qr"] {
+  background: #ffffff !important;
+  padding: 16px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
+  max-width: 200px !important;
+}
+
+/* 8. Notices, Alerts & Status Banners */
+.affwp-notice,
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-left: 5px solid var(--ast-global-color-2, #fd6d25) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  padding: 16px 20px !important;
+  margin-bottom: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.affwp-notice-error,
+.woocommerce-error {
+  border-left-color: #e53e3e !important;
+}
+
+.affwp-notice a,
+.woocommerce-message a,
+.woocommerce-info a {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  font-weight: 700 !important;
+}
+
+/* 9. WooCommerce My Account Sidebar Navigation Synergy */
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 20px 0 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation li:last-child {
+  border-bottom: none !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation li a {
+  display: flex !important;
+  align-items: center !important;
+  padding: 14px 20px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  border-left: 4px solid transparent !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation li a:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  border-left-color: var(--ast-global-color-2, #fd6d25) !important;
+  padding-left: 24px !important;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a {
+  background: rgba(253, 109, 37, 0.12) !important;
+  color: #ffffff !important;
+  border-left-color: var(--ast-global-color-2, #fd6d25) !important;
+  font-weight: 800 !important;
+}
+
+/* 10. Pagination Synergy */
+.affwp-pagination,
+.woocommerce-pagination {
+  margin: 2rem 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+.affwp-pagination a,
+.affwp-pagination span,
+.woocommerce-pagination a,
+.woocommerce-pagination span {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  padding: 0 12px !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+.affwp-pagination a:hover,
+.woocommerce-pagination a:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: var(--ast-global-color-2, #fd6d25) !important;
+  color: var(--ast-global-color-2, #fd6d25) !important;
+}
+
+.affwp-pagination .current,
+.woocommerce-pagination .current {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  border-color: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+}
+
+/* 11. Labels, Descriptions, Checkboxes & Tooltips */
+#affwp-affiliate-dashboard label,
+.woocommerce-MyAccount-content label {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+  display: inline-block !important;
+}
+
+#affwp-affiliate-dashboard .description,
+#affwp-affiliate-dashboard .affwp-payment-email-desc,
+.woocommerce-MyAccount-content .woocommerce-form__label span {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 0.9rem !important;
+  margin-top: 6px !important;
+  display: block !important;
+}
+
+#affwp-affiliate-dashboard input[type="checkbox"],
+#affwp-affiliate-dashboard input[type="radio"],
+.woocommerce-MyAccount-content input[type="checkbox"],
+.woocommerce-MyAccount-content input[type="radio"] {
+  accent-color: var(--ast-global-color-2, #fd6d25) !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  min-width: 20px !important;
+  cursor: pointer !important;
+  vertical-align: middle !important;
+  margin-right: 8px !important;
+}
+
+/* 12. Creatives & Banners Tab */
+.affwp-creative,
+.affwp-creative-item {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin-bottom: 24px !important;
+}
+
+.affwp-creative-image img {
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin-bottom: 16px !important;
+}
+
+.affwp-creative-code textarea {
+  width: 100% !important;
+  font-family: monospace !important;
+  font-size: 0.9rem !important;
+  background: rgba(0, 0, 0, 0.35) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 6px !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* 13. Tooltip & Info Icons */
+.affwp-card__tooltip,
+.affwp-tooltip {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.affwp-card__tooltip:hover {
+  opacity: 0.8 !important;
+}
