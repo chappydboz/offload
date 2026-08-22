@@ -2752,7 +2752,25 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   flex: 1 1 100%;
   max-width: 100%;
   clear: both;
-  margin: 0 0 1.5rem 0;
+  margin: 0;
+}
+
+.woocommerce-notices-wrapper:empty,
+.entry-content .woocommerce .woocommerce-notices-wrapper:empty,
+.woocommerce .woocommerce-notices-wrapper:empty,
+.woocommerce-MyAccount-content .woocommerce-notices-wrapper:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+}
+
+.woocommerce-notices-wrapper:not(:empty),
+.entry-content .woocommerce .woocommerce-notices-wrapper:not(:empty),
+.woocommerce .woocommerce-notices-wrapper:not(:empty),
+.woocommerce-MyAccount-content .woocommerce-notices-wrapper:not(:empty) {
+  margin-bottom: 1.5rem !important;
 }
 
 .entry-content .woocommerce-message,
