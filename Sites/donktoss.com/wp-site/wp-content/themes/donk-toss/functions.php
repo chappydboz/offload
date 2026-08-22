@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.4.2' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.4.3' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -204,3 +204,48 @@ add_filter( 'body_class', function( $classes ) {
 	}
 	return $classes;
 } );
+
+/**
+ * Customize Affiliate QR Code link to open a high-res 800x800 image
+ */
+add_action( 'init', function() {
+	if ( function_exists( 'affiliatewp_affiliate_qr_codes' ) && isset( affiliatewp_affiliate_qr_codes()->affiliate_area ) ) {
+		remove_action( 'affwp_affiliate_dashboard_urls_before_generator', array( affiliatewp_affiliate_qr_codes()->affiliate_area, 'render_qr_code' ) );
+		add_action( 'affwp_affiliate_dashboard_urls_before_generator', 'donktoss_render_affiliate_qr_code', 10 );
+	}
+}, 20 );
+
+function donktoss_render_affiliate_qr_code( $affiliate_id ) {
+	if ( ! function_exists( 'affiliatewp_affiliate_qr_codes' ) ) {
+		return;
+	}
+
+	$generator = affiliatewp_affiliate_qr_codes()->generator;
+	$image_url = $generator->get_code_for_affiliate( $affiliate_id );
+
+	// Set margin=1 and size=800 for high-res QR code link
+	$image_url_href = add_query_arg(
+		array(
+			'margin' => 1,
+			'size'   => 800,
+		),
+		$image_url
+	);
+
+	// Set margin=0 for display
+	$image_url_src = add_query_arg( array( 'margin' => 0 ), $image_url );
+
+	$image   = $generator->build_image_html( $image_url_src );
+	$qr_code = sprintf( '<a href="%1$s" target="_blank" rel="noopener noreferrer">%2$s</a>', esc_url( $image_url_href ), $image );
+	?>
+	<div class="affwp-card affwp-affiliate-link affwp-qr-code-card">
+		<div class="affwp-card__header affwp-affiliate-link__header">
+			<h3><?php esc_html_e( 'Your QR Code', 'affiliatewp-affiliate-qr-codes' ); ?></h3>
+		</div>
+		<div class="affwp-card__content">
+			<p class="description"><?php echo esc_html_x( 'Click the image below to view or download a high-resolution QR code (800x800) for print, packaging, and sharing.', 'affiliate area', 'affiliatewp-affiliate-qr-codes' ); ?></p>
+			<p class="affwp-qr-code-wrapper"><?php echo $qr_code; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+		</div>
+	</div>
+	<?php
+}

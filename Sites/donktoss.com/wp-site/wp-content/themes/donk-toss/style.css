@@ -3053,14 +3053,27 @@ table.woocommerce-table {
 .affwp-table thead,
 table.affwp-table thead,
 .woocommerce-table thead,
-table.woocommerce-orders-table thead {
+table.woocommerce-orders-table thead,
+.affwp-table thead tr,
+table.affwp-table thead tr,
+.woocommerce-table thead tr,
+table.woocommerce-orders-table thead tr {
   background: rgba(255, 255, 255, 0.12) !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
 }
 
+.affwp-table th,
+table.affwp-table th,
 .affwp-table thead th,
 table.affwp-table thead th,
+.entry-content .affwp-table th,
+#affwp-affiliate-dashboard table th,
+.woocommerce-table th,
+table.woocommerce-orders-table th,
 .woocommerce-table thead th,
 table.woocommerce-orders-table thead th {
+  background: rgba(255, 255, 255, 0.12) !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
   color: #ffffff !important;
   font-family: 'Karla', sans-serif !important;
   font-weight: 800 !important;
@@ -3069,7 +3082,7 @@ table.woocommerce-orders-table thead th {
   letter-spacing: 0.04em !important;
   padding: 14px 18px !important;
   border: none !important;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.18) !important;
   text-align: left !important;
 }
 
