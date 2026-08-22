@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.6' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.8' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -186,6 +186,16 @@ function donktoss_checkout_shop_breadcrumb( $items, $args ) {
 			array_splice( $items, 1, 0, array( $shop_link ) );
 		} else {
 			$items[] = $shop_link;
+		}
+	} elseif ( is_page( 'affiliate-area' ) || ( function_exists( 'affwp_is_affiliate_area' ) && affwp_is_affiliate_area() ) ) {
+		$myaccount_page_id = function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'myaccount' ) : 0;
+		$myaccount_url     = $myaccount_page_id > 0 ? get_permalink( $myaccount_page_id ) : home_url( '/my-account/' );
+		$myaccount_link    = sprintf( '<a href="%s"><span>%s</span></a>', esc_url( $myaccount_url ), __( 'My account', 'donk-toss' ) );
+
+		if ( ! empty( $items ) && is_array( $items ) ) {
+			array_splice( $items, 1, 0, array( $myaccount_link ) );
+		} else {
+			$items[] = $myaccount_link;
 		}
 	}
 	return $items;
