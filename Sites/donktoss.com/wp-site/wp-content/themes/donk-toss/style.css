@@ -4028,3 +4028,64 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   color: #e74c3c !important;
   border-color: rgba(231, 76, 60, 0.3) !important;
 }
+
+/* ==========================================================================
+   15. WooCommerce Product Grid & Add-to-Cart Tooltips
+   ========================================================================== */
+.ast-card-action-tooltip {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  background-color: var(--ast-global-color-2, #fd6d25) !important;
+  z-index: 99 !important;
+}
+
+.ast-on-card-button:hover .ast-card-action-tooltip,
+.ast-on-card-button:focus .ast-card-action-tooltip,
+.add_to_cart_button:hover .ast-card-action-tooltip,
+.add_to_cart_button:focus .ast-card-action-tooltip {
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #ffffff !important;
+}
+
+ul.products li.product {
+  cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+ul.products li.product:hover {
+  transform: translateY(-3px) !important;
+}
+
+ul.products li.product .astra-shop-thumbnail-wrap,
+ul.products li.product .astra-shop-summary-wrap {
+  cursor: pointer !important;
+}
+
+ul.products li.product a.woocommerce-LoopProduct-link,
+ul.products li.product a.ast-loop-product__link {
+  display: block !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+ul.products li.product a.ast-loop-product__link h2,
+ul.products li.product .woocommerce-loop-product__title {
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+  color: #ffffff !important;
+}
+
+ul.products li.product:hover a.ast-loop-product__link h2,
+ul.products li.product:hover .woocommerce-loop-product__title {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+}
+
+ul.products li.product .add_to_cart_button,
+ul.products li.product .ast-on-card-button {
+  cursor: pointer !important;
+  z-index: 10 !important;
+}

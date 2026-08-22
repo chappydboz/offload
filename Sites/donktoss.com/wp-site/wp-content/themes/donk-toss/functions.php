@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.6.6' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.6.7' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -275,3 +275,32 @@ add_filter( 'astra_addon_woo_account_menu_icon', function( $icon, $endpoint ) {
 	}
 	return $icon;
 }, 20, 2 );
+
+/**
+ * Ensure entire product card in WooCommerce grids routes to the product page on click
+ */
+add_action( 'wp_footer', function() {
+	?>
+	<script id="donktoss-product-card-click-handler">
+	(function() {
+		document.addEventListener('click', function(e) {
+			var productCard = e.target.closest('ul.products li.product, .wc-block-grid__product, .wc-block-product');
+			if (!productCard) return;
+
+			// Do not intercept if clicking interactive elements (Add to cart, options, buttons, inputs)
+			if (e.target.closest('.add_to_cart_button, .ast-on-card-button, .button, a.button, input, select, textarea, button, .ast-card-action-tooltip')) {
+				return;
+			}
+
+			// Route cleanly to the product page on title, image, badge, or card click
+			var productLink = productCard.querySelector('a.woocommerce-LoopProduct-link, a.ast-loop-product__link, .wc-block-grid__product-link, a[href*="/product/"]');
+			if (productLink && productLink.href) {
+				e.preventDefault();
+				e.stopPropagation();
+				window.location.assign(productLink.href);
+			}
+		}, true);
+	})();
+	</script>
+	<?php
+}, 100 );
