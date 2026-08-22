@@ -3654,6 +3654,13 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
 }
 
+/* Affiliate Area Clean Icon */
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a span.ahfb-svg-iconset::before,
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--affiliate-area a::before {
+  display: none !important;
+  content: none !important;
+}
+
 /* Log Out Item */
 .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout {
   margin-top: 8px !important;

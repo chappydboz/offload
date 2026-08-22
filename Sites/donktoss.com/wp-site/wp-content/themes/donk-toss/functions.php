@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.6.1' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.6.4' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -271,7 +271,7 @@ function donktoss_render_affiliate_qr_code( $affiliate_id ) {
  */
 add_filter( 'astra_addon_woo_account_menu_icon', function( $icon, $endpoint ) {
 	if ( 'affiliate-area' === $endpoint && class_exists( 'Astra_Builder_UI_Controller' ) ) {
-		return Astra_Builder_UI_Controller::fetch_svg_icon( 'users', false );
+		return Astra_Builder_UI_Controller::fetch_svg_icon( 'tag', false );
 	}
 	return $icon;
 }, 20, 2 );
