@@ -4050,40 +4050,42 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   color: #ffffff !important;
 }
 
-/* Product Stock / Custom Inventory Label Badge - Centered Bottom Placement */
+/* Product Stock / Custom Inventory Label Badge - Full-width Flush Bottom Banner */
 ul.products li.product .custom-product-label-badge,
 ul.products li.product .ast-shop-product-out-of-stock.custom-product-label-badge,
 .wc-block-grid__product .custom-product-label-badge {
   position: absolute;
-  bottom: 12px;
-  left: 50%;
-  right: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
   top: auto;
-  transform: translateX(-50%);
+  transform: none;
   z-index: 10;
-  width: auto;
+  width: 100%;
   height: auto;
-  display: inline-flex;
+  box-sizing: border-box;
+  display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background: var(--ast-global-color-2, #fd6d25);
   color: #ffffff;
   font-family: 'Karla', sans-serif;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  padding: 6px 14px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  padding: 8px 12px;
+  border-radius: 0;
   white-space: nowrap;
   pointer-events: auto;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 ul.products li.product:hover .custom-product-label-badge {
-  transform: translateX(-50%) scale(1.04);
+  transform: none;
+  background-color: #ff5722;
 }
 
 ul.products li.product {
