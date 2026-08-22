@@ -2925,20 +2925,32 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
 }
 
-/* Clean Single-Card Structure for Addresses */
-.woocommerce-MyAccount-content .woocommerce-Addresses {
+/* Clean 2-Column Structure for Addresses */
+.woocommerce-MyAccount-content .woocommerce-Addresses,
+.woocommerce-MyAccount-content .u-columns.woocommerce-Addresses {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
   padding: 0 !important;
   margin: 1.5rem 0 0 0 !important;
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  grid-template-columns: 1fr 1fr !important;
   gap: 24px !important;
   width: 100% !important;
+  float: none !important;
+}
+
+.woocommerce-MyAccount-content .woocommerce-Addresses::before,
+.woocommerce-MyAccount-content .woocommerce-Addresses::after {
+  display: none !important;
+  content: none !important;
 }
 
 .woocommerce-MyAccount-content .woocommerce-Addresses .woocommerce-Address,
+.woocommerce-MyAccount-content .woocommerce-Addresses .col-1,
+.woocommerce-MyAccount-content .woocommerce-Addresses .col-2,
+.woocommerce-MyAccount-content .woocommerce-Addresses .u-column1,
+.woocommerce-MyAccount-content .woocommerce-Addresses .u-column2,
 .woocommerce-MyAccount-content .u-columns .u-column1,
 .woocommerce-MyAccount-content .u-columns .u-column2 {
   background: rgba(255, 255, 255, 0.05) !important;
@@ -2947,9 +2959,17 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   padding: 24px !important;
   margin: 0 !important;
   width: 100% !important;
+  max-width: 100% !important;
   float: none !important;
   box-sizing: border-box !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+@media (max-width: 768px) {
+  .woocommerce-MyAccount-content .woocommerce-Addresses,
+  .woocommerce-MyAccount-content .u-columns.woocommerce-Addresses {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* Remove all nested inner boxes from title and address tags */
