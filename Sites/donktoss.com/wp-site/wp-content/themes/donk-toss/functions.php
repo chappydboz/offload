@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.4' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.5.5' );
 
 /**
  * Include Custom Post Type & ACF Events definitions

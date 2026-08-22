@@ -2830,24 +2830,7 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
    DONK TOSS PORTAL & DASHBOARD DESIGN SYSTEM (AffiliateWP & WooCommerce)
    ========================================================================== */
 
-/* 1. Page Wrap & Main Container Polish */
-body.page-slug-affiliate-area .site-content .ast-container,
-body.woocommerce-account .site-content .ast-container {
-  max-width: 1000px !important;
-  width: 100% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  box-sizing: border-box !important;
-}
 
-body.woocommerce-account #primary,
-body.page-slug-affiliate-area #primary {
-  width: 100% !important;
-  max-width: 100% !important;
-  float: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
 
 /* 2. Affiliate Area Navigation Tabs (#affwp-affiliate-dashboard-tabs) */
 #affwp-affiliate-dashboard {
