@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.6.9' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.7.0' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -277,6 +277,49 @@ add_filter( 'astra_addon_woo_account_menu_icon', function( $icon, $endpoint ) {
 }, 20, 2 );
 
 /**
+ * Render custom product label badge inside Gutenberg WooCommerce Product Collection / Image blocks
+ */
+add_filter( 'render_block_woocommerce/product-image', function( $block_content, $block ) {
+	$product_id = 0;
+	if ( isset( $block['context']['productId'] ) ) {
+		$product_id = absint( $block['context']['productId'] );
+	} elseif ( isset( $block['attrs']['productId'] ) ) {
+		$product_id = absint( $block['attrs']['productId'] );
+	} else {
+		global $post;
+		if ( $post && 'product' === $post->post_type ) {
+			$product_id = $post->ID;
+		}
+	}
+
+	if ( ! $product_id ) {
+		return $block_content;
+	}
+
+	$custom_label_text = get_post_meta( $product_id, '_custom_product_label_text', true );
+	if ( empty( $custom_label_text ) ) {
+		$product = wc_get_product( $product_id );
+		if ( $product && ! $product->is_in_stock() ) {
+			$custom_label_text = get_post_meta( $product_id, '_custom_out_of_stock_text', true );
+			if ( empty( $custom_label_text ) ) {
+				$custom_label_text = __( 'Out of stock', 'woocommerce' );
+			}
+		}
+	}
+
+	if ( ! empty( $custom_label_text ) ) {
+		$badge_html = '<span class="ast-shop-product-out-of-stock custom-product-label-badge">' . esc_html( $custom_label_text ) . '</span>';
+		if ( strpos( $block_content, '</a>' ) !== false ) {
+			$block_content = str_replace( '</a>', $badge_html . '</a>', $block_content );
+		} else {
+			$block_content .= $badge_html;
+		}
+	}
+
+	return $block_content;
+}, 10, 2 );
+
+/**
  * Ensure entire product card in WooCommerce grids routes to the product page on click
  */
 add_action( 'wp_footer', function() {
@@ -293,7 +336,7 @@ add_action( 'wp_footer', function() {
 			}
 
 			// Route cleanly to the product page on title, image, badge, or card click
-			var productLink = productCard.querySelector('a.woocommerce-LoopProduct-link, a.ast-loop-product__link, .wc-block-grid__product-link, a[href*="/product/"]');
+			var productLink = productCard.querySelector('a.woocommerce-LoopProduct-link, a.ast-loop-product__link, .wc-block-grid__product-link, a.wc-block-grid__product-link, a[data-wp-on--click*="viewProduct"], a[href*="/product/"]');
 			if (productLink && productLink.href) {
 				e.preventDefault();
 				e.stopPropagation();

@@ -4053,48 +4053,81 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
 /* Product Stock / Custom Inventory Label Badge - Full-width Flush Bottom Banner */
 ul.products li.product .custom-product-label-badge,
 ul.products li.product .ast-shop-product-out-of-stock.custom-product-label-badge,
-.wc-block-grid__product .custom-product-label-badge {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: auto;
-  transform: none;
-  z-index: 10;
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: var(--ast-global-color-2, #fd6d25);
-  color: #ffffff;
-  font-family: 'Karla', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.2;
-  padding: 8px 12px;
-  border-radius: 0;
-  white-space: nowrap;
-  pointer-events: auto;
-  transition: background-color 0.2s ease;
+.wc-block-grid__product .custom-product-label-badge,
+.wc-block-product .custom-product-label-badge,
+.wp-block-woocommerce-product-image .custom-product-label-badge {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: auto !important;
+  transform: none !important;
+  z-index: 10 !important;
+  width: 100% !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.2 !important;
+  padding: 8px 12px !important;
+  border-radius: 0 !important;
+  white-space: nowrap !important;
+  pointer-events: auto !important;
+  transition: background-color 0.2s ease !important;
 }
 
-ul.products li.product:hover .custom-product-label-badge {
-  transform: none;
-  background-color: #ff5722;
+ul.products li.product:hover .custom-product-label-badge,
+.wc-block-product:hover .custom-product-label-badge,
+.wc-block-grid__product:hover .custom-product-label-badge {
+  transform: none !important;
+  background-color: #ff5722 !important;
 }
 
-ul.products li.product {
+ul.products li.product,
+.wc-block-product,
+.wc-block-grid__product {
   cursor: pointer !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-ul.products li.product:hover {
+ul.products li.product:hover,
+.wc-block-product:hover,
+.wc-block-grid__product:hover {
   transform: translateY(-3px) !important;
+}
+
+.wc-block-components-product-image,
+.wc-block-grid__product-image,
+.wp-block-woocommerce-product-image {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.wc-block-components-product-image a,
+.wc-block-grid__product-image a {
+  display: block !important;
+  position: relative !important;
+}
+
+.wc-block-product h2.wp-block-post-title,
+.wc-block-product .wp-block-post-title a {
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.wc-block-product:hover h2.wp-block-post-title a,
+.wc-block-product:hover .wp-block-post-title a {
+  color: var(--ast-global-color-2, #fd6d25) !important;
 }
 
 ul.products li.product .astra-shop-thumbnail-wrap,
