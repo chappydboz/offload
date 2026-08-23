@@ -4180,3 +4180,22 @@ ul.products li.product .ast-on-card-button {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/* ==========================================================================
+   17. WooCommerce Single Product Gallery Zoom Background
+   ========================================================================== */
+.woocommerce div.product div.images .woocommerce-product-gallery__image img.zoomImg,
+.woocommerce-product-gallery__image img.zoomImg,
+.woocommerce-product-gallery img.zoomImg,
+img.zoomImg {
+  background-color: var(--ast-global-color-4, #5d279e) !important;
+  background: var(--ast-global-color-4, #5d279e) !important;
+}
+
+.woocommerce-product-gallery,
+.woocommerce-product-gallery__wrapper,
+.woocommerce-product-gallery__image,
+.flex-viewport {
+  background-color: var(--ast-global-color-4, #5d279e) !important;
+  background: var(--ast-global-color-4, #5d279e) !important;
+}
