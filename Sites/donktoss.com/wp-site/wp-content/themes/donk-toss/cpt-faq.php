@@ -340,6 +340,7 @@ function donktoss_seed_faq_categories() {
 		'DONK Gameplay'        => 'Rules of play, court distances, scoring system, and tournament regulations.',
 		'Events & Tournaments' => 'Information on attending, participating in, or hosting Donk Toss events.',
 		'General & Support'    => 'General inquiries and customer support questions.',
+		'Affiliates'           => 'Frequently asked questions for Donk Toss affiliates, referral tracking, and commission payouts.',
 	);
 
 	foreach ( $default_categories as $term_name => $term_desc ) {
@@ -367,7 +368,7 @@ function donktoss_register_faq_acf_fields() {
 		return;
 	}
 
-	// 1. FAQ Post Meta Fields (Answer & Optional Badge)
+	// 1. FAQ Post Meta Fields (Answer, Optional Badge & Exclusion Toggle)
 	acf_add_local_field_group( array(
 		'key' => 'group_donktoss_faq_details',
 		'title' => __( 'FAQ Details', 'donk-toss' ),
@@ -391,6 +392,17 @@ function donktoss_register_faq_acf_fields() {
 				'type' => 'text',
 				'instructions' => __( 'Optional small pill badge displayed next to question (e.g. "Popular", "Rules", "Shipping").', 'donk-toss' ),
 				'placeholder' => __( 'e.g. Popular', 'donk-toss' ),
+			),
+			array(
+				'key' => 'field_faq_exclude_from_general',
+				'label' => __( 'Exclude from General FAQs Listing', 'donk-toss' ),
+				'name' => 'exclude_from_general',
+				'type' => 'true_false',
+				'instructions' => __( 'Check this box to hide this FAQ from the main /faq/ page, archive queries, and general shop FAQ blocks. (Ideal for Affiliates or internal FAQs).', 'donk-toss' ),
+				'default_value' => 0,
+				'ui' => 1,
+				'ui_on_text' => __( 'Excluded', 'donk-toss' ),
+				'ui_off_text' => __( 'Visible in All', 'donk-toss' ),
 			),
 		),
 		'location' => array(
@@ -667,6 +679,7 @@ function donktoss_faq_admin_columns( $columns ) {
 		'title'        => __( 'Question', 'donk-toss' ),
 		'faq_category' => __( 'FAQ Topic', 'donk-toss' ),
 		'faq_answer'   => __( 'Answer Preview', 'donk-toss' ),
+		'faq_exclude'  => __( 'General Listing', 'donk-toss' ),
 		'menu_order'   => __( 'Order', 'donk-toss' ),
 		'date'         => $columns['date'],
 	);
@@ -688,6 +701,14 @@ function donktoss_faq_admin_column_content( $column, $post_id ) {
 			$clean = wp_strip_all_tags( $answer );
 			echo esc_html( wp_trim_words( $clean, 15, '...' ) );
 			break;
+		case 'faq_exclude':
+			$excluded = get_field( 'exclude_from_general', $post_id );
+			if ( $excluded ) {
+				echo '<span style="display:inline-block;padding:2px 8px;background:#fef2f2;color:#991b1b;border:1px solid #fecaca;border-radius:9999px;font-size:11px;font-weight:600;">' . esc_html__( 'Excluded', 'donk-toss' ) . '</span>';
+			} else {
+				echo '<span style="display:inline-block;padding:2px 8px;background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;border-radius:9999px;font-size:11px;font-weight:600;">' . esc_html__( 'Visible in All', 'donk-toss' ) . '</span>';
+			}
+			break;
 		case 'menu_order':
 			$post = get_post( $post_id );
 			echo esc_html( $post->menu_order );
@@ -701,3 +722,80 @@ function donktoss_faq_sortable_columns( $columns ) {
 	return $columns;
 }
 add_filter( 'manage_edit-faq_sortable_columns', 'donktoss_faq_sortable_columns' );
+
+/**
+ * Shortcode: [donktoss_faqs]
+ *
+ * Attributes:
+ * - category: Slug or comma-separated slugs/IDs of faq_category (e.g. 'affiliates', 'merch-shop')
+ * - group_by_category: '1' or '0' (default: '0' when single category specified, '1' otherwise)
+ * - heading_tag: 'h2', 'h3', or 'h4' (default: 'h3')
+ * - accordion_mode: 'multi' or 'single' (default: 'multi')
+ * - show_search: '1' or '0' (default: '0')
+ * - show_badges: '1' or '0' (default: '1')
+ * - show_footer_cta: '1' or '0' (default: '0')
+ * - footer_cta_text: Custom HTML text for footer
+ */
+function donktoss_faq_accordion_shortcode( $atts ) {
+	$atts = shortcode_atts( array(
+		'category'          => '',
+		'group_by_category' => '',
+		'heading_tag'       => 'h3',
+		'accordion_mode'    => 'multi',
+		'show_search'       => '0',
+		'show_badges'       => '1',
+		'show_footer_cta'   => '0',
+		'footer_cta_text'   => '',
+	), $atts, 'donktoss_faqs' );
+
+	$selected_categories = array();
+	if ( ! empty( $atts['category'] ) ) {
+		$cat_slugs = array_map( 'trim', explode( ',', $atts['category'] ) );
+		foreach ( $cat_slugs as $slug_or_id ) {
+			if ( is_numeric( $slug_or_id ) ) {
+				$selected_categories[] = (int) $slug_or_id;
+			} else {
+				$term = get_term_by( 'slug', $slug_or_id, 'faq_category' );
+				if ( $term && ! is_wp_error( $term ) ) {
+					$selected_categories[] = $term->term_id;
+				}
+			}
+		}
+	}
+
+	$group_by_cat = '1';
+	if ( '' !== $atts['group_by_category'] ) {
+		$group_by_cat = $atts['group_by_category'];
+	} elseif ( count( $selected_categories ) === 1 ) {
+		$group_by_cat = '0';
+	}
+
+	$block_data = array(
+		'id'                  => 'sc-' . md5( wp_json_encode( $atts ) ),
+		'ordering_mode'       => 'auto',
+		'selected_categories' => $selected_categories,
+		'group_by_category'   => $group_by_cat,
+		'heading_tag'         => sanitize_text_field( $atts['heading_tag'] ),
+		'accordion_mode'      => sanitize_text_field( $atts['accordion_mode'] ),
+		'show_search'         => $atts['show_search'],
+		'show_badges'         => $atts['show_badges'],
+		'show_footer_cta'     => $atts['show_footer_cta'],
+		'footer_cta_text'     => $atts['footer_cta_text'],
+	);
+
+	$block = array(
+		'id'        => $block_data['id'],
+		'name'      => 'acf/faq-accordion',
+		'data'      => $block_data,
+		'className' => 'donktoss-faq-shortcode-wrap',
+	);
+
+	ob_start();
+	if ( function_exists( 'donktoss_render_faq_accordion_block' ) ) {
+		donktoss_render_faq_accordion_block( $block );
+	}
+	return ob_get_clean();
+}
+add_shortcode( 'donktoss_faqs', 'donktoss_faq_accordion_shortcode' );
+add_shortcode( 'donk_faqs', 'donktoss_faq_accordion_shortcode' );
+

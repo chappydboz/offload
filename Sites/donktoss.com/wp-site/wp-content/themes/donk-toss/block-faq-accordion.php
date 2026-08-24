@@ -155,6 +155,19 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 
 	// Fallback to automatic query if no custom data populated yet
 	if ( empty( $categorized_faqs ) ) {
+		$exclude_general_meta = array(
+			'relation' => 'OR',
+			array(
+				'key'     => 'exclude_from_general',
+				'value'   => '1',
+				'compare' => '!=',
+			),
+			array(
+				'key'     => 'exclude_from_general',
+				'compare' => 'NOT EXISTS',
+			),
+		);
+
 		if ( $group_by_category ) {
 			$term_args = array(
 				'taxonomy'   => 'faq_category',
@@ -170,7 +183,7 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 
 			if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 				foreach ( $terms as $term ) {
-					$faq_query = new WP_Query( array(
+					$query_args = array(
 						'post_type'      => 'faq',
 						'posts_per_page' => -1,
 						'orderby'        => array( 'menu_order' => 'ASC', 'title' => 'ASC' ),
@@ -181,7 +194,14 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 								'terms'    => $term->term_id,
 							),
 						),
-					) );
+					);
+
+					// Only apply general exclusion if no explicit categories were picked
+					if ( empty( $selected_cat_ids ) ) {
+						$query_args['meta_query'] = array( $exclude_general_meta );
+					}
+
+					$faq_query = new WP_Query( $query_args );
 
 					if ( $faq_query->have_posts() ) {
 						$categorized_faqs[ $term->name ] = $faq_query->posts;
@@ -204,6 +224,8 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 						'terms'    => $selected_cat_ids,
 					),
 				);
+			} else {
+				$query_args['meta_query'] = array( $exclude_general_meta );
 			}
 
 			$faq_query = new WP_Query( $query_args );
