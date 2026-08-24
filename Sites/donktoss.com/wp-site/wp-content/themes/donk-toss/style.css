@@ -3922,6 +3922,353 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   box-shadow: 0 6px 20px rgba(253, 109, 37, 0.6) !important;
 }
 
+/* 8c. Affiliate Creatives Tab (#affwp-affiliate-dashboard-creatives) */
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 0 16px auto !important;
+  padding: 4px !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  list-style: none !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher li {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher .affwp-view-switcher__button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  padding: 6px !important;
+  border-radius: 6px !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher .affwp-view-switcher__button svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: currentColor !important;
+  color: inherit !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher a.affwp-view-switcher__button:hover {
+  color: #ff8547 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher li.active .affwp-view-switcher__button,
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher li.active span.affwp-view-switcher__button {
+  color: #ffffff !important;
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  box-shadow: 0 2px 6px rgba(253, 109, 37, 0.4) !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-view-switcher li.active .affwp-view-switcher__button svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-creatives-types-menu {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-creatives-types-menu a {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 20px !important;
+  padding: 6px 14px !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-creatives-types-menu a:hover {
+  background: rgba(253, 109, 37, 0.2) !important;
+  color: #ff8547 !important;
+  border-color: #fd6d25 !important;
+}
+
+#affwp-affiliate-dashboard-creatives .affwp-creatives-types-menu li.active a {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  border-color: #fd6d25 !important;
+}
+
+/* Grid View Cards */
+.affwp-creatives-view--as-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 20px !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  position: relative !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(253, 109, 37, 0.6) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative-preview {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 180px !important;
+  margin-bottom: 14px !important;
+  overflow: hidden !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative-preview img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  transition: transform 0.2s ease !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative:hover .affwp-creative-preview img {
+  transform: scale(1.04) !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative-name {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+  white-space: normal !important;
+  line-height: 1.35 !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative-type {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+}
+
+.affwp-creatives-view--as-grid .affwp-creative-size {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.85rem !important;
+  font-family: monospace !important;
+}
+
+/* List View Header & Rows */
+.affwp-creatives-list-header {
+  display: flex !important;
+  padding: 12px 18px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  margin-bottom: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.affwp-creatives-list-header .affwp-creatives-table-cell a {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+}
+
+.affwp-creatives-list-header .affwp-creatives-table-cell a:hover {
+  color: #ff8547 !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin-bottom: 14px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 20px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(253, 109, 37, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-preview {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+  width: 100px !important;
+  height: 100px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-preview img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-name-wrap {
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-name {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-id {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-type {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-size {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 0.88rem !important;
+  font-family: monospace !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creative-last-updated {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.95rem !important;
+}
+
+.affwp-creatives-view--as-list .affwp-creatives-list-column-label {
+  display: none !important;
+}
+
+/* Creatives Modal Popup (#affwp-creatives-modal / Fancybox Popup) */
+.fancybox__content:has(#affwp-creatives-modal),
+#affwp-creatives-modal {
+  background: #3e1b6b !important;
+  background-color: #3e1b6b !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+#affwp-creatives-modal .affwp-creative-name {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+#affwp-creatives-modal .affwp-creative-subtitle,
+#affwp-creatives-modal .affwp-creative-file-details,
+#affwp-creatives-modal .affwp-creative-separator {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+#affwp-creatives-modal .affwp-creative-section-title {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+#affwp-creatives-modal .affwp-creative-description {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+#affwp-creatives-modal .affwp-creative-preview {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+}
+
+#affwp-creatives-modal .affwp-copy-textarea-content,
+#affwp-creatives-modal textarea {
+  background: rgba(0, 0, 0, 0.35) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 8px !important;
+  font-family: monospace !important;
+  font-size: 0.9rem !important;
+  padding: 12px !important;
+}
+
+#affwp-creatives-modal .affwp-copy-textarea-content:focus {
+  border-color: #fd6d25 !important;
+  box-shadow: 0 0 0 2px rgba(253, 109, 37, 0.3) !important;
+}
+
+#affwp-creatives-modal .affwp-button,
+#affwp-creatives-modal .button,
+#affwp-creatives-modal button {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-radius: 8px !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  transition: all 0.2s ease !important;
+}
+
+#affwp-creatives-modal .affwp-button:hover,
+#affwp-creatives-modal .button:hover,
+#affwp-creatives-modal button:hover {
+  background: #ff8547 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
 /* 9. WooCommerce My Account Modern 2-Column Grid Layout & Sidebar Navigation */
 .woocommerce-account .woocommerce,
 .woocommerce-account .entry-content .woocommerce,
