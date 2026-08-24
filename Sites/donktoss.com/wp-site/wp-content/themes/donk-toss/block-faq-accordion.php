@@ -63,7 +63,7 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 
 
 
-	if ( false === $show_footer_cta ) {
+	if ( empty( $show_footer_cta ) || '0' === (string) $show_footer_cta || false === $show_footer_cta ) {
 		$show_footer_cta = false;
 	} else {
 		$show_footer_cta = true;

@@ -1235,15 +1235,26 @@ html {
   display: inline-block !important;
 }
 
-/* FAQ Question Row Alignment & UX States */
+/* FAQ Items Container & Card */
+.donktoss-faq-item {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+  margin-bottom: 12px !important;
+}
+
+/* FAQ Question Row Alignment & High Contrast Typography */
 .donktoss-faq-question {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   padding: 16px 20px !important;
   font-size: 1.05rem !important;
-  font-weight: 600 !important;
-  color: #1f2937 !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
   cursor: pointer !important;
   user-select: none !important;
   list-style: none !important;
@@ -1258,84 +1269,116 @@ html {
   content: "" !important;
 }
 
+.donktoss-faq-question-text {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.45 !important;
+  flex: 1 !important;
+  padding-right: 14px !important;
+  display: inline-block !important;
+  align-self: center !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Pill Badge - Crisp High Contrast */
+.donktoss-faq-badge {
+  background-color: #ffffff !important;
+  color: #e55b13 !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  padding: 3px 10px !important;
+  border-radius: 9999px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-right: 12px !important;
+  white-space: nowrap !important;
+  align-self: center !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  flex-shrink: 0 !important;
+}
+
+/* Chevron Icon */
+.donktoss-faq-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  height: 24px !important;
+  width: 24px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.donktoss-faq-icon svg {
+  stroke: currentColor !important;
+}
+
 /* Rollover / Hover State */
 .donktoss-faq-question:hover,
 .donktoss-faq-item:hover .donktoss-faq-question {
-  background-color: rgba(255, 87, 34, 0.08) !important;
+  background-color: rgba(255, 87, 34, 0.12) !important;
 }
 
 .donktoss-faq-question:hover .donktoss-faq-question-text,
 .donktoss-faq-item:hover .donktoss-faq-question-text {
-  color: #ff5722 !important;
+  color: #ff8547 !important;
 }
 
 .donktoss-faq-question:hover .donktoss-faq-icon,
 .donktoss-faq-item:hover .donktoss-faq-icon {
-  color: #ff5722 !important;
+  color: #ff8547 !important;
 }
 
 /* Open / Active State */
 .donktoss-faq-item[open] {
-  border-color: rgba(255, 87, 34, 0.5) !important;
-  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.14) !important;
+  border-color: rgba(253, 109, 37, 0.5) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
 .donktoss-faq-item[open] .donktoss-faq-question {
-  background-color: rgba(255, 87, 34, 0.14) !important;
+  background-color: rgba(253, 109, 37, 0.18) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .donktoss-faq-item[open] .donktoss-faq-question-text {
   color: #ffffff !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
 }
 
-/* WooCommerce Embedded Shop FAQ Sections - Dark Mode / White Question Text */
-.donktoss-woocommerce-faq-wrap .donktoss-faq-item {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+.donktoss-faq-item[open] .donktoss-faq-icon {
+  transform: rotate(180deg) !important;
+  color: var(--ast-global-color-2, #fd6d25) !important;
 }
 
-.donktoss-woocommerce-faq-wrap .donktoss-faq-question-text {
-  color: #ffffff !important;
-}
-
-.donktoss-woocommerce-faq-wrap .donktoss-faq-icon {
-  color: rgba(255, 255, 255, 0.75) !important;
-}
-
-/* Hover Rollover State - Orange */
-.donktoss-woocommerce-faq-wrap .donktoss-faq-question:hover .donktoss-faq-question-text,
-.donktoss-woocommerce-faq-wrap .donktoss-faq-item:hover .donktoss-faq-question-text {
-  color: #ff5722 !important;
-}
-
-.donktoss-woocommerce-faq-wrap .donktoss-faq-question:hover .donktoss-faq-icon,
-.donktoss-woocommerce-faq-wrap .donktoss-faq-item:hover .donktoss-faq-icon {
-  color: #ff5722 !important;
-}
-
-/* Activated / Open State - White Text, Orange Chevron */
-.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] {
-  border-color: rgba(255, 87, 34, 0.5) !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-}
-
-.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] .donktoss-faq-question-text {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-}
-
-.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] .donktoss-faq-icon {
-  color: #ff5722 !important;
-}
-
-
-.donktoss-woocommerce-faq-wrap .donktoss-faq-answer {
-  color: #e2e8f0 !important;
-  padding: 10px 24px 22px 24px !important;
+/* FAQ Answer Content */
+.donktoss-faq-answer {
+  padding: 16px 22px 22px 22px !important;
+  color: #f1f5f9 !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
   box-sizing: border-box !important;
 }
 
+.donktoss-faq-answer-inner > *:first-child {
+  margin-top: 0 !important;
+}
+
+.donktoss-faq-answer-inner > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+.donktoss-faq-answer a {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  text-decoration: underline !important;
+  font-weight: 700 !important;
+}
+
+.donktoss-faq-answer a:hover {
+  color: #ff8547 !important;
+}
 
 /* Footer CTA Spacing */
 .donktoss-faq-footer-cta {
