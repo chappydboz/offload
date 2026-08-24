@@ -3696,6 +3696,189 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   font-weight: 700 !important;
 }
 
+/* 8b. Affiliate Dashboard Help, Resources & FAQs Tab (#affwp-affiliate-dashboard-resources) */
+#affwp-affiliate-dashboard-resources {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.donk-resources-hero {
+  margin-bottom: 20px;
+}
+
+.donk-resources-title {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 8px !important;
+}
+
+.donk-resources-desc {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0 !important;
+}
+
+.donk-affiliate-coupon-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(253, 109, 37, 0.12);
+  border: 1px solid rgba(253, 109, 37, 0.35);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 16px;
+}
+
+.donk-coupon-callout-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.donk-coupon-callout-title {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.donk-affiliate-coupon-callout p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0 !important;
+}
+
+.donk-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.donk-card-heading {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.donk-guidelines-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.donk-guidelines-list li {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 0.98rem !important;
+  line-height: 1.5 !important;
+  position: relative;
+  padding-left: 20px;
+}
+
+.donk-guidelines-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #22c55e;
+  font-weight: 800;
+}
+
+.donk-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.donk-rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.donk-rule-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.donk-rule-text strong {
+  color: #ffffff;
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.donk-rule-text p {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0 !important;
+}
+
+.donk-faqs-card .donktoss-faq-block-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.donk-support-card {
+  background: linear-gradient(135deg, rgba(253, 109, 37, 0.15) 0%, rgba(93, 39, 158, 0.3) 100%) !important;
+  border: 1px solid rgba(253, 109, 37, 0.4) !important;
+  text-align: center;
+  padding: 32px 24px !important;
+}
+
+.donk-support-content h4 {
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 10px !important;
+}
+
+.donk-support-content p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  max-width: 650px;
+  margin: 0 auto 20px auto !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+}
+
+.donk-support-btn {
+  display: inline-block !important;
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  padding: 12px 28px !important;
+  border-radius: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 4px 14px rgba(253, 109, 37, 0.4) !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.donk-support-btn:hover {
+  background: #ff8547 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(253, 109, 37, 0.6) !important;
+}
+
 /* 9. WooCommerce My Account Modern 2-Column Grid Layout & Sidebar Navigation */
 .woocommerce-account .woocommerce,
 .woocommerce-account .entry-content .woocommerce,

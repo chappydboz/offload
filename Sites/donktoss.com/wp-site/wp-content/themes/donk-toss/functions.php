@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.7.8' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.7.9' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -371,3 +371,31 @@ add_filter( 'woocommerce_cart_totals_coupon_label', function( $label, $coupon ) 
 		esc_html( $code )
 	);
 }, 20, 2 );
+
+/**
+ * Register "Help & Resources" tab on AffiliateWP Affiliate Area Dashboard
+ */
+add_filter( 'affwp_affiliate_area_tabs', function( $tabs ) {
+	$new_tabs = array();
+	foreach ( $tabs as $key => $title ) {
+		$new_tabs[ $key ] = $title;
+		// Place Help & FAQs right after Creatives or URLs
+		if ( 'creatives' === $key ) {
+			$new_tabs['resources'] = __( 'Help & FAQs', 'donk-toss' );
+		}
+	}
+	if ( ! isset( $new_tabs['resources'] ) ) {
+		$new_tabs['resources'] = __( 'Help & FAQs', 'donk-toss' );
+	}
+	return $new_tabs;
+}, 20 );
+
+add_filter( 'affwp_render_affiliate_dashboard_tab_resources', function( $content, $tab ) {
+	$template_file = get_stylesheet_directory() . '/affiliatewp/dashboard-tab-resources.php';
+	if ( file_exists( $template_file ) ) {
+		ob_start();
+		include $template_file;
+		return ob_get_clean();
+	}
+	return $content;
+}, 10, 2 );
