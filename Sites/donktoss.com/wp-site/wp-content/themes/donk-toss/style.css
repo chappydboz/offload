@@ -4016,17 +4016,21 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
 /* Grid View Cards */
 .affwp-creatives-view--as-grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
-  gap: 20px !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .affwp-creatives-view--as-grid .affwp-creative {
   background: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.16) !important;
   border-radius: 12px !important;
-  padding: 16px !important;
+  padding: 18px !important;
   display: flex !important;
   flex-direction: column !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
   transition: all 0.2s ease !important;
   cursor: pointer !important;
   position: relative !important;
@@ -4043,13 +4047,15 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
   background: rgba(0, 0, 0, 0.3) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 8px !important;
-  padding: 12px !important;
+  padding: 16px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  height: 180px !important;
-  margin-bottom: 14px !important;
+  width: 100% !important;
+  height: 220px !important;
+  margin-bottom: 16px !important;
   overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 
 .affwp-creatives-view--as-grid .affwp-creative-preview img {
