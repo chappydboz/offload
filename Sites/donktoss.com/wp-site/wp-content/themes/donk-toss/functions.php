@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.7.6' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.7.7' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -352,3 +352,22 @@ add_action( 'wp_footer', function() {
 	</script>
 	<?php
 }, 100 );
+
+/**
+ * Format coupon label as pill-style badge with green text over white background (Cart & Checkout)
+ */
+add_filter( 'woocommerce_cart_totals_coupon_label', function( $label, $coupon ) {
+	if ( is_string( $coupon ) ) {
+		$code = $coupon;
+	} elseif ( is_object( $coupon ) && method_exists( $coupon, 'get_code' ) ) {
+		$code = $coupon->get_code();
+	} else {
+		return $label;
+	}
+
+	return sprintf(
+		'%s <span class="donk-coupon-pill">%s</span>',
+		esc_html__( 'Coupon:', 'woocommerce' ),
+		esc_html( $code )
+	);
+}, 20, 2 );

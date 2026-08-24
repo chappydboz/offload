@@ -2553,21 +2553,47 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   vertical-align: middle !important;
 }
 
-/* Coupon Discount Row */
-.woocommerce-cart .cart_totals table.shop_table tr.cart-discount th {
+/* Coupon Discount Row & Pill Badge (Cart & Checkout) */
+.woocommerce-cart .cart_totals table.shop_table tr.cart-discount th,
+.woocommerce-checkout table.shop_table tr.cart-discount th,
+#ast-order-review-content .woocommerce-checkout-review-order-table tr.cart-discount th {
   color: #ffffff !important;
   font-weight: 600 !important;
   word-break: break-word !important;
   white-space: normal !important;
+  vertical-align: middle !important;
 }
 
-.woocommerce-cart .cart_totals table.shop_table tr.cart-discount td {
+.donk-coupon-pill {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  background-color: #ffffff !important;
+  color: #15803d !important; /* Vibrant forest/emerald green */
+  font-family: inherit !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  padding: 3px 9px !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+  vertical-align: middle !important;
+  margin-top: 3px !important;
+  line-height: 1.3 !important;
+}
+
+.woocommerce-cart .cart_totals table.shop_table tr.cart-discount td,
+.woocommerce-checkout table.shop_table tr.cart-discount td,
+#ast-order-review-content .woocommerce-checkout-review-order-table tr.cart-discount td {
   color: #ffffff !important;
   font-weight: 600 !important;
   text-align: right !important;
+  vertical-align: middle !important;
 }
 
-.woocommerce-cart .cart_totals table.shop_table tr.cart-discount td a.woocommerce-remove-coupon {
+.woocommerce-cart .cart_totals table.shop_table tr.cart-discount td a.woocommerce-remove-coupon,
+.woocommerce-checkout table.shop_table tr.cart-discount td a.woocommerce-remove-coupon,
+#ast-order-review-content .woocommerce-checkout-review-order-table tr.cart-discount td a.woocommerce-remove-coupon {
   color: var(--ast-global-color-2, #fd6d25) !important;
   font-weight: 600 !important;
   text-decoration: none !important;
@@ -2576,7 +2602,9 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   font-size: 0.85rem !important;
 }
 
-.woocommerce-cart .cart_totals table.shop_table tr.cart-discount td a.woocommerce-remove-coupon:hover {
+.woocommerce-cart .cart_totals table.shop_table tr.cart-discount td a.woocommerce-remove-coupon:hover,
+.woocommerce-checkout table.shop_table tr.cart-discount td a.woocommerce-remove-coupon:hover,
+#ast-order-review-content .woocommerce-checkout-review-order-table tr.cart-discount td a.woocommerce-remove-coupon:hover {
   color: #e55b13 !important;
   text-decoration: underline !important;
 }
