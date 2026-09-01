@@ -1388,6 +1388,62 @@ html {
 }
 
 /* ==========================================================================
+   Responsive Mobile Optimization: Tighten Product FAQs & Containers
+   ========================================================================== */
+@media (max-width: 768px) {
+  .donktoss-woocommerce-faq-wrap {
+    margin: 2rem auto 1.5rem auto !important;
+    padding: 1.25rem 0.85rem !important;
+    border-radius: 14px !important;
+  }
+
+  .donktoss-woocommerce-faq-wrap h2,
+  .donktoss-woocommerce-faq-wrap h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 6px !important;
+  }
+
+  .donktoss-faq-item {
+    margin-bottom: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  .donktoss-faq-question {
+    padding: 12px 14px !important;
+  }
+
+  .donktoss-faq-question-text {
+    font-size: 0.95rem !important;
+    line-height: 1.35 !important;
+    padding-right: 8px !important;
+  }
+
+  .donktoss-faq-badge {
+    font-size: 0.68rem !important;
+    padding: 2px 7px !important;
+    margin-right: 8px !important;
+  }
+
+  .donktoss-faq-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .donktoss-faq-answer {
+    padding: 12px 14px 16px 14px !important;
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .donktoss-faq-footer-cta {
+    margin-top: 24px !important;
+    padding-top: 16px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ==========================================================================
    E-Commerce Conversion & WCAG 2.1 AA Accessibility Styling
    Cart Page (`.woocommerce-cart`) & Checkout Page (`.woocommerce-checkout`)
    ========================================================================== */
