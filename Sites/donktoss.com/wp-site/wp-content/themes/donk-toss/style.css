@@ -4971,7 +4971,8 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
 .woocommerce-MyAccount-content .woocommerce-info::before,
 .woocommerce-MyAccount-content .woocommerce-error::before {
   position: absolute !important;
-  top: 18px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   left: 20px !important;
   color: var(--ast-global-color-2, #fd6d25) !important;
   margin: 0 !important;
@@ -4979,6 +4980,76 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   line-height: 1 !important;
   font-size: 1.25rem !important;
   display: inline-block !important;
+}
+
+/* ==========================================================================
+   Mini-Cart & Slide-In Drawer AJAX Loading & Instant Touch Feedback
+   ========================================================================== */
+.woocommerce-mini-cart.ajax-mini-cart-qty-loading,
+#astra-mobile-cart-drawer .woocommerce-mini-cart.ajax-mini-cart-qty-loading,
+.ast-site-header-cart.ajax-mini-cart-qty-loading {
+  position: relative !important;
+  pointer-events: none !important;
+}
+
+.woocommerce-mini-cart.ajax-mini-cart-qty-loading .woocommerce-mini-cart-item,
+.woocommerce-mini-cart.ajax-mini-cart-qty-loading .woocommerce-mini-cart__total,
+.woocommerce-mini-cart.ajax-mini-cart-qty-loading .woocommerce-mini-cart__buttons,
+.woocommerce-mini-cart.ajax-mini-cart-qty-loading p.total {
+  opacity: 0.4 !important;
+  filter: blur(0.5px);
+  transition: opacity 0.2s ease, filter 0.2s ease !important;
+}
+
+/* Crisp spinning loader centered in drawer during quantity update */
+.woocommerce-mini-cart.ajax-mini-cart-qty-loading::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 40% !important;
+  left: 50% !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin-top: -18px !important;
+  margin-left: -18px !important;
+  border: 3px solid rgba(253, 109, 37, 0.25) !important;
+  border-top-color: #fd6d25 !important;
+  border-radius: 50% !important;
+  animation: donkDrawerQtySpin 0.6s linear infinite !important;
+  z-index: 9999 !important;
+}
+
+@keyframes donkDrawerQtySpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Immediate touch feedback on quantity + and - buttons */
+.woocommerce-mini-cart .quantity .plus:active,
+.woocommerce-mini-cart .quantity .minus:active,
+.woocommerce-cart .quantity .plus:active,
+.woocommerce-cart .quantity .minus:active,
+.woocommerce .quantity .plus:active,
+.woocommerce .quantity .minus:active {
+  background-color: #fd6d25 !important;
+  color: #ffffff !important;
+  transform: scale(0.92);
+}
+
+/* ==========================================================================
+   Scroll-to-Top Button: Reposition above Sticky Add-to-Cart Bar
+   ========================================================================== */
+.single-product #ast-scroll-top,
+.single-product .ast-scroll-top-icon {
+  bottom: 95px !important;
+  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.2s ease !important;
+  z-index: 99999 !important;
+}
+
+@media (max-width: 768px) {
+  .single-product #ast-scroll-top,
+  .single-product .ast-scroll-top-icon {
+    bottom: 85px !important;
+    right: 15px !important;
+  }
 }
 
 .woocommerce-message .button,
