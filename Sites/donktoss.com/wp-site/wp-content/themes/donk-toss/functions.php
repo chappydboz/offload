@@ -458,3 +458,42 @@ add_action( 'wp_footer', function() {
 		<?php
 	}
 }, 100 );
+
+/**
+ * Single Product: Reliable Sticky Add to Cart Bottom Bar Scroll Trigger
+ */
+add_action( 'wp_footer', function() {
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		?>
+		<script id="donktoss-sticky-add-to-cart-trigger">
+		(function() {
+			function initStickyCart() {
+				var stickyBar = document.querySelector('.ast-sticky-add-to-cart');
+				var mainBtn = document.querySelector('.entry-summary .single_add_to_cart_button, .product .single_add_to_cart_button');
+				if (!stickyBar || !mainBtn) return;
+
+				function checkSticky() {
+					var rect = mainBtn.getBoundingClientRect();
+					// When main Add to Cart button scrolls above viewport
+					if (rect.bottom <= 80) {
+						stickyBar.classList.add('is-active');
+					} else {
+						stickyBar.classList.remove('is-active');
+					}
+				}
+
+				window.addEventListener('scroll', checkSticky, { passive: true });
+				window.addEventListener('resize', checkSticky, { passive: true });
+				checkSticky();
+			}
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', initStickyCart);
+			} else {
+				initStickyCart();
+			}
+		})();
+		</script>
+		<?php
+	}
+}, 100 );
