@@ -3,7 +3,7 @@ Theme Name: Donk Toss
 Author: Brainstorm Force
 Author URI: https://airshp.com
 Description: Donk Toss - an Astra child theme
-Version: 4.8.9
+Version: 4.9.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: donk-toss
@@ -2205,6 +2205,19 @@ body.woocommerce-order-received .woocommerce-order,
   width: 100% !important;
   box-sizing: border-box !important;
   float: none !important;
+}
+
+/* Eliminate WooCommerce core pseudo-element clearfixes that act as rogue grid items */
+.woocommerce-order-received ul.order_details::before,
+.woocommerce-order-received ul.order_details::after,
+.woocommerce-order-received ul.woocommerce-order-overview::before,
+.woocommerce-order-received ul.woocommerce-order-overview::after,
+.woocommerce-checkout .woocommerce-order ul.woocommerce-order-overview::before,
+.woocommerce-checkout .woocommerce-order ul.woocommerce-order-overview::after,
+.woocommerce-order-received ul.woocommerce-thankyou-order-details::before,
+.woocommerce-order-received ul.woocommerce-thankyou-order-details::after {
+  content: none !important;
+  display: none !important;
 }
 
 @media (max-width: 820px) {
