@@ -5474,78 +5474,182 @@ body.single-product .ast-scroll-top-icon {
 }
 
 /* Product Stock / Custom Inventory Label Badge - Full-width Flush Bottom Banner */
-ul.products li.product .custom-product-label-badge,
-ul.products li.product .ast-shop-product-out-of-stock.custom-product-label-badge,
+body.woocommerce ul.products li.product .custom-product-label-badge,
+body.woocommerce ul.products li.product .ast-shop-product-out-of-stock.custom-product-label-badge,
 .wc-block-grid__product .custom-product-label-badge,
 .wc-block-product .custom-product-label-badge,
 .wp-block-woocommerce-product-image .custom-product-label-badge {
-  position: absolute !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: auto !important;
-  transform: none !important;
-  z-index: 10 !important;
-  width: 100% !important;
-  height: auto !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  background: var(--ast-global-color-2, #fd6d25) !important;
-  color: #ffffff !important;
-  font-family: 'Karla', sans-serif !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  line-height: 1.2 !important;
-  padding: 8px 12px !important;
-  border-radius: 0 !important;
-  white-space: nowrap !important;
-  pointer-events: auto !important;
-  transition: background-color 0.2s ease !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: auto;
+  transform: none;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--ast-global-color-2, #fd6d25);
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  padding: 6px 10px;
+  border-radius: 0;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: background-color 0.2s ease;
 }
 
-ul.products li.product:hover .custom-product-label-badge,
+/* Mobile: Sleeker height and padding to preserve product thumbnail prominence */
+@media (max-width: 768px) {
+  body.woocommerce ul.products li.product .custom-product-label-badge,
+  body.woocommerce ul.products li.product .ast-shop-product-out-of-stock.custom-product-label-badge,
+  .wc-block-grid__product .custom-product-label-badge,
+  .wc-block-product .custom-product-label-badge,
+  .wp-block-woocommerce-product-image .custom-product-label-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+  }
+}
+
+body.woocommerce ul.products li.product:hover .custom-product-label-badge,
 .wc-block-product:hover .custom-product-label-badge,
 .wc-block-grid__product:hover .custom-product-label-badge {
-  transform: none !important;
-  background-color: #ff5722 !important;
+  transform: none;
+  background-color: #ff5722;
 }
 
-ul.products li.product,
+body.woocommerce ul.products li.product,
 .wc-block-product,
 .wc-block-grid__product {
-  cursor: pointer !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-ul.products li.product:hover,
+body.woocommerce ul.products li.product:hover,
 .wc-block-product:hover,
 .wc-block-grid__product:hover {
-  transform: translateY(-3px) !important;
+  transform: translateY(-3px);
 }
 
 .wc-block-components-product-image,
 .wc-block-grid__product-image,
 .wp-block-woocommerce-product-image {
-  position: relative !important;
-  overflow: hidden !important;
+  position: relative;
+  overflow: hidden;
 }
 
 .wc-block-components-product-image a,
 .wc-block-grid__product-image a {
-  display: block !important;
-  position: relative !important;
+  display: block;
+  position: relative;
 }
 
 .wc-block-product h2.wp-block-post-title,
 .wc-block-product .wp-block-post-title a {
-  cursor: pointer !important;
-  transition: color 0.2s ease !important;
-  text-decoration: none !important;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Mobile Navigation Design System (Bold Orange, Clean Borders, Dark Backdrop)
+   ========================================================================== */
+.ast-header-break-point .ast-mobile-header-wrap .ast-mobile-header-content,
+.ast-header-break-point .ast-mobile-header-content {
+  background-color: #3e1670;
+  background: linear-gradient(180deg, #4c1d85 0%, #2e0854 100%);
+  border-bottom: 3px solid #fd6d25;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+  padding: 0.75rem 0;
+}
+
+/* Darken page underneath when mobile navigation menu is open */
+body.ast-main-header-nav-open #content,
+body.ast-main-header-nav-open .site-content {
+  filter: brightness(0.4) blur(2px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+}
+
+/* Remove default white borders, use subtle orange dividers */
+.ast-header-break-point .main-header-bar-navigation .main-header-menu,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu,
+.ast-header-break-point #ast-hf-mobile-menu {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item {
+  border-top: none;
+  border-right: none;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid rgba(253, 109, 37, 0.2);
+  transition: all 0.2s ease;
+}
+
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item:last-child,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item:last-child,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item:last-child {
+  border-bottom: none;
+}
+
+/* Bold Orange Links transformed to UPPERCASE */
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item .menu-link,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item .menu-link,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item .menu-link {
+  color: #fd6d25;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item .menu-link .menu-text,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item .menu-link .menu-text,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item .menu-link .menu-text {
+  color: #fd6d25;
+  font-weight: 800;
+}
+
+/* Active & Hover States */
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item:hover,
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item.current-menu-item,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item:hover,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item.current-menu-item,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item:hover,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item.current-menu-item {
+  border-left-color: #fd6d25;
+  background: rgba(253, 109, 37, 0.12);
+}
+
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item:hover .menu-link,
+.ast-header-break-point .main-header-bar-navigation .main-header-menu .menu-item.current-menu-item .menu-link,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item:hover .menu-link .menu-text,
+.ast-header-break-point .ast-mobile-header-content .main-header-menu .menu-item.current-menu-item .menu-link .menu-text,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item:hover .menu-link .menu-text,
+.ast-header-break-point #ast-hf-mobile-menu .menu-item.current-menu-item .menu-link .menu-text {
+  color: #ffffff;
 }
 
 .wc-block-product:hover h2.wp-block-post-title a,
