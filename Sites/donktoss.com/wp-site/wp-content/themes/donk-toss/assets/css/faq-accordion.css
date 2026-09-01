@@ -34,8 +34,9 @@
   gap: 8px;
 }
 
-/* Search Field - Full Width of Container with Frosted Glass */
-.donktoss-faq-search-wrapper {
+/* Search Field - Full Width with High Contrast & Frosted Glass */
+.donktoss-faq-search-wrapper,
+.entry-content .donktoss-faq-search-wrapper {
   position: relative;
   margin-bottom: 2.5rem;
   width: 100%;
@@ -43,37 +44,44 @@
   box-sizing: border-box;
 }
 
-.donktoss-faq-search-input,
-input[type="text"].donktoss-faq-search-input {
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input,
+.entry-content .donktoss-faq-search-wrapper input[type="text"],
+.donktoss-faq-search-input {
   width: 100%;
   padding: 16px 20px 16px 52px;
   font-size: 1.05rem;
+  font-weight: 600;
   line-height: 1.4;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
   border-radius: 30px;
-  background-color: rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
   transition: all 0.2s ease-in-out;
   outline: none;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   box-sizing: border-box;
 }
 
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::placeholder,
 .donktoss-faq-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.7);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.7);
   opacity: 1;
 }
 
-.donktoss-faq-search-input:focus,
-input[type="text"].donktoss-faq-search-input:focus {
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input:focus,
+.entry-content .donktoss-faq-search-wrapper input[type="text"]:focus,
+.donktoss-faq-search-input:focus {
   border-color: #fd6d25;
-  background-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.18);
   color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(253, 109, 37, 0.35), 0 4px 16px rgba(0, 0, 0, 0.2);
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(253, 109, 37, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .donktoss-faq-search-icon {
@@ -81,7 +89,7 @@ input[type="text"].donktoss-faq-search-input:focus {
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -94,7 +102,7 @@ input[type="text"].donktoss-faq-search-input:focus {
 .donktoss-faq-search-icon svg {
   width: 18px;
   height: 18px;
-  stroke: rgba(255, 255, 255, 0.75);
+  stroke: rgba(255, 255, 255, 0.85);
 }
 
 /* Individual Category Groups as Separate Frosted Glass Containers */
@@ -150,15 +158,16 @@ input[type="text"].donktoss-faq-search-input:focus {
 }
 
 .donktoss-faq-item:hover {
-  border-color: rgba(253, 109, 37, 0.5);
+  border-color: rgba(168, 85, 247, 0.5);
   background-color: rgba(255, 255, 255, 0.12);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
+/* Open / Active State - Rich Purple Highlight */
 .donktoss-faq-item[open] {
-  border-color: rgba(253, 109, 37, 0.5);
-  background: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(46, 16, 84, 0.65);
+  box-shadow: 0 6px 22px rgba(30, 10, 58, 0.45);
 }
 
 /* Summary (Question Header) */
@@ -199,23 +208,23 @@ input[type="text"].donktoss-faq-search-input:focus {
 /* Rollover / Hover State */
 .donktoss-faq-question:hover,
 .donktoss-faq-item:hover .donktoss-faq-question {
-  background-color: rgba(253, 109, 37, 0.12);
+  background-color: rgba(93, 39, 158, 0.3);
 }
 
 .donktoss-faq-question:hover .donktoss-faq-question-text,
 .donktoss-faq-item:hover .donktoss-faq-question-text {
-  color: #ff8547;
+  color: #ffffff;
 }
 
 .donktoss-faq-question:hover .donktoss-faq-icon,
 .donktoss-faq-item:hover .donktoss-faq-icon {
-  color: #ff8547;
+  color: #ffffff;
 }
 
-/* Open / Active State */
+/* Open / Active State - Purple Highlight */
 .donktoss-faq-item[open] .donktoss-faq-question {
-  background-color: rgba(253, 109, 37, 0.18);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(93, 39, 158, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .donktoss-faq-item[open] .donktoss-faq-question-text {
@@ -224,7 +233,7 @@ input[type="text"].donktoss-faq-search-input:focus {
 }
 
 .donktoss-faq-question:focus-visible {
-  outline: 2px solid #fd6d25;
+  outline: 2px solid #a855f7;
   outline-offset: -2px;
   border-radius: 9px;
 }
@@ -232,7 +241,7 @@ input[type="text"].donktoss-faq-search-input:focus {
 /* Pill Badge - Crisp High Contrast */
 .donktoss-faq-badge {
   background-color: #ffffff;
-  color: #e55b13;
+  color: #5d279e;
   font-size: 0.72rem;
   font-weight: 800;
   padding: 3px 10px;
@@ -265,7 +274,7 @@ input[type="text"].donktoss-faq-search-input:focus {
 
 .donktoss-faq-item[open] .donktoss-faq-icon {
   transform: rotate(180deg);
-  color: #fd6d25;
+  color: #ffffff;
 }
 
 /* Answer Container */
@@ -274,6 +283,7 @@ input[type="text"].donktoss-faq-search-input:focus {
   color: rgba(255, 255, 255, 0.9);
   font-size: 1rem;
   line-height: 1.65;
+  background: rgba(30, 10, 58, 0.25);
   animation: donktossFaqFadeIn 0.25s ease-out;
 }
 
