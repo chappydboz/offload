@@ -550,6 +550,14 @@ add_action( 'wp_footer', function() {
 				}
 			}
 		});
+		// Auto blur close button when drawer opens to prevent dashed focus outline
+		document.addEventListener('astra_on_slide_In_cart_open', function() {
+			var closeBtn = document.querySelector('.astra-cart-drawer-close');
+			if (closeBtn) {
+				setTimeout(function() { closeBtn.blur(); }, 50);
+				setTimeout(function() { closeBtn.blur(); }, 150);
+			}
+		});
 	})();
 	</script>
 	<?php

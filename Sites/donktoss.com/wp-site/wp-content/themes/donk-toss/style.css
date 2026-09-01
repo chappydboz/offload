@@ -5782,11 +5782,19 @@ body.ast-main-header-nav-open #primary {
 .menu-toggle:active,
 [data-section="section-header-mobile-trigger"] button,
 [data-section="section-header-mobile-trigger"] button:focus,
+.ast-mobile-menu-trigger-minimal,
+.ast-mobile-menu-trigger-minimal:focus,
+#astra-mobile-cart-drawer .astra-cart-drawer-close,
+#astra-mobile-cart-drawer .astra-cart-drawer-close:focus,
+#astra-mobile-cart-drawer .astra-cart-drawer-close:active,
+#astra-mobile-cart-drawer .astra-cart-drawer-close:focus-visible,
 .astra-cart-drawer .astra-cart-drawer-close,
 .astra-cart-drawer .astra-cart-drawer-close:focus,
 .astra-cart-drawer .astra-cart-drawer-close:active,
-.ast-mobile-menu-trigger-minimal,
-.ast-mobile-menu-trigger-minimal:focus {
+.astra-cart-drawer .astra-cart-drawer-close:focus-visible,
+button.astra-cart-drawer-close,
+button.astra-cart-drawer-close:focus,
+button.astra-cart-drawer-close:focus-visible {
   outline: none;
   border: none;
   border-color: transparent;
@@ -5796,7 +5804,6 @@ body.ast-main-header-nav-open #primary {
 .main-header-menu-toggle:focus:not(:focus-visible),
 .menu-toggle:focus:not(:focus-visible),
 [data-section="section-header-mobile-trigger"] button:focus:not(:focus-visible),
-.astra-cart-drawer .astra-cart-drawer-close:focus:not(:focus-visible),
 .ast-mobile-menu-trigger-minimal:focus:not(:focus-visible) {
   outline: none;
   border: none;
@@ -5805,8 +5812,7 @@ body.ast-main-header-nav-open #primary {
 }
 
 .main-header-menu-toggle:focus-visible,
-.menu-toggle:focus-visible,
-.astra-cart-drawer .astra-cart-drawer-close:focus-visible {
+.menu-toggle:focus-visible {
   outline: 2px dashed #fd6d25;
   outline-offset: 2px;
 }
