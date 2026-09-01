@@ -18,56 +18,44 @@ Template: astra
   --ast-form-field-color: #64748b;
 }
 
-/* Ensure placeholder text is crisp and readable on white backgrounds */
-::placeholder,
+/* Ensure placeholder text is crisp and readable on light form fields */
 .woocommerce form .form-row input.input-text::placeholder,
 .woocommerce form .form-row textarea::placeholder,
 .woocommerce-checkout input::placeholder,
 .woocommerce-checkout textarea::placeholder,
 .wc-block-components-text-input input::placeholder,
-.wc-block-components-text-input label,
-input::placeholder,
-textarea::placeholder {
-  color: #64748b !important;
-  opacity: 1 !important;
-  -webkit-text-fill-color: #64748b !important;
+.wc-block-components-text-input label {
+  color: #64748b;
+  opacity: 1;
+  -webkit-text-fill-color: #64748b;
 }
 
 /* Chrome / Safari / Webkit */
-::-webkit-input-placeholder,
 .woocommerce form .form-row input.input-text::-webkit-input-placeholder,
 .woocommerce form .form-row textarea::-webkit-input-placeholder,
 .woocommerce-checkout input::-webkit-input-placeholder,
-.woocommerce-checkout textarea::-webkit-input-placeholder,
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  color: #64748b !important;
-  opacity: 1 !important;
-  -webkit-text-fill-color: #64748b !important;
+.woocommerce-checkout textarea::-webkit-input-placeholder {
+  color: #64748b;
+  opacity: 1;
+  -webkit-text-fill-color: #64748b;
 }
 
 /* Firefox 19+ */
-::-moz-placeholder,
 .woocommerce form .form-row input.input-text::-moz-placeholder,
 .woocommerce form .form-row textarea::-moz-placeholder,
 .woocommerce-checkout input::-moz-placeholder,
-.woocommerce-checkout textarea::-moz-placeholder,
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-  color: #64748b !important;
-  opacity: 1 !important;
+.woocommerce-checkout textarea::-moz-placeholder {
+  color: #64748b;
+  opacity: 1;
 }
 
 /* Internet Explorer 10+ / Edge */
-:-ms-input-placeholder,
 .woocommerce form .form-row input.input-text:-ms-input-placeholder,
 .woocommerce form .form-row textarea:-ms-input-placeholder,
 .woocommerce-checkout input:-ms-input-placeholder,
-.woocommerce-checkout textarea:-ms-input-placeholder,
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-  color: #64748b !important;
-  opacity: 1 !important;
+.woocommerce-checkout textarea:-ms-input-placeholder {
+  color: #64748b;
+  opacity: 1;
 }
 
 /* High contrast for form inputs */
