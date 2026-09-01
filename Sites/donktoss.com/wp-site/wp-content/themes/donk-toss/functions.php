@@ -526,6 +526,30 @@ add_action( 'wp_footer', function() {
 				btn.blur();
 			}
 		});
+
+		// Smart Continue Shopping button handler
+		document.addEventListener('click', function(e) {
+			var continueBtn = e.target.closest('.ast-continue-shopping, a.ast-continue-shopping');
+			if (continueBtn) {
+				var path = window.location.pathname;
+				var isShop = path === '/shop/' || 
+				             path.indexOf('/shop') === 0 || 
+				             path.indexOf('/product/') === 0 || 
+				             document.body.classList.contains('post-type-archive-product') || 
+				             document.body.classList.contains('tax-product_cat') || 
+				             document.body.classList.contains('single-product');
+
+				if (isShop) {
+					e.preventDefault();
+					e.stopPropagation();
+					var drawer = document.getElementById('astra-mobile-cart-drawer');
+					if (drawer) {
+						drawer.classList.remove('active', 'woocommerce-active');
+						document.documentElement.classList.remove('ast-mobile-cart-active');
+					}
+				}
+			}
+		});
 	})();
 	</script>
 	<?php
