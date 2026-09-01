@@ -67,10 +67,36 @@ body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input,
 }
 
 body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::placeholder,
+body .donktoss-faq-search-wrapper input[type="text"]::placeholder,
+.entry-content .donktoss-faq-search-wrapper input[type="text"]::placeholder,
 .donktoss-faq-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-  -webkit-text-fill-color: rgba(255, 255, 255, 0.7);
-  opacity: 1;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 0.95;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::-webkit-input-placeholder,
+body .donktoss-faq-search-wrapper input[type="text"]::-webkit-input-placeholder,
+.entry-content .donktoss-faq-search-wrapper input[type="text"]::-webkit-input-placeholder,
+.donktoss-faq-search-input::-webkit-input-placeholder {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 0.95;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::-moz-placeholder,
+body .donktoss-faq-search-wrapper input[type="text"]::-moz-placeholder,
+.entry-content .donktoss-faq-search-wrapper input[type="text"]::-moz-placeholder,
+.donktoss-faq-search-input::-moz-placeholder {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 0.95;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input:focus,
