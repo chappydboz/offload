@@ -1276,7 +1276,7 @@ body .donktoss-faq-search-wrapper input[type="text"]::placeholder,
 .donktoss-faq-search-input::placeholder {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  opacity: 0.95;
+  opacity: 1;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
@@ -1287,7 +1287,7 @@ body .donktoss-faq-search-wrapper input[type="text"]::-webkit-input-placeholder,
 .donktoss-faq-search-input::-webkit-input-placeholder {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  opacity: 0.95;
+  opacity: 1;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
@@ -1298,7 +1298,7 @@ body .donktoss-faq-search-wrapper input[type="text"]::-moz-placeholder,
 .donktoss-faq-search-input::-moz-placeholder {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  opacity: 0.95;
+  opacity: 1;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
@@ -1319,7 +1319,7 @@ body .donktoss-faq-search-wrapper input[type="text"]:focus,
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -1332,7 +1332,7 @@ body .donktoss-faq-search-wrapper input[type="text"]:focus,
 .donktoss-faq-search-icon svg {
   width: 18px;
   height: 18px;
-  stroke: rgba(255, 255, 255, 0.85);
+  stroke: #ffffff;
 }
 
 /* Individual Category Groups as Separate Frosted Glass Containers */
@@ -1353,6 +1353,12 @@ body .donktoss-faq-category-group,
 body .donktoss-faq-category-group:last-child,
 .entry-content .donktoss-faq-category-group:last-child {
   margin-bottom: 0;
+}
+
+body .donktoss-faq-category-group.is-hidden-by-search,
+.entry-content .donktoss-faq-category-group.is-hidden-by-search,
+.donktoss-faq-category-group.is-hidden-by-search {
+  display: none;
 }
 
 .donktoss-woocommerce-faq-wrap h2,

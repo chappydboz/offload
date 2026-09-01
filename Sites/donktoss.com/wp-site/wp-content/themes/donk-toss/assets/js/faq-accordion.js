@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			searchInput.addEventListener('input', function (e) {
 				const searchTerm = e.target.value.toLowerCase().trim();
 				const categoryGroups = block.querySelectorAll('.donktoss-faq-category-group');
+				let totalVisible = 0;
 
 				categoryGroups.forEach(function (group) {
 					let visibleInGroup = 0;
@@ -43,22 +44,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
 						if (searchTerm === '' || questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
 							item.classList.remove('is-hidden-by-search');
+							item.style.display = '';
 							visibleInGroup++;
+							totalVisible++;
 						} else {
 							item.classList.add('is-hidden-by-search');
+							item.style.display = 'none';
 						}
 					});
 
-					// Hide category heading if no visible items in category
-					const categoryHeading = group.querySelector('.donktoss-faq-category-heading');
-					if (categoryHeading) {
-						if (visibleInGroup === 0 && searchTerm !== '') {
-							categoryHeading.style.display = 'none';
-						} else {
-							categoryHeading.style.display = '';
-						}
+					// Hide the entire category group container if no visible items match search
+					if (visibleInGroup === 0 && searchTerm !== '') {
+						group.classList.add('is-hidden-by-search');
+						group.style.display = 'none';
+					} else {
+						group.classList.remove('is-hidden-by-search');
+						group.style.display = '';
 					}
 				});
+
+				// Optional: Handle empty state if no questions match across all groups
+				let noResultsEl = block.querySelector('.donktoss-faq-no-results');
+				if (totalVisible === 0 && searchTerm !== '') {
+					if (!noResultsEl) {
+						noResultsEl = document.createElement('div');
+						noResultsEl.className = 'donktoss-faq-no-results donktoss-faq-category-group';
+						noResultsEl.innerHTML = '<p style="margin:0; text-align:center; font-size:1.1rem; color:rgba(255,255,255,0.9);">No questions found matching your search.</p>';
+						const listWrap = block.querySelector('.donktoss-faq-list') || block;
+						listWrap.appendChild(noResultsEl);
+					} else {
+						noResultsEl.style.display = '';
+					}
+				} else if (noResultsEl) {
+					noResultsEl.style.display = 'none';
+				}
 			});
 		}
 	});

@@ -51,6 +51,11 @@ function child_enqueue_styles() {
 	if ( file_exists( $faq_css ) ) {
 		wp_enqueue_style( 'donk-toss-faq-block-css', get_stylesheet_directory_uri() . '/assets/css/faq-accordion.css', array('donk-toss-theme-css'), filemtime( $faq_css ), 'all' );
 	}
+
+	$faq_js = get_stylesheet_directory() . '/assets/js/faq-accordion.js';
+	if ( file_exists( $faq_js ) ) {
+		wp_enqueue_script( 'donk-toss-faq-block-js', get_stylesheet_directory_uri() . '/assets/js/faq-accordion.js', array(), filemtime( $faq_js ), true );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 100 );
