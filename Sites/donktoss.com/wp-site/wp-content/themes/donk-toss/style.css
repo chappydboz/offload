@@ -1203,243 +1203,240 @@ html {
    WooCommerce Embedded FAQ Blocks Container
    ========================================================================== */
 
+.product .donktoss-woocommerce-faq-wrap,
 .donktoss-woocommerce-faq-wrap {
-  width: 100% !important;
-  max-width: 1200px !important;
-  margin: 4rem auto 2.5rem auto !important;
-  padding: 2.25rem !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  border-radius: 20px !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
-  clear: both !important;
-  display: block !important;
-  position: relative !important;
-  box-sizing: border-box !important;
-  float: none !important;
-  flex: 0 0 100% !important;
-  grid-column: 1 / -1 !important;
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto 2.5rem auto;
+  padding: 2.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  clear: both;
+  display: block;
+  position: relative;
+  box-sizing: border-box;
 }
-
-
 
 .donktoss-woocommerce-faq-wrap h2,
 .donktoss-woocommerce-faq-wrap h3 {
-  color: #ffffff !important;
-  font-size: 1.75rem !important;
-  font-weight: 800 !important;
-  margin-top: 0 !important;
-  margin-bottom: 1.5rem !important;
-  border-bottom: 2px solid #ff5722 !important;
-  padding-bottom: 8px !important;
-  display: inline-block !important;
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ff5722;
+  padding-bottom: 8px;
+  display: inline-block;
 }
 
 /* FAQ Items Container & Card */
 .donktoss-faq-item {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  transition: all 0.2s ease !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
-  margin-bottom: 12px !important;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
 }
 
 /* FAQ Question Row Alignment & High Contrast Typography */
 .donktoss-faq-question {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 16px 20px !important;
-  font-size: 1.05rem !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  cursor: pointer !important;
-  user-select: none !important;
-  list-style: none !important;
-  transition: background-color 0.2s ease, color 0.2s ease !important;
-  position: relative !important;
-  box-sizing: border-box !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .donktoss-faq-question::-webkit-details-marker,
 .donktoss-faq-question::marker {
-  display: none !important;
-  content: "" !important;
+  display: none;
+  content: "";
 }
 
 .donktoss-faq-question-text {
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  font-size: 1.05rem !important;
-  line-height: 1.45 !important;
-  flex: 1 !important;
-  padding-right: 14px !important;
-  display: inline-block !important;
-  align-self: center !important;
-  transition: color 0.2s ease !important;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  flex: 1;
+  padding-right: 14px;
+  display: inline-block;
+  align-self: center;
+  transition: color 0.2s ease;
 }
 
 /* Pill Badge - Crisp High Contrast */
 .donktoss-faq-badge {
-  background-color: #ffffff !important;
-  color: #e55b13 !important;
-  font-size: 0.72rem !important;
-  font-weight: 800 !important;
-  padding: 3px 10px !important;
-  border-radius: 9999px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
-  margin-right: 12px !important;
-  white-space: nowrap !important;
-  align-self: center !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
-  flex-shrink: 0 !important;
+  background-color: #ffffff;
+  color: #e55b13;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 12px;
+  white-space: nowrap;
+  align-self: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 }
 
 /* Chevron Icon */
 .donktoss-faq-icon {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  align-self: center !important;
-  height: 24px !important;
-  width: 24px !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease !important;
-  flex-shrink: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  height: 24px;
+  width: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .donktoss-faq-icon svg {
-  stroke: currentColor !important;
+  stroke: currentColor;
 }
 
 /* Rollover / Hover State */
 .donktoss-faq-question:hover,
 .donktoss-faq-item:hover .donktoss-faq-question {
-  background-color: rgba(255, 87, 34, 0.12) !important;
+  background-color: rgba(255, 87, 34, 0.12);
 }
 
 .donktoss-faq-question:hover .donktoss-faq-question-text,
 .donktoss-faq-item:hover .donktoss-faq-question-text {
-  color: #ff8547 !important;
+  color: #ff8547;
 }
 
 .donktoss-faq-question:hover .donktoss-faq-icon,
 .donktoss-faq-item:hover .donktoss-faq-icon {
-  color: #ff8547 !important;
+  color: #ff8547;
 }
 
 /* Open / Active State */
 .donktoss-faq-item[open] {
-  border-color: rgba(253, 109, 37, 0.5) !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+  border-color: rgba(253, 109, 37, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .donktoss-faq-item[open] .donktoss-faq-question {
-  background-color: rgba(253, 109, 37, 0.18) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(253, 109, 37, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .donktoss-faq-item[open] .donktoss-faq-question-text {
-  color: #ffffff !important;
-  font-weight: 800 !important;
+  color: #ffffff;
+  font-weight: 800;
 }
 
 .donktoss-faq-item[open] .donktoss-faq-icon {
-  transform: rotate(180deg) !important;
-  color: var(--ast-global-color-2, #fd6d25) !important;
+  transform: rotate(180deg);
+  color: var(--ast-global-color-2, #fd6d25);
 }
 
 /* FAQ Answer Content */
 .donktoss-faq-answer {
-  padding: 16px 22px 22px 22px !important;
-  color: #f1f5f9 !important;
-  font-size: 1rem !important;
-  line-height: 1.65 !important;
-  box-sizing: border-box !important;
+  padding: 16px 22px 22px 22px;
+  color: #f1f5f9;
+  font-size: 1rem;
+  line-height: 1.65;
+  box-sizing: border-box;
 }
 
 .donktoss-faq-answer-inner > *:first-child {
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .donktoss-faq-answer-inner > *:last-child {
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
 }
 
 .donktoss-faq-answer a {
-  color: var(--ast-global-color-2, #fd6d25) !important;
-  text-decoration: underline !important;
-  font-weight: 700 !important;
+  color: var(--ast-global-color-2, #fd6d25);
+  text-decoration: underline;
+  font-weight: 700;
 }
 
 .donktoss-faq-answer a:hover {
-  color: #ff8547 !important;
+  color: #ff8547;
 }
 
 /* Footer CTA Spacing */
 .donktoss-faq-footer-cta {
-  margin-top: 42px !important;
-  padding-top: 24px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+  margin-top: 42px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 /* ==========================================================================
    Responsive Mobile Optimization: Tighten Product FAQs & Containers
    ========================================================================== */
 @media (max-width: 768px) {
+  .product .donktoss-woocommerce-faq-wrap,
   .donktoss-woocommerce-faq-wrap {
-    margin: 2rem auto 1.5rem auto !important;
-    padding: 1.25rem 0.85rem !important;
-    border-radius: 14px !important;
+    margin: 2rem auto 1.5rem auto;
+    padding: 1.25rem 0.85rem;
+    border-radius: 14px;
   }
 
   .donktoss-woocommerce-faq-wrap h2,
   .donktoss-woocommerce-faq-wrap h3 {
-    font-size: 1.4rem !important;
-    margin-bottom: 1rem !important;
-    padding-bottom: 6px !important;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    padding-bottom: 6px;
   }
 
   .donktoss-faq-item {
-    margin-bottom: 8px !important;
-    border-radius: 8px !important;
+    margin-bottom: 8px;
+    border-radius: 8px;
   }
 
   .donktoss-faq-question {
-    padding: 12px 14px !important;
+    padding: 12px 14px;
   }
 
   .donktoss-faq-question-text {
-    font-size: 0.95rem !important;
-    line-height: 1.35 !important;
-    padding-right: 8px !important;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    padding-right: 8px;
   }
 
   .donktoss-faq-badge {
-    font-size: 0.68rem !important;
-    padding: 2px 7px !important;
-    margin-right: 8px !important;
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    margin-right: 8px;
   }
 
   .donktoss-faq-icon {
-    width: 20px !important;
-    height: 20px !important;
+    width: 20px;
+    height: 20px;
   }
 
   .donktoss-faq-answer {
-    padding: 12px 14px 16px 14px !important;
-    font-size: 0.92rem !important;
-    line-height: 1.55 !important;
+    padding: 12px 14px 16px 14px;
+    font-size: 0.92rem;
+    line-height: 1.55;
   }
 
   .donktoss-faq-footer-cta {
-    margin-top: 24px !important;
-    padding-top: 16px !important;
-    font-size: 0.9rem !important;
+    margin-top: 24px;
+    padding-top: 16px;
+    font-size: 0.9rem;
   }
 }
 
@@ -5020,22 +5017,22 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   box-sizing: border-box !important;
 }
 
-.woocommerce-message::before,
-.woocommerce-info::before,
-.woocommerce-error::before,
+.woocommerce .woocommerce-message::before,
+.woocommerce .woocommerce-info::before,
+.woocommerce .woocommerce-error::before,
 .woocommerce-MyAccount-content .woocommerce-message::before,
 .woocommerce-MyAccount-content .woocommerce-info::before,
 .woocommerce-MyAccount-content .woocommerce-error::before {
-  position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  left: 20px !important;
-  color: var(--ast-global-color-2, #fd6d25) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 1 !important;
-  font-size: 1.25rem !important;
-  display: inline-block !important;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  color: var(--ast-global-color-2, #fd6d25);
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 1.25rem;
+  display: inline-block;
 }
 
 /* ==========================================================================
@@ -5044,34 +5041,34 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
 .woocommerce-mini-cart.ajax-mini-cart-qty-loading,
 #astra-mobile-cart-drawer .woocommerce-mini-cart.ajax-mini-cart-qty-loading,
 .ast-site-header-cart.ajax-mini-cart-qty-loading {
-  position: relative !important;
-  pointer-events: none !important;
+  position: relative;
+  pointer-events: none;
 }
 
 .woocommerce-mini-cart.ajax-mini-cart-qty-loading .woocommerce-mini-cart-item,
 .woocommerce-mini-cart.ajax-mini-cart-qty-loading .woocommerce-mini-cart__total,
 .woocommerce-mini-cart.ajax-mini-cart-qty-loading .woocommerce-mini-cart__buttons,
 .woocommerce-mini-cart.ajax-mini-cart-qty-loading p.total {
-  opacity: 0.4 !important;
+  opacity: 0.4;
   filter: blur(0.5px);
-  transition: opacity 0.2s ease, filter 0.2s ease !important;
+  transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
 /* Crisp spinning loader centered in drawer during quantity update */
 .woocommerce-mini-cart.ajax-mini-cart-qty-loading::after {
-  content: "" !important;
-  position: absolute !important;
-  top: 40% !important;
-  left: 50% !important;
-  width: 36px !important;
-  height: 36px !important;
-  margin-top: -18px !important;
-  margin-left: -18px !important;
-  border: 3px solid rgba(253, 109, 37, 0.25) !important;
-  border-top-color: #fd6d25 !important;
-  border-radius: 50% !important;
-  animation: donkDrawerQtySpin 0.6s linear infinite !important;
-  z-index: 9999 !important;
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  margin-top: -18px;
+  margin-left: -18px;
+  border: 3px solid rgba(253, 109, 37, 0.25);
+  border-top-color: #fd6d25;
+  border-radius: 50%;
+  animation: donkDrawerQtySpin 0.6s linear infinite;
+  z-index: 9999;
 }
 
 @keyframes donkDrawerQtySpin {
@@ -5085,26 +5082,26 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
 .woocommerce-cart .quantity .minus:active,
 .woocommerce .quantity .plus:active,
 .woocommerce .quantity .minus:active {
-  background-color: #fd6d25 !important;
-  color: #ffffff !important;
+  background-color: #fd6d25;
+  color: #ffffff;
   transform: scale(0.92);
 }
 
 /* ==========================================================================
    Scroll-to-Top Button: Reposition above Sticky Add-to-Cart Bar
    ========================================================================== */
-.single-product #ast-scroll-top,
-.single-product .ast-scroll-top-icon {
-  bottom: 95px !important;
-  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.2s ease !important;
-  z-index: 99999 !important;
+body.single-product #ast-scroll-top,
+body.single-product .ast-scroll-top-icon {
+  bottom: 95px;
+  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.2s ease;
+  z-index: 99999;
 }
 
 @media (max-width: 768px) {
-  .single-product #ast-scroll-top,
-  .single-product .ast-scroll-top-icon {
-    bottom: 85px !important;
-    right: 15px !important;
+  body.single-product #ast-scroll-top,
+  body.single-product .ast-scroll-top-icon {
+    bottom: 85px;
+    right: 15px;
   }
 }
 
