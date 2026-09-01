@@ -429,3 +429,32 @@ function donktoss_customize_order_received_title( $title, $id = null ) {
 }
 add_filter( 'astra_the_title', 'donktoss_customize_order_received_title', 20, 2 );
 add_filter( 'the_title', 'donktoss_customize_order_received_title', 20, 2 );
+
+/**
+ * Header Cart Icon: Seamless Slide-In Drawer Toggle on Cart Page
+ */
+add_action( 'wp_footer', function() {
+	if ( function_exists( 'is_cart' ) && is_cart() ) {
+		?>
+		<script id="donktoss-cart-page-drawer-toggle">
+		(function($) {
+			$(document).on('click', '.ast-header-woo-cart, .ast-site-header-cart, .ast-site-header-cart-li a', function(e) {
+				var $drawer = $('#astra-mobile-cart-drawer');
+				var $html = $('html');
+				if ($drawer.length) {
+					e.preventDefault();
+					e.stopPropagation();
+					if ($drawer.hasClass('active')) {
+						$drawer.removeClass('active woocommerce-active');
+						$html.removeClass('ast-mobile-cart-active');
+					} else {
+						$drawer.addClass('active woocommerce-active');
+						$html.addClass('ast-mobile-cart-active');
+					}
+				}
+			});
+		})(jQuery);
+		</script>
+		<?php
+	}
+}, 100 );

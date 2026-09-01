@@ -5055,23 +5055,32 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
 }
 
 /* Sidebar Cart Drawer: Position Item Close/Remove Button on Left Over Product Thumbnail */
-.astra-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart .woocommerce-mini-cart-item,
+#astra-mobile-cart-drawer .widget_shopping_cart_content ul.cart_list li,
+#astra-mobile-cart-drawer .widget_shopping_cart_content ul.woocommerce-mini-cart li,
+#astra-mobile-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart .woocommerce-mini-cart-item,
+.ast-site-header-cart .widget_shopping_cart_content ul.cart_list li,
 .ast-site-header-cart .woocommerce-mini-cart .woocommerce-mini-cart-item,
 .woocommerce-mini-cart .woocommerce-mini-cart-item {
   position: relative;
 }
 
-.astra-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart a.remove,
-.ast-site-header-cart .woocommerce-mini-cart-item a.remove,
+#astra-mobile-cart-drawer .widget_shopping_cart_content ul.cart_list li a.remove,
+#astra-mobile-cart-drawer .widget_shopping_cart_content ul.woocommerce-mini-cart li a.remove,
+#astra-mobile-cart-drawer .widget_shopping_cart_content a.remove_from_cart_button,
+#astra-mobile-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart a.remove,
+.ast-site-header-cart .widget_shopping_cart_content ul.cart_list li a.remove,
+.ast-site-header-cart .widget_shopping_cart_content ul.woocommerce-mini-cart li a.remove,
+.ast-site-header-cart .widget_shopping_cart_content a.remove_from_cart_button,
 .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove {
   position: absolute;
   top: 4px;
   left: 4px;
   right: auto;
+  bottom: auto;
   float: none;
   width: 22px;
   height: 22px;
-  line-height: 20px;
+  line-height: 19px;
   text-align: center;
   font-size: 15px;
   font-weight: 700;
@@ -5086,10 +5095,16 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   z-index: 10;
   transition: all 0.2s ease;
   text-decoration: none;
+  margin: 0;
 }
 
-.astra-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart a.remove:hover,
-.ast-site-header-cart .woocommerce-mini-cart-item a.remove:hover,
+#astra-mobile-cart-drawer .widget_shopping_cart_content ul.cart_list li a.remove:hover,
+#astra-mobile-cart-drawer .widget_shopping_cart_content ul.woocommerce-mini-cart li a.remove:hover,
+#astra-mobile-cart-drawer .widget_shopping_cart_content a.remove_from_cart_button:hover,
+#astra-mobile-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart a.remove:hover,
+.ast-site-header-cart .widget_shopping_cart_content ul.cart_list li a.remove:hover,
+.ast-site-header-cart .widget_shopping_cart_content ul.woocommerce-mini-cart li a.remove:hover,
+.ast-site-header-cart .widget_shopping_cart_content a.remove_from_cart_button:hover,
 .woocommerce-mini-cart .woocommerce-mini-cart-item a.remove:hover {
   background: #ea4335;
   border-color: #ea4335;
