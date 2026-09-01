@@ -497,3 +497,30 @@ add_action( 'wp_footer', function() {
 		<?php
 	}
 }, 100 );
+
+/**
+ * Mobile Navigation: Dismiss / Close on Click Outside or on Darkened Backdrop
+ */
+add_action( 'wp_footer', function() {
+	?>
+	<script id="donktoss-mobile-nav-backdrop-close">
+	(function() {
+		document.addEventListener('click', function(e) {
+			if (document.body.classList.contains('ast-main-header-nav-open')) {
+				// If click was outside mobile header content and outside menu toggle button
+				if (!e.target.closest('#ast-mobile-header-content, .ast-mobile-header-content, .main-header-menu-toggle, [data-section="section-header-mobile-trigger"]')) {
+					var toggleBtn = document.querySelector('#ast-mobile-header .main-header-menu-toggle, .main-header-menu-toggle.toggled');
+					if (toggleBtn) {
+						toggleBtn.click();
+					} else {
+						document.body.classList.remove('ast-main-header-nav-open');
+						var nav = document.querySelector('.main-header-bar-navigation');
+						if (nav) nav.classList.remove('toggle-on');
+					}
+				}
+			}
+		});
+	})();
+	</script>
+	<?php
+}, 100 );
