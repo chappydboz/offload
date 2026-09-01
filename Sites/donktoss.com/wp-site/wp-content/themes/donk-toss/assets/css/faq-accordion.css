@@ -3,16 +3,16 @@
  * Responsive, Accessible, and Modern Design System
  */
 
-/* Container & Base Layout */
+/* Container & Base Layout (Transparent Parent) */
 .donktoss-faq-block-container {
   width: 100%;
   max-width: 1200px;
-  margin: 2.5rem auto;
-  padding: 2.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  margin: 1.5rem auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
   box-sizing: border-box;
   font-family: inherit;
   color: #ffffff;
@@ -34,25 +34,31 @@
   gap: 8px;
 }
 
-/* Search Field */
+/* Search Field - Full Width of Container with Frosted Glass */
 .donktoss-faq-search-wrapper {
   position: relative;
-  margin-bottom: 2rem;
-  max-width: 600px;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.donktoss-faq-search-input {
+.donktoss-faq-search-input,
+input[type="text"].donktoss-faq-search-input {
   width: 100%;
-  padding: 14px 18px 14px 48px;
-  font-size: 16px;
+  padding: 16px 20px 16px 52px;
+  font-size: 1.05rem;
   line-height: 1.4;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 30px;
   background-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #ffffff;
   transition: all 0.2s ease-in-out;
   outline: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   box-sizing: border-box;
 }
 
@@ -61,18 +67,21 @@
   opacity: 1;
 }
 
-.donktoss-faq-search-input:focus {
+.donktoss-faq-search-input:focus,
+input[type="text"].donktoss-faq-search-input:focus {
   border-color: #fd6d25;
   background-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 0 0 3px rgba(253, 109, 37, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(253, 109, 37, 0.35), 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .donktoss-faq-search-icon {
   position: absolute;
-  left: 18px;
+  left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -85,19 +94,32 @@
 .donktoss-faq-search-icon svg {
   width: 18px;
   height: 18px;
-  stroke: rgba(255, 255, 255, 0.7);
+  stroke: rgba(255, 255, 255, 0.75);
 }
 
-/* Category Headings */
+/* Individual Category Groups as Separate Frosted Glass Containers */
 .donktoss-faq-category-group {
-  margin-bottom: 36px;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  padding: 2.25rem;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+
+.donktoss-faq-category-group:last-child {
+  margin-bottom: 0;
 }
 
 .donktoss-faq-category-heading {
   font-family: 'Karla', sans-serif;
   font-size: 1.65rem;
   font-weight: 800;
-  margin: 0 0 18px 0;
+  margin: 0 0 1.5rem 0;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -117,24 +139,26 @@
 /* Details & Summary Accordion Card */
 .donktoss-faq-item {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;
   overflow: hidden;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   margin-bottom: 12px;
 }
 
 .donktoss-faq-item:hover {
   border-color: rgba(253, 109, 37, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
 .donktoss-faq-item[open] {
   border-color: rgba(253, 109, 37, 0.5);
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* Summary (Question Header) */
@@ -331,9 +355,9 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .donktoss-faq-block-container {
+  .donktoss-faq-category-group {
     padding: 1.25rem 0.85rem;
-    margin: 1.5rem auto;
+    margin-bottom: 1.5rem;
     border-radius: 14px;
   }
 
