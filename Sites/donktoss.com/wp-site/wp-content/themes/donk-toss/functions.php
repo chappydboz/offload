@@ -28,6 +28,11 @@ require_once get_theme_file_path( '/cpt-faq.php' );
  */
 require_once get_theme_file_path( '/inc/rate-limiter.php' );
 
+/**
+ * Include PostHog WooCommerce Ecommerce & Conversion Tracking
+ */
+require_once get_theme_file_path( '/inc/posthog-woocommerce.php' );
+
 
 /**
  * Enqueue styles (priority 100 ensures child styles load after all plugin stylesheets)
