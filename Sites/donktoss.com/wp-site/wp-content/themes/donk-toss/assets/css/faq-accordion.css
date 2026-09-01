@@ -66,35 +66,51 @@ body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input,
   box-sizing: border-box;
 }
 
-body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::placeholder,
-body .donktoss-faq-search-wrapper input[type="text"]::placeholder,
-.entry-content .donktoss-faq-search-wrapper input[type="text"]::placeholder,
-.donktoss-faq-search-input::placeholder {
+/* WebKit / Chrome / Safari / Edge / Opera */
+.entry-content .donktoss-faq-search-wrapper input.donktoss-faq-search-input::-webkit-input-placeholder {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  opacity: 0.95;
+  opacity: 1;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
-body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::-webkit-input-placeholder,
-body .donktoss-faq-search-wrapper input[type="text"]::-webkit-input-placeholder,
-.entry-content .donktoss-faq-search-wrapper input[type="text"]::-webkit-input-placeholder,
-.donktoss-faq-search-input::-webkit-input-placeholder {
+body .donktoss-faq-search-wrapper input[type="text"]::-webkit-input-placeholder {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  opacity: 0.95;
+  opacity: 1;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
-body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::-moz-placeholder,
-body .donktoss-faq-search-wrapper input[type="text"]::-moz-placeholder,
-.entry-content .donktoss-faq-search-wrapper input[type="text"]::-moz-placeholder,
-.donktoss-faq-search-input::-moz-placeholder {
+/* Firefox */
+.entry-content .donktoss-faq-search-wrapper input.donktoss-faq-search-input::-moz-placeholder {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+body .donktoss-faq-search-wrapper input[type="text"]::-moz-placeholder {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Standard */
+.entry-content .donktoss-faq-search-wrapper input.donktoss-faq-search-input::placeholder {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
-  opacity: 0.95;
+  opacity: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+body .donktoss-faq-search-wrapper input[type="text"]::placeholder {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 1;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
