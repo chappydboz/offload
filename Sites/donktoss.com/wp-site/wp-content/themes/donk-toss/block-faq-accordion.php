@@ -249,10 +249,16 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 
 		<?php if ( $show_search ) : ?>
 			<div class="donktoss-faq-search-wrapper">
-				<input type="text" class="donktoss-faq-search-input" placeholder="Search FAQs..." aria-label="Search FAQs" />
+				<input type="text" class="donktoss-faq-search-input" placeholder="Search FAQs..." aria-label="Search FAQs" autocomplete="off" />
 				<span class="donktoss-faq-search-icon" aria-hidden="true">
 					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 				</span>
+				<button type="button" class="donktoss-faq-search-clear" aria-label="Clear search" style="display: none;">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
 			</div>
 		<?php endif; ?>
 

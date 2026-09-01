@@ -1351,6 +1351,46 @@ body .donktoss-faq-search-wrapper input[type="text"]:focus,
   stroke: #ffffff;
 }
 
+/* Clear Search (X) Button */
+body .donktoss-faq-search-wrapper .donktoss-faq-search-clear,
+.entry-content .donktoss-faq-search-wrapper .donktoss-faq-search-clear,
+.donktoss-faq-search-clear {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+}
+
+body .donktoss-faq-search-wrapper .donktoss-faq-search-clear:hover,
+.entry-content .donktoss-faq-search-wrapper .donktoss-faq-search-clear:hover,
+.donktoss-faq-search-clear:hover {
+  background: #fd6d25;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(253, 109, 37, 0.4);
+}
+
+.donktoss-faq-search-clear svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
 /* Individual Category Groups as Separate Frosted Glass Containers */
 body .donktoss-faq-category-group,
 .entry-content .donktoss-faq-category-group {

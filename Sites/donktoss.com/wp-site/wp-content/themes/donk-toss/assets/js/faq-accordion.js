@@ -1,6 +1,6 @@
 /**
  * Donk Toss FAQ Accordion Script
- * Handles single-open mode accordion toggles and instant search filtering.
+ * Handles single-open mode accordion toggles and instant search filtering with clear button.
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const accordionMode = block.getAttribute('data-accordion-mode');
 		const items = block.querySelectorAll('.donktoss-faq-item');
 		const searchInput = block.querySelector('.donktoss-faq-search-input');
+		const clearBtn = block.querySelector('.donktoss-faq-search-clear');
 
 		// 1. Single Open Accordion Logic
 		if (accordionMode === 'single') {
@@ -29,10 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// 2. Instant Search Filter Logic
 		if (searchInput) {
-			searchInput.addEventListener('input', function (e) {
-				const searchTerm = e.target.value.toLowerCase().trim();
+			const handleSearch = function () {
+				const searchTerm = searchInput.value.toLowerCase().trim();
 				const categoryGroups = block.querySelectorAll('.donktoss-faq-category-group');
 				let totalVisible = 0;
+
+				// Toggle Clear Button
+				if (clearBtn) {
+					clearBtn.style.display = searchTerm.length > 0 ? 'flex' : 'none';
+				}
 
 				categoryGroups.forEach(function (group) {
 					let visibleInGroup = 0;
@@ -63,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 				});
 
-				// Optional: Handle empty state if no questions match across all groups
+				// Handle empty state if no questions match across all groups
 				let noResultsEl = block.querySelector('.donktoss-faq-no-results');
 				if (totalVisible === 0 && searchTerm !== '') {
 					if (!noResultsEl) {
@@ -78,7 +84,19 @@ document.addEventListener('DOMContentLoaded', function () {
 				} else if (noResultsEl) {
 					noResultsEl.style.display = 'none';
 				}
-			});
+			};
+
+			searchInput.addEventListener('input', handleSearch);
+
+			// Clear Button click handler
+			if (clearBtn) {
+				clearBtn.addEventListener('click', function (e) {
+					e.preventDefault();
+					searchInput.value = '';
+					handleSearch();
+					searchInput.focus();
+				});
+			}
 		}
 	});
 });
