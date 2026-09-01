@@ -519,6 +519,12 @@ add_action( 'wp_footer', function() {
 					}
 				}
 			}
+
+			// Clear persistent focus ring after tap/click on buttons
+			var btn = e.target.closest('.main-header-menu-toggle, .menu-toggle, .astra-cart-drawer-close, [data-section="section-header-mobile-trigger"] button');
+			if (btn) {
+				btn.blur();
+			}
 		});
 	})();
 	</script>

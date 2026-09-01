@@ -5675,6 +5675,48 @@ body.ast-main-header-nav-open #primary {
 }
 
 /* ==========================================================================
+   Focus & Outline Polish: Clean touch clicks, preserve keyboard :focus-visible
+   ========================================================================== */
+.main-header-menu-toggle,
+.main-header-menu-toggle:focus,
+.main-header-menu-toggle:active,
+.main-header-menu-toggle.toggled,
+.main-header-menu-toggle.toggled:focus,
+.menu-toggle,
+.menu-toggle:focus,
+.menu-toggle:active,
+[data-section="section-header-mobile-trigger"] button,
+[data-section="section-header-mobile-trigger"] button:focus,
+.astra-cart-drawer .astra-cart-drawer-close,
+.astra-cart-drawer .astra-cart-drawer-close:focus,
+.astra-cart-drawer .astra-cart-drawer-close:active,
+.ast-mobile-menu-trigger-minimal,
+.ast-mobile-menu-trigger-minimal:focus {
+  outline: none;
+  border: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.main-header-menu-toggle:focus:not(:focus-visible),
+.menu-toggle:focus:not(:focus-visible),
+[data-section="section-header-mobile-trigger"] button:focus:not(:focus-visible),
+.astra-cart-drawer .astra-cart-drawer-close:focus:not(:focus-visible),
+.ast-mobile-menu-trigger-minimal:focus:not(:focus-visible) {
+  outline: none;
+  border: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.main-header-menu-toggle:focus-visible,
+.menu-toggle:focus-visible,
+.astra-cart-drawer .astra-cart-drawer-close:focus-visible {
+  outline: 2px dashed #fd6d25;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
    Single Product: Sticky Add to Cart Bottom Bar Refinements
    ========================================================================== */
 div.ast-sticky-add-to-cart {
