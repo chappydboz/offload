@@ -5167,8 +5167,10 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
 
 .ast-mini-cart-empty a.ast-continue-shopping,
 .astra-cart-drawer a.ast-continue-shopping,
-.astra-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping {
-  background-color: var(--ast-global-color-2, #fd6d25);
+.astra-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping,
+#astra-mobile-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping {
+  background-color: #fd6d25;
+  background: #fd6d25;
   color: #ffffff;
   font-family: 'Karla', sans-serif;
   font-size: 1rem;
@@ -5183,17 +5185,26 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   box-sizing: border-box;
   text-decoration: none;
   border: none;
-  box-shadow: 0 4px 14px rgba(253, 109, 37, 0.35);
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: none;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
 .ast-mini-cart-empty a.ast-continue-shopping:hover,
+.ast-mini-cart-empty a.ast-continue-shopping:focus,
+.ast-mini-cart-empty a.ast-continue-shopping:active,
 .astra-cart-drawer a.ast-continue-shopping:hover,
-.astra-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping:hover {
+.astra-cart-drawer a.ast-continue-shopping:focus,
+.astra-cart-drawer a.ast-continue-shopping:active,
+.astra-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping:hover,
+.astra-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping:focus,
+.astra-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping:active,
+#astra-mobile-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping:hover,
+#astra-mobile-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping:focus,
+#astra-mobile-cart-drawer .woocommerce-mini-cart__buttons a.ast-continue-shopping:active {
   background-color: #ea580c;
+  background: #ea580c;
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(253, 109, 37, 0.45);
+  box-shadow: none;
 }
 
 /* Crisp spinning loader centered in drawer during quantity update */
