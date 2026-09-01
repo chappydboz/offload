@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.8.2' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.8.3' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -22,6 +22,11 @@ require_once get_theme_file_path( '/cpt-event.php' );
  * Include FAQ CPT, Taxonomy & ACF Accordion Block definitions
  */
 require_once get_theme_file_path( '/cpt-faq.php' );
+
+/**
+ * Include Outgoing Email Rate Limiter & Background Throttling (SendLayer 50/min protection)
+ */
+require_once get_theme_file_path( '/inc/rate-limiter.php' );
 
 
 /**
