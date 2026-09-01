@@ -5054,6 +5054,49 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
+/* Sidebar Cart Drawer: Position Item Close/Remove Button on Left Over Product Thumbnail */
+.astra-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart .woocommerce-mini-cart-item,
+.ast-site-header-cart .woocommerce-mini-cart .woocommerce-mini-cart-item,
+.woocommerce-mini-cart .woocommerce-mini-cart-item {
+  position: relative;
+}
+
+.astra-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart a.remove,
+.ast-site-header-cart .woocommerce-mini-cart-item a.remove,
+.woocommerce-mini-cart .woocommerce-mini-cart-item a.remove {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: auto;
+  float: none;
+  width: 22px;
+  height: 22px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.astra-cart-drawer .astra-cart-drawer-content .woocommerce-mini-cart a.remove:hover,
+.ast-site-header-cart .woocommerce-mini-cart-item a.remove:hover,
+.woocommerce-mini-cart .woocommerce-mini-cart-item a.remove:hover {
+  background: #ea4335;
+  border-color: #ea4335;
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
 /* Crisp spinning loader centered in drawer during quantity update */
 .woocommerce-mini-cart.ajax-mini-cart-qty-loading::after {
   content: "";
