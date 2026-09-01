@@ -5054,6 +5054,33 @@ body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
+/* ==========================================================================
+   Sidebar Cart Drawer Header Title (Brand White + Solid Orange Drop Shadow)
+   ========================================================================== */
+#astra-mobile-cart-drawer .astra-cart-drawer-header .astra-cart-drawer-title,
+.astra-cart-drawer .astra-cart-drawer-header .astra-cart-drawer-title,
+.astra-cart-drawer-title {
+  font-family: 'Karla', sans-serif;
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-shadow: 2px 2px var(--ast-global-color-2, #fd6d25);
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  #astra-mobile-cart-drawer .astra-cart-drawer-header .astra-cart-drawer-title,
+  .astra-cart-drawer .astra-cart-drawer-header .astra-cart-drawer-title,
+  .astra-cart-drawer-title {
+    font-size: 1.2rem;
+    text-shadow: 1.5px 1.5px var(--ast-global-color-2, #fd6d25);
+  }
+}
+
 /* Sidebar Cart Drawer: Position Item Close/Remove Button on Left Over Product Thumbnail */
 #astra-mobile-cart-drawer .widget_shopping_cart_content ul.cart_list li,
 #astra-mobile-cart-drawer .widget_shopping_cart_content ul.woocommerce-mini-cart li,
