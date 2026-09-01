@@ -3,7 +3,7 @@ Theme Name: Donk Toss
 Author: Brainstorm Force
 Author URI: https://airshp.com
 Description: Donk Toss - an Astra child theme
-Version: 4.8.5
+Version: 4.8.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: donk-toss
@@ -2136,12 +2136,18 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
    Order Received / Order Confirmation Page Styling (#5d279e)
    ========================================================================== */
 
-.woocommerce-order-received .entry-content > .woocommerce,
+.woocommerce-order-received .entry-content,
+body.woocommerce-order-received .entry-content > .woocommerce,
+body.woocommerce-order-received .woocommerce,
+body.woocommerce-order-received .woocommerce-order,
 .woocommerce-order-received .woocommerce-order {
+  display: block !important;
+  grid-template-columns: none !important;
   max-width: 900px !important;
   margin: 1.5rem auto 3rem auto !important;
   width: 100% !important;
   box-sizing: border-box !important;
+  float: none !important;
 }
 
 /* 1. Order Received Success Banner */
@@ -2188,8 +2194,8 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 .woocommerce-checkout .woocommerce-order ul.woocommerce-order-overview,
 .woocommerce-order-received ul.woocommerce-thankyou-order-details {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
-  gap: 16px !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 14px !important;
   list-style: none !important;
   padding: 0 !important;
   margin: 0 0 36px 0 !important;
@@ -2199,6 +2205,15 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   width: 100% !important;
   box-sizing: border-box !important;
   float: none !important;
+}
+
+@media (max-width: 900px) {
+  .woocommerce-order-received ul.order_details,
+  .woocommerce-order-received ul.woocommerce-order-overview,
+  .woocommerce-checkout .woocommerce-order ul.woocommerce-order-overview,
+  .woocommerce-order-received ul.woocommerce-thankyou-order-details {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  }
 }
 
 .woocommerce-order-received ul.order_details li,
@@ -2362,25 +2377,35 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
 
 /* 5. Customer & Addresses Details Card */
 .woocommerce-order-received .woocommerce-customer-details {
-  margin-top: 2rem !important;
+  margin-top: 2.5rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  clear: both !important;
 }
 
 .woocommerce-order-received .woocommerce-customer-details .woocommerce-columns--2,
 .woocommerce-order-received .woocommerce-customer-details .woocommerce-columns--addresses,
 .woocommerce-order-received .woocommerce-customer-details .col2-set {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-  gap: 20px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  gap: 24px !important;
   float: none !important;
   width: 100% !important;
   margin: 0 !important;
+  box-sizing: border-box !important;
+  clear: both !important;
 }
 
 .woocommerce-order-received .woocommerce-customer-details .woocommerce-column,
 .woocommerce-order-received .woocommerce-customer-details .col-1,
 .woocommerce-order-received .woocommerce-customer-details .col-2 {
+  flex: 1 1 0% !important;
+  width: 50% !important;
+  max-width: calc(50% - 12px) !important;
   float: none !important;
-  width: 100% !important;
+  clear: none !important;
   margin: 0 !important;
   background: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -2388,6 +2413,20 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   padding: 22px !important;
   box-sizing: border-box !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+@media (max-width: 768px) {
+  .woocommerce-order-received .woocommerce-customer-details .woocommerce-columns--2,
+  .woocommerce-order-received .woocommerce-customer-details .woocommerce-columns--addresses,
+  .woocommerce-order-received .woocommerce-customer-details .col2-set {
+    flex-direction: column !important;
+  }
+  .woocommerce-order-received .woocommerce-customer-details .woocommerce-column,
+  .woocommerce-order-received .woocommerce-customer-details .col-1,
+  .woocommerce-order-received .woocommerce-customer-details .col-2 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 .woocommerce-order-received .woocommerce-customer-details .woocommerce-column h3,
@@ -4654,11 +4693,11 @@ body #affwp-custom-links-table .affwp-custom-link:hover {
 }
 
 /* 9. WooCommerce My Account Modern 2-Column Grid Layout & Sidebar Navigation */
-.woocommerce-account .woocommerce,
-.woocommerce-account .entry-content .woocommerce,
-.woocommerce-edit-address .woocommerce,
-.woocommerce-view-order .woocommerce,
-body.page-slug-my-account .woocommerce,
+.woocommerce-account:not(.woocommerce-checkout):not(.woocommerce-order-received) .woocommerce,
+.woocommerce-account:not(.woocommerce-checkout):not(.woocommerce-order-received) .entry-content .woocommerce,
+.woocommerce-edit-address:not(.woocommerce-order-received) .woocommerce,
+.woocommerce-view-order:not(.woocommerce-order-received) .woocommerce,
+body.page-slug-my-account:not(.woocommerce-checkout):not(.woocommerce-order-received) .woocommerce,
 body .entry-content > .woocommerce:has(.woocommerce-MyAccount-navigation) {
   display: grid !important;
   grid-template-columns: 280px 1fr !important;
