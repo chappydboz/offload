@@ -205,6 +205,21 @@ body .donktoss-faq-search-wrapper .donktoss-faq-search-clear:hover,
   margin-bottom: 0;
 }
 
+/* Remove double-nested frosted card inside Product / Shop FAQ wraps */
+.product .donktoss-woocommerce-faq-wrap .donktoss-faq-category-group,
+.donktoss-woocommerce-faq-wrap .donktoss-faq-category-group,
+.single-product .donktoss-faq-category-group,
+.woocommerce .donktoss-woocommerce-faq-wrap .donktoss-faq-category-group {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
 .donktoss-faq-category-heading {
   font-family: 'Karla', sans-serif;
   font-size: 1.65rem;
