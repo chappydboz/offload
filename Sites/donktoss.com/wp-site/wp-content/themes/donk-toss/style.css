@@ -1210,6 +1210,8 @@ html {
   margin: 4rem auto 2.5rem auto;
   padding: 2.25rem;
   background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -1219,16 +1221,130 @@ html {
   box-sizing: border-box;
 }
 
-.donktoss-woocommerce-faq-wrap h2,
-.donktoss-woocommerce-faq-wrap h3 {
+/* Base FAQ Block Transparent Wrapper */
+body .donktoss-faq-block-container,
+.entry-content .donktoss-faq-block-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  clear: both;
+  position: relative;
+}
+
+/* Full Width Frosted Glass Search Bar */
+body .donktoss-faq-search-wrapper,
+.entry-content .donktoss-faq-search-wrapper {
+  position: relative;
+  margin-bottom: 2.5rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input,
+body .donktoss-faq-search-wrapper input[type="text"],
+.entry-content .donktoss-faq-search-wrapper input[type="text"] {
+  width: 100%;
+  padding: 16px 20px 16px 52px;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #ffffff;
-  font-size: 1.75rem;
+  -webkit-text-fill-color: #ffffff;
+  outline: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input::placeholder,
+body .donktoss-faq-search-wrapper input[type="text"]::placeholder,
+.entry-content .donktoss-faq-search-wrapper input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+}
+
+body .donktoss-faq-search-wrapper input[type="text"].donktoss-faq-search-input:focus,
+body .donktoss-faq-search-wrapper input[type="text"]:focus,
+.entry-content .donktoss-faq-search-wrapper input[type="text"]:focus {
+  border-color: #fd6d25;
+  background-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(253, 109, 37, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.donktoss-faq-search-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+}
+
+.donktoss-faq-search-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: rgba(255, 255, 255, 0.85);
+}
+
+/* Individual Category Groups as Separate Frosted Glass Containers */
+body .donktoss-faq-category-group,
+.entry-content .donktoss-faq-category-group {
+  width: 100%;
+  margin-bottom: 2.5rem;
+  padding: 2.25rem;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+}
+
+body .donktoss-faq-category-group:last-child,
+.entry-content .donktoss-faq-category-group:last-child {
+  margin-bottom: 0;
+}
+
+.donktoss-woocommerce-faq-wrap h2,
+.donktoss-woocommerce-faq-wrap h3,
+.donktoss-faq-category-heading {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.65rem;
   font-weight: 800;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #ff5722;
+  border-bottom: 2px solid #fd6d25;
   padding-bottom: 8px;
   display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-shadow: 2px 2px #fd6d25;
 }
 
 /* FAQ Items Container & Card */

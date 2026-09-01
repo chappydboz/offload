@@ -44,9 +44,13 @@ require_once get_theme_file_path( '/inc/gmc-feed.php' );
  * Enqueue styles (priority 100 ensures child styles load after all plugin stylesheets)
  */
 function child_enqueue_styles() {
+	$css_ver = file_exists( get_stylesheet_directory() . '/style.css' ) ? filemtime( get_stylesheet_directory() . '/style.css' ) : CHILD_THEME_DONK_TOSS_VERSION;
+	wp_enqueue_style( 'donk-toss-theme-css', get_stylesheet_directory_uri() . '/style.css', array('astra-theme-css'), $css_ver, 'all' );
 
-	wp_enqueue_style( 'donk-toss-theme-css', get_stylesheet_directory_uri() . '/style.css', array('astra-theme-css'), CHILD_THEME_DONK_TOSS_VERSION, 'all' );
-
+	$faq_css = get_stylesheet_directory() . '/assets/css/faq-accordion.css';
+	if ( file_exists( $faq_css ) ) {
+		wp_enqueue_style( 'donk-toss-faq-block-css', get_stylesheet_directory_uri() . '/assets/css/faq-accordion.css', array('donk-toss-theme-css'), filemtime( $faq_css ), 'all' );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 100 );
