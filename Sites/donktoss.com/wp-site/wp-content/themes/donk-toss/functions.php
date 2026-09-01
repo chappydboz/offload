@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.8.3' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.8.4' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -404,3 +404,17 @@ add_filter( 'affwp_render_affiliate_dashboard_tab_resources', function( $content
 	}
 	return $content;
 }, 10, 2 );
+
+/**
+ * Customize page title on Order Confirmation endpoint
+ */
+function donktoss_customize_order_received_title( $title, $id = null ) {
+	if ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) {
+		if ( ! is_admin() && ( null === $id || $id === wc_get_page_id( 'checkout' ) ) ) {
+			return __( 'Order Confirmation', 'donk-toss' );
+		}
+	}
+	return $title;
+}
+add_filter( 'astra_the_title', 'donktoss_customize_order_received_title', 20, 2 );
+add_filter( 'the_title', 'donktoss_customize_order_received_title', 20, 2 );

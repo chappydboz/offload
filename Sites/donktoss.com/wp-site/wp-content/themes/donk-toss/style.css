@@ -2132,10 +2132,388 @@ body:not(.cartflows-canvas):not(.cartflows-default):not(.cartflows-instant-check
   text-decoration: underline !important;
 }
 
-/* Hide "Pay with cash upon delivery" text on Order Received page */
-.woocommerce-order-received .woocommerce-order > p,
-.woocommerce-order-received .woocommerce-thankyou-order-received + p {
-  display: none !important;
+/* ==========================================================================
+   Order Received / Order Confirmation Page Styling (#5d279e)
+   ========================================================================== */
+
+.woocommerce-order-received .entry-content > .woocommerce,
+.woocommerce-order-received .woocommerce-order {
+  max-width: 900px !important;
+  margin: 1.5rem auto 3rem auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 1. Order Received Success Banner */
+.woocommerce-order-received p.woocommerce-thankyou-order-received,
+.woocommerce-order-received .woocommerce-order > p.woocommerce-thankyou-order-received,
+.woocommerce-thankyou-order-received {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  border-left: 6px solid #10b981 !important;
+  border-radius: 12px !important;
+  padding: 20px 24px !important;
+  margin: 0 0 28px 0 !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+.woocommerce-order-received p.woocommerce-thankyou-order-received::before,
+.woocommerce-thankyou-order-received::before {
+  content: "✓" !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  font-weight: 900 !important;
+  font-size: 1.1rem !important;
+  margin-right: 14px !important;
+  flex-shrink: 0 !important;
+}
+
+/* 2. Order Overview Meta Bar (Individual Card Badges) */
+.woocommerce-order-received ul.order_details,
+.woocommerce-order-received ul.woocommerce-order-overview,
+.woocommerce-checkout .woocommerce-order ul.woocommerce-order-overview,
+.woocommerce-order-received ul.woocommerce-thankyou-order-details {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  gap: 16px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 36px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  float: none !important;
+}
+
+.woocommerce-order-received ul.order_details li,
+.woocommerce-order-received ul.woocommerce-order-overview li {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+  float: none !important;
+  text-align: left !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.woocommerce-order-received ul.order_details li strong,
+.woocommerce-order-received ul.woocommerce-order-overview li strong {
+  display: block !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  margin-top: 6px !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  word-break: break-word !important;
+}
+
+.woocommerce-order-received ul.order_details li.total strong,
+.woocommerce-order-received ul.woocommerce-order-overview li.total strong {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+}
+
+.woocommerce-order-received ul.order_details li a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+/* 3. Section Titles */
+.woocommerce-order-received .woocommerce-order-details__title,
+.woocommerce-order-received .woocommerce-column__title,
+.woocommerce-order-received .woocommerce-customer-details h2,
+.woocommerce-order-received .woocommerce-order h2,
+.woocommerce-order-received h2 {
+  color: #ffffff !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1.35rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin: 2.2rem 0 1.2rem 0 !important;
+  padding: 0 !important;
+}
+
+/* 4. Order Details Table */
+.woocommerce-order-received table.woocommerce-table--order-details,
+.woocommerce-order-received table.shop_table.order_details {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  margin-bottom: 32px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details thead,
+.woocommerce-order-received table.shop_table.order_details thead {
+  background: rgba(0, 0, 0, 0.35) !important;
+  background-color: rgba(0, 0, 0, 0.35) !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details thead th,
+.woocommerce-order-received table.shop_table.order_details thead th {
+  background: rgba(0, 0, 0, 0.35) !important;
+  background-color: rgba(0, 0, 0, 0.35) !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 16px 20px !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tbody td,
+.woocommerce-order-received table.shop_table.order_details tbody td {
+  padding: 16px 20px !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: transparent !important;
+  font-size: 0.95rem !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tbody td.woocommerce-table__product-name a,
+.woocommerce-order-received table.shop_table.order_details td.product-name a {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tbody td.woocommerce-table__product-name a:hover,
+.woocommerce-order-received table.shop_table.order_details td.product-name a:hover {
+  color: #ff8547 !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tfoot th,
+.woocommerce-order-received table.woocommerce-table--order-details tfoot td,
+.woocommerce-order-received table.shop_table.order_details tfoot th,
+.woocommerce-order-received table.shop_table.order_details tfoot td {
+  padding: 14px 20px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: none !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: transparent !important;
+  font-size: 0.95rem !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tfoot th,
+.woocommerce-order-received table.shop_table.order_details tfoot th {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tfoot tr:last-child,
+.woocommerce-order-received table.shop_table.order_details tfoot tr:last-child {
+  background: rgba(253, 109, 37, 0.15) !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tfoot tr:last-child th,
+.woocommerce-order-received table.woocommerce-table--order-details tfoot tr:last-child td,
+.woocommerce-order-received table.shop_table.order_details tfoot tr:last-child th,
+.woocommerce-order-received table.shop_table.order_details tfoot tr:last-child td {
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  border-top: 1px solid rgba(253, 109, 37, 0.4) !important;
+}
+
+.woocommerce-order-received table.woocommerce-table--order-details tfoot tr:last-child .woocommerce-Price-amount,
+.woocommerce-order-received table.shop_table.order_details tfoot tr:last-child .woocommerce-Price-amount {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+}
+
+/* 5. Customer & Addresses Details Card */
+.woocommerce-order-received .woocommerce-customer-details {
+  margin-top: 2rem !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details .woocommerce-columns--2,
+.woocommerce-order-received .woocommerce-customer-details .woocommerce-columns--addresses,
+.woocommerce-order-received .woocommerce-customer-details .col2-set {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 20px !important;
+  float: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details .woocommerce-column,
+.woocommerce-order-received .woocommerce-customer-details .col-1,
+.woocommerce-order-received .woocommerce-customer-details .col-2 {
+  float: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 14px !important;
+  padding: 22px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details .woocommerce-column h3,
+.woocommerce-order-received .woocommerce-customer-details .woocommerce-column__title {
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details address {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  font-style: normal !important;
+  margin: 0 !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details address p {
+  margin-bottom: 6px !important;
+  color: inherit !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details--phone,
+.woocommerce-order-received .woocommerce-customer-details--email {
+  display: block !important;
+  margin-top: 8px !important;
+  color: #ffffff !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details--phone a,
+.woocommerce-order-received .woocommerce-customer-details--email a {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  text-decoration: none !important;
+}
+
+.woocommerce-order-received .woocommerce-customer-details--phone a:hover,
+.woocommerce-order-received .woocommerce-customer-details--email a:hover {
+  color: #ff8547 !important;
+  text-decoration: underline !important;
+}
+
+/* 6. Action Buttons */
+.woocommerce-order-received .woocommerce-order a.button,
+.woocommerce-order-received .woocommerce-order button.button {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  transition: all 0.2s ease !important;
+}
+
+.woocommerce-order-received .woocommerce-order a.button:hover,
+.woocommerce-order-received .woocommerce-order button.button:hover {
+  background: #ff8547 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(253, 109, 37, 0.4) !important;
+}
+
+/* 7. Auth Notice & Login Form (when order verification is needed) */
+.woocommerce-order-received .woocommerce-info {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-left: 6px solid var(--ast-global-color-2, #fd6d25) !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  color: #ffffff !important;
+  font-family: 'Karla', sans-serif !important;
+  font-size: 1rem !important;
+  margin-bottom: 24px !important;
+}
+
+.woocommerce-order-received form.login {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 16px !important;
+  padding: 28px !important;
+  max-width: 520px !important;
+  margin: 0 auto 32px auto !important;
+}
+
+.woocommerce-order-received form.login p.form-row label {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 6px !important;
+}
+
+.woocommerce-order-received form.login p.form-row input.input-text {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border: 1px solid #cccccc !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+}
+
+.woocommerce-order-received form.login button.button {
+  background: var(--ast-global-color-2, #fd6d25) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 12px 28px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  margin-top: 10px !important;
+}
+
+.woocommerce-order-received form.login .lost_password a {
+  color: var(--ast-global-color-2, #fd6d25) !important;
+  font-weight: 600 !important;
 }
 
 .woocommerce-checkout form.checkout_coupon {
