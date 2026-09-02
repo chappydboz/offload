@@ -849,296 +849,587 @@ body.single-event #main {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 110px;
 }
+
+/* ==========================================================================
+   Donk Toss: Unified Hub, About, Rules & Documentation System
+   ========================================================================== */
 
 /* Page Hero Header */
-.donktoss-rr-hero {
+.entry-content .donktoss-hub-hero,
+.entry-content .donktoss-rr-hero,
+body .donktoss-hub-hero,
+body .donktoss-rr-hero {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 1rem 0;
 }
 
-.donktoss-rr-title {
-  color: #ffffff !important;
-  font-size: 2.75rem !important;
-  font-weight: 800 !important;
-  margin-bottom: 0.75rem !important;
+.entry-content .donktoss-hub-badge,
+body .donktoss-hub-badge {
+  display: inline-block;
+  background: rgba(253, 109, 37, 0.18);
+  border: 1px solid rgba(253, 109, 37, 0.45);
+  color: #fd6d25;
+  font-family: 'Karla', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+}
+
+.entry-content .donktoss-hub-title,
+.entry-content .donktoss-rr-title,
+body .donktoss-hub-title,
+body .donktoss-rr-title {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 0.85rem;
   letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-shadow: 2px 2px #fd6d25;
 }
 
-.donktoss-rr-subtitle {
-  color: rgba(255, 255, 255, 0.85);
+.entry-content .donktoss-hub-subtitle,
+.entry-content .donktoss-rr-subtitle,
+body .donktoss-hub-subtitle,
+body .donktoss-rr-subtitle {
+  color: rgba(255, 255, 255, 0.88);
   font-size: 1.15rem;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto 1.5rem auto;
   line-height: 1.6;
 }
 
 /* In-Page Sticky Navigation Bar */
-.donktoss-rr-nav-sticky-wrap {
+.entry-content .donktoss-hub-nav-sticky-wrap,
+.entry-content .donktoss-rr-nav-sticky-wrap,
+body .donktoss-hub-nav-sticky-wrap,
+body .donktoss-rr-nav-sticky-wrap {
   position: sticky;
-  top: 20px;
+  top: 15px;
   z-index: 99;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.75rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.donktoss-rr-nav-bar {
+.entry-content .donktoss-hub-nav-bar,
+.entry-content .donktoss-rr-nav-bar,
+body .donktoss-hub-nav-bar,
+body .donktoss-rr-nav-bar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  background: rgba(45, 18, 82, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 0.6rem;
+  gap: 0.45rem 0.55rem;
+  background: rgba(30, 10, 58, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 0.55rem 0.85rem;
   border-radius: 40px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  flex-wrap: wrap;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  max-width: 920px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.donktoss-rr-nav-link {
-  color: #ffffff !important;
-  font-weight: 600;
-  font-size: 0.92rem;
-  padding: 8px 18px;
+.entry-content a.donktoss-hub-nav-link,
+.entry-content a.donktoss-rr-nav-link,
+body .entry-content a.donktoss-hub-nav-link,
+body .entry-content a.donktoss-rr-nav-link,
+body .donktoss-hub-nav-link,
+body .donktoss-rr-nav-link {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 7px 15px;
   border-radius: 20px;
-  text-decoration: none !important;
-  transition: all 0.2s ease;
+  text-decoration: none;
+  border-bottom: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
-.donktoss-rr-nav-link:hover,
-.donktoss-rr-nav-link.active {
-  background: #ff5722;
-  color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(255, 87, 34, 0.35);
+.entry-content a.donktoss-hub-nav-link:hover,
+.entry-content a.donktoss-hub-nav-link.active,
+.entry-content a.donktoss-rr-nav-link:hover,
+.entry-content a.donktoss-rr-nav-link.active,
+body a.donktoss-hub-nav-link:hover,
+body a.donktoss-hub-nav-link.active,
+body a.donktoss-rr-nav-link:hover,
+body a.donktoss-rr-nav-link.active {
+  background: #fd6d25;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: none;
+  box-shadow: 0 4px 12px rgba(253, 109, 37, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Eliminate Link Underlines Sitewide on Buttons, Cards, and Hubs */
+.entry-content a.donktoss-hub-btn,
+.entry-content a.donktoss-rr-btn,
+.entry-content a.donktoss-rr-quick-card,
+.entry-content .donktoss-edition-card a,
+.entry-content .donktoss-pdf-card a,
+.entry-content .donktoss-rr-shop-card a,
+body .entry-content a.donktoss-hub-btn,
+body .entry-content a.donktoss-rr-btn,
+body .entry-content a.donktoss-rr-quick-card {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.entry-content a.donktoss-hub-btn:hover,
+.entry-content a.donktoss-rr-btn:hover,
+.entry-content a.donktoss-rr-quick-card:hover,
+.entry-content .donktoss-edition-card a:hover,
+.entry-content .donktoss-pdf-card a:hover,
+.entry-content .donktoss-rr-shop-card a:hover {
+  text-decoration: none;
+  border-bottom: none;
 }
 
 /* Quick Action Cards Grid */
-.donktoss-rr-quick-grid {
+.entry-content .donktoss-rr-quick-grid,
+body .donktoss-rr-quick-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.25rem;
   margin-bottom: 3rem;
 }
 
-.donktoss-rr-quick-card {
+.entry-content .donktoss-rr-quick-card,
+body .donktoss-rr-quick-card {
   background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
   padding: 1.5rem;
   text-align: center;
-  text-decoration: none !important;
+  text-decoration: none;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
-.donktoss-rr-quick-card:hover {
+.entry-content .donktoss-rr-quick-card:hover,
+body .donktoss-rr-quick-card:hover {
   transform: translateY(-4px);
   background: rgba(255, 255, 255, 0.12);
-  border-color: #ff5722;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-color: #fd6d25;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
 }
 
-.donktoss-rr-card-icon {
+.entry-content .donktoss-rr-card-icon,
+body .donktoss-rr-card-icon {
   font-size: 2.2rem;
   margin-bottom: 0.75rem;
 }
 
-.donktoss-rr-card-title {
-  color: #ffffff !important;
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 0.35rem !important;
+.entry-content .donktoss-rr-card-title,
+body .donktoss-rr-card-title {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
 }
 
-.donktoss-rr-card-desc {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.88rem;
-  line-height: 1.4;
+.entry-content .donktoss-rr-card-desc,
+body .donktoss-rr-card-desc {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.45;
   margin: 0;
 }
 
 /* Page Section Wrappers */
-.donktoss-rr-section {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.entry-content .donktoss-hub-section,
+.entry-content .donktoss-rr-section,
+.entry-content section[id],
+body .donktoss-hub-section,
+body .donktoss-rr-section,
+body section[id] {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 20px;
   padding: 2.25rem;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  margin-bottom: 2.75rem;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
+  box-sizing: border-box;
+  scroll-margin-top: var(--donktoss-scroll-offset, 130px);
 }
 
-.donktoss-rr-section-heading {
-  color: #ffffff !important;
-  font-size: 1.85rem !important;
-  font-weight: 800 !important;
-  margin-top: 0 !important;
-  margin-bottom: 1.5rem !important;
+
+
+.entry-content .donktoss-hub-section-heading,
+.entry-content .donktoss-rr-section-heading,
+body .donktoss-hub-section-heading,
+body .donktoss-rr-section-heading {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 10px;
-  border-bottom: 2px solid #ff5722;
+  gap: 12px;
+  border-bottom: 2px solid #fd6d25;
   padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Media & Video Theater Card */
+.entry-content .donktoss-hub-media-card,
+body .donktoss-hub-media-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 1.75rem 0;
+}
+
+.entry-content .donktoss-hub-video-wrap,
+body .donktoss-hub-video-wrap {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.entry-content .donktoss-hub-video-wrap iframe,
+body .donktoss-hub-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.entry-content .donktoss-hub-media-caption,
+body .donktoss-hub-media-caption {
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Game Editions 3-Column Showcase */
+.entry-content .donktoss-editions-grid,
+body .donktoss-editions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.entry-content .donktoss-edition-card,
+body .donktoss-edition-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.entry-content .donktoss-edition-card:hover,
+body .donktoss-edition-card:hover {
+  transform: translateY(-4px);
+  border-color: #fd6d25;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.entry-content .donktoss-edition-tag,
+body .donktoss-edition-tag {
+  display: inline-block;
+  background: rgba(253, 109, 37, 0.2);
+  border: 1px solid rgba(253, 109, 37, 0.4);
+  color: #fd6d25;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+}
+
+.entry-content .donktoss-edition-card h3,
+body .donktoss-edition-card h3 {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.entry-content .donktoss-edition-specs,
+body .donktoss-edition-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 1rem 0;
+}
+
+.entry-content .donktoss-spec-pill,
+body .donktoss-spec-pill {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
 }
 
 /* Rules Grid Layout */
-.donktoss-rr-rules-grid {
+.entry-content .donktoss-rr-rules-grid,
+body .donktoss-rr-rules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 1.5rem;
 }
 
-.donktoss-rr-rule-card {
-  background: rgba(255, 255, 255, 0.06);
+.entry-content .donktoss-rr-rule-card,
+body .donktoss-rr-rule-card {
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   padding: 1.5rem;
 }
 
-.donktoss-rr-rule-card h3 {
-  color: #ff5722 !important;
-  font-size: 1.15rem !important;
-  font-weight: 700 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0.75rem !important;
+.entry-content .donktoss-rr-rule-card h3,
+body .donktoss-rr-rule-card h3 {
+  color: #fd6d25;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.donktoss-rr-rule-card ul {
+.entry-content .donktoss-rr-rule-card ul,
+body .donktoss-rr-rule-card ul {
   margin: 0;
   padding-left: 1.25rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.donktoss-rr-rule-card li {
+.entry-content .donktoss-rr-rule-card li,
+body .donktoss-rr-rule-card li {
   margin-bottom: 0.5rem;
   line-height: 1.5;
   font-size: 0.95rem;
 }
 
-/* Scoring Positions Feature Cards */
-.donktoss-rr-scoring-list {
+/* Scoring Positions Feature Badges */
+.entry-content .donktoss-rr-scoring-list,
+body .donktoss-rr-scoring-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 1rem;
-  margin-top: 0.75rem;
+  margin-top: 1rem;
 }
 
-.donktoss-rr-score-badge {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 87, 34, 0.4);
-  border-radius: 12px;
-  padding: 1rem;
+.entry-content .donktoss-rr-score-badge,
+body .donktoss-rr-score-badge {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(253, 109, 37, 0.35);
+  border-radius: 14px;
+  padding: 1.15rem 1rem;
   text-align: center;
 }
 
-.donktoss-rr-score-pts {
-  color: #ff5722;
+.entry-content .donktoss-rr-score-pts,
+body .donktoss-rr-score-pts {
+  color: #fd6d25;
+  font-family: 'Karla', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
   display: block;
 }
 
-.donktoss-rr-score-name {
+.entry-content .donktoss-rr-score-name,
+body .donktoss-rr-score-name {
   color: #ffffff;
-  font-weight: 700;
+  font-family: 'Karla', sans-serif;
+  font-weight: 800;
   font-size: 1rem;
   margin: 4px 0;
 }
 
-.donktoss-rr-score-desc {
+.entry-content .donktoss-rr-score-desc,
+body .donktoss-rr-score-desc {
   color: rgba(255, 255, 255, 0.75);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
 }
 
-/* Resources & Downloads Cards */
-.donktoss-rr-resources-grid {
+/* Official PDF Downloads Center */
+.entry-content .donktoss-pdf-center-grid,
+body .donktoss-pdf-center-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-.donktoss-rr-resource-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+.entry-content .donktoss-pdf-card,
+body .donktoss-pdf-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.03) 100%);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: border-color 0.2s ease;
+  transition: all 0.25s ease;
 }
 
-.donktoss-rr-resource-card:hover {
-  border-color: #ff5722;
+.entry-content .donktoss-pdf-card:hover,
+body .donktoss-pdf-card:hover {
+  border-color: #fd6d25;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-.donktoss-rr-resource-card h3 {
-  color: #ffffff !important;
-  font-size: 1.3rem !important;
-  font-weight: 700 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0.5rem !important;
+.entry-content .donktoss-pdf-meta,
+body .donktoss-pdf-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.75rem;
 }
 
-.donktoss-rr-resource-card p {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.95rem;
+.entry-content .donktoss-pdf-tag,
+body .donktoss-pdf-tag {
+  background: rgba(253, 109, 37, 0.2);
+  color: #fd6d25;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.entry-content .donktoss-pdf-card h3,
+body .donktoss-pdf-card h3 {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.entry-content .donktoss-pdf-card p,
+body .donktoss-pdf-card p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.92rem;
   line-height: 1.5;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.donktoss-rr-btn {
+/* Call to Action Buttons */
+.entry-content .donktoss-hub-btn,
+.entry-content .donktoss-rr-btn,
+body .donktoss-hub-btn,
+body .donktoss-rr-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #ff5722;
-  color: #ffffff !important;
-  font-weight: 700;
+  background: #fd6d25;
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   padding: 12px 24px;
   border-radius: 30px;
-  text-decoration: none !important;
+  text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 14px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 4px 14px rgba(253, 109, 37, 0.35);
+  border: none;
+  cursor: pointer;
 }
 
-.donktoss-rr-btn:hover {
-  background: #e64a19;
+.entry-content .donktoss-hub-btn:hover,
+.entry-content .donktoss-rr-btn:hover,
+body .donktoss-hub-btn:hover,
+body .donktoss-rr-btn:hover {
+  background: #e65c19;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.45);
+  box-shadow: 0 6px 18px rgba(253, 109, 37, 0.5);
+  color: #ffffff;
 }
 
-.donktoss-rr-btn-secondary {
+.entry-content .donktoss-hub-btn-secondary,
+.entry-content .donktoss-rr-btn-secondary,
+body .donktoss-hub-btn-secondary,
+body .donktoss-rr-btn-secondary {
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: none;
+  color: #ffffff;
 }
 
-.donktoss-rr-btn-secondary:hover {
+.entry-content .donktoss-hub-btn-secondary:hover,
+.entry-content .donktoss-rr-btn-secondary:hover,
+body .donktoss-hub-btn-secondary:hover,
+body .donktoss-rr-btn-secondary:hover {
   background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 /* Shop Products Grid */
-.donktoss-rr-shop-grid {
+.entry-content .donktoss-rr-shop-grid,
+body .donktoss-rr-shop-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
-.donktoss-rr-shop-card {
+.entry-content .donktoss-rr-shop-card,
+body .donktoss-rr-shop-card {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  padding: 1.75rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1146,46 +1437,98 @@ html {
   transition: transform 0.2s ease;
 }
 
-.donktoss-rr-shop-card:hover {
+.entry-content .donktoss-rr-shop-card:hover,
+body .donktoss-rr-shop-card:hover {
   transform: translateY(-4px);
-  border-color: #ff5722;
+  border-color: #fd6d25;
 }
 
-.donktoss-rr-shop-card h3 {
-  color: #ffffff !important;
-  font-size: 1.15rem !important;
-  font-weight: 700 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0.5rem !important;
-}
-
-.donktoss-rr-shop-card .price {
-  color: #ff5722;
-  font-size: 1.3rem;
+.entry-content .donktoss-rr-shop-card h3,
+body .donktoss-rr-shop-card h3 {
+  color: #ffffff;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.25rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.entry-content .donktoss-rr-shop-card .price,
+body .donktoss-rr-shop-card .price {
+  color: #fd6d25;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0.5rem 0 1rem 0;
 }
 
 /* Responsive Rules & Nav Adjustments */
 @media (max-width: 768px) {
-  .donktoss-rr-title {
-    font-size: 2.1rem !important;
+  html {
+    scroll-padding-top: 90px;
   }
-  .donktoss-rr-nav-bar {
-    border-radius: 16px;
-    padding: 0.4rem;
+  .entry-content .donktoss-hub-title,
+  .entry-content .donktoss-rr-title,
+  body .donktoss-hub-title,
+  body .donktoss-rr-title {
+    font-size: 2rem;
   }
-  .donktoss-rr-nav-link {
+  .entry-content .donktoss-hub-nav-sticky-wrap,
+  .entry-content .donktoss-rr-nav-sticky-wrap,
+  body .donktoss-hub-nav-sticky-wrap,
+  body .donktoss-rr-nav-sticky-wrap {
+    top: 10px;
+    margin-bottom: 2rem;
+  }
+  .entry-content .donktoss-hub-nav-bar,
+  .entry-content .donktoss-rr-nav-bar,
+  body .donktoss-hub-nav-bar,
+  body .donktoss-rr-nav-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    max-width: 100%;
+    border-radius: 30px;
+    padding: 0.45rem 0.6rem;
+    gap: 0.35rem;
+  }
+  .entry-content .donktoss-hub-nav-bar::-webkit-scrollbar,
+  .entry-content .donktoss-rr-nav-bar::-webkit-scrollbar,
+  body .donktoss-hub-nav-bar::-webkit-scrollbar,
+  body .donktoss-rr-nav-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .entry-content a.donktoss-hub-nav-link,
+  .entry-content a.donktoss-rr-nav-link,
+  body .entry-content a.donktoss-hub-nav-link,
+  body .entry-content a.donktoss-rr-nav-link,
+  body .donktoss-hub-nav-link,
+  body .donktoss-rr-nav-link {
     font-size: 0.82rem;
     padding: 6px 12px;
+    flex-shrink: 0;
   }
-  .donktoss-rr-section {
+  .entry-content .donktoss-hub-section,
+  .entry-content .donktoss-rr-section,
+  .entry-content section[id],
+  body .donktoss-hub-section,
+  body .donktoss-rr-section,
+  body section[id] {
     padding: 1.5rem;
+    scroll-margin-top: 90px;
   }
-  .donktoss-rr-section-heading {
-    font-size: 1.5rem !important;
+  .entry-content .donktoss-hub-section-heading,
+  .entry-content .donktoss-rr-section-heading,
+  body .donktoss-hub-section-heading,
+  body .donktoss-rr-section-heading {
+    font-size: 1.45rem;
   }
 }
+
+
 
 /* ==========================================================================
    WooCommerce Embedded FAQ Blocks Container

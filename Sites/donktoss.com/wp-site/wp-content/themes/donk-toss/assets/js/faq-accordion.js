@@ -99,4 +99,47 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	});
+
+	// 3. Dynamic Sticky Subnav Scroll Offset & Smooth Anchor Scrolling
+	const stickyNavWrap = document.querySelector('.donktoss-hub-nav-sticky-wrap, .donktoss-rr-nav-sticky-wrap');
+
+	function updateDynamicScrollOffset() {
+		if (!stickyNavWrap) return 120;
+		const navBar = stickyNavWrap.querySelector('.donktoss-hub-nav-bar, .donktoss-rr-nav-bar') || stickyNavWrap;
+		const navHeight = navBar.offsetHeight || 50;
+		const siteHeader = document.querySelector('.site-header, #ast-mobile-header, .main-header-bar');
+		const headerHeight = (siteHeader && (window.getComputedStyle(siteHeader).position === 'fixed' || window.getComputedStyle(siteHeader).position === 'sticky')) ? siteHeader.offsetHeight : 0;
+		const totalOffset = navHeight + headerHeight + 24;
+		document.documentElement.style.setProperty('--donktoss-scroll-offset', totalOffset + 'px');
+		return totalOffset;
+	}
+
+	if (stickyNavWrap) {
+		updateDynamicScrollOffset();
+		window.addEventListener('resize', updateDynamicScrollOffset);
+		window.addEventListener('orientationchange', updateDynamicScrollOffset);
+
+		// Handle smooth in-page anchor jumps with dynamic offset
+		document.querySelectorAll('a.donktoss-hub-nav-link, a.donktoss-rr-nav-link, a.donktoss-rr-quick-card').forEach(function (link) {
+			const href = link.getAttribute('href');
+			if (href && href.startsWith('#') && href.length > 1) {
+				link.addEventListener('click', function (e) {
+					const target = document.querySelector(href);
+					if (target) {
+						e.preventDefault();
+						const offset = updateDynamicScrollOffset();
+						const targetY = target.getBoundingClientRect().top + window.pageYOffset - offset;
+						window.scrollTo({
+							top: Math.max(0, targetY),
+							behavior: 'smooth'
+						});
+						if (history.pushState) {
+							history.pushState(null, null, href);
+						}
+					}
+				});
+			}
+		});
+	}
 });
+
