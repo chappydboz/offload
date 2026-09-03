@@ -39,6 +39,24 @@ require_once get_theme_file_path( '/inc/posthog-woocommerce.php' );
 require_once get_theme_file_path( '/inc/gmc-schema.php' );
 require_once get_theme_file_path( '/inc/gmc-feed.php' );
 
+/**
+ * Meta / Facebook Domain Verification Tag
+ */
+function donktoss_facebook_domain_verification_tag() {
+	echo '<meta name="facebook-domain-verification" content="8sxhiniomlu3vqfg4llutvxtzsem3r" />' . "\n";
+}
+add_action( 'wp_head', 'donktoss_facebook_domain_verification_tag', 1 );
+
+/**
+ * Un-throttle Facebook crawlers (prevent Nexcess 503 throttling during Meta verification/sharing)
+ */
+add_filter( 'stellarwp_robots_bots_throttlelist', function( $throttled_bots ) {
+	unset( $throttled_bots['facebookexternalhit'] );
+	return $throttled_bots;
+}, 999 );
+
+
+
 
 /**
  * Enqueue styles (priority 100 ensures child styles load after all plugin stylesheets)

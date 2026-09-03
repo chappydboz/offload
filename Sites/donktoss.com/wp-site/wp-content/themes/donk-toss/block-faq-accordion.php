@@ -71,7 +71,10 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 
 	if ( empty( $footer_cta_text ) ) {
 		$footer_cta_text = '<p>View all FAQs <a href="/faqs/">here</a>. Have a question not answered here? Email us at <a href="mailto:info@donktoss.com">info@donktoss.com</a>.</p>';
+	} else {
+		$footer_cta_text = str_replace( array( 'u003c', 'u003e', 'u0022', 'u0026' ), array( '<', '>', '"', '&' ), $footer_cta_text );
 	}
+
 
 	// Ensure $selected_cat_ids is array if single ID passed
 	if ( ! empty( $selected_cat_ids ) && ! is_array( $selected_cat_ids ) ) {
@@ -182,7 +185,30 @@ function donktoss_render_faq_accordion_block( $block, $content = '', $is_preview
 			$terms = get_terms( $term_args );
 
 			if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+				// Canonical display priority order:
+				// General gameplay & tournaments first, general shop/support, then product-specific editions, and affiliates at the bottom
+				$priority_order = array(
+					'donk-gameplay'        => 10,
+					'events-tournaments'   => 20,
+					'merch-shop'           => 30,
+					'general-support'      => 40,
+					'donk-pro'             => 50,
+					'donk-tabletop'        => 60,
+					'donk-dice'            => 70,
+					'affiliates'           => 80,
+				);
+
+				usort( $terms, function( $a, $b ) use ( $priority_order ) {
+					$p_a = isset( $priority_order[ $a->slug ] ) ? $priority_order[ $a->slug ] : 99;
+					$p_b = isset( $priority_order[ $b->slug ] ) ? $priority_order[ $b->slug ] : 99;
+					if ( $p_a !== $p_b ) {
+						return $p_a - $p_b;
+					}
+					return strcmp( $a->name, $b->name );
+				});
+
 				foreach ( $terms as $term ) {
+
 					$query_args = array(
 						'post_type'      => 'faq',
 						'posts_per_page' => -1,

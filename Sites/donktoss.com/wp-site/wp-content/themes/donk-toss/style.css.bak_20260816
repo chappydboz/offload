@@ -1,0 +1,1463 @@
+/**
+Theme Name: Donk Toss
+Author: Brainstorm Force
+Author URI: https://airshp.com
+Description: Donk Toss - an Astra child theme
+Version: 1.0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: donk-toss
+Template: astra
+*/
+
+/* ==========================================================================
+   WooCommerce & Global Form Input Field & Placeholder Text Visibility Fix
+   ========================================================================== */
+
+:root {
+  --ast-form-field-color: #64748b;
+}
+
+/* Ensure placeholder text is crisp and readable on white backgrounds */
+::placeholder,
+.woocommerce form .form-row input.input-text::placeholder,
+.woocommerce form .form-row textarea::placeholder,
+.woocommerce-checkout input::placeholder,
+.woocommerce-checkout textarea::placeholder,
+.wc-block-components-text-input input::placeholder,
+.wc-block-components-text-input label,
+input::placeholder,
+textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+
+/* Chrome / Safari / Webkit */
+::-webkit-input-placeholder,
+.woocommerce form .form-row input.input-text::-webkit-input-placeholder,
+.woocommerce form .form-row textarea::-webkit-input-placeholder,
+.woocommerce-checkout input::-webkit-input-placeholder,
+.woocommerce-checkout textarea::-webkit-input-placeholder,
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+
+/* Firefox 19+ */
+::-moz-placeholder,
+.woocommerce form .form-row input.input-text::-moz-placeholder,
+.woocommerce form .form-row textarea::-moz-placeholder,
+.woocommerce-checkout input::-moz-placeholder,
+.woocommerce-checkout textarea::-moz-placeholder,
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+/* Internet Explorer 10+ / Edge */
+:-ms-input-placeholder,
+.woocommerce form .form-row input.input-text:-ms-input-placeholder,
+.woocommerce form .form-row textarea:-ms-input-placeholder,
+.woocommerce-checkout input:-ms-input-placeholder,
+.woocommerce-checkout textarea:-ms-input-placeholder,
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+/* High contrast for form inputs */
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce-checkout input[type="text"],
+.woocommerce-checkout input[type="email"],
+.woocommerce-checkout input[type="tel"],
+.woocommerce-checkout input[type="number"],
+.woocommerce-checkout textarea,
+.woocommerce-checkout select,
+.wc-block-components-text-input input {
+  color: #1e293b !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+/* Active focus ring using Donk Toss brand orange (#fd6d25) */
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus,
+.woocommerce-checkout input:focus,
+.woocommerce-checkout textarea:focus,
+.select2-container--default .select2-selection--single:focus {
+  border-color: #fd6d25 !important;
+  box-shadow: 0 0 0 2px rgba(253, 109, 37, 0.25) !important;
+  outline: none !important;
+}
+
+/* Force dark purple site background matching About & Home page (#5d279e) */
+html,
+body.post-type-archive-event,
+body.single-event,
+body.post-type-archive-event #page,
+body.single-event #page,
+body.post-type-archive-event .site,
+body.single-event .site {
+  background-color: var(--ast-global-color-4, #5d279e) !important;
+  background: #5d279e !important;
+}
+
+/* Ensure inner container wrappers remain 100% transparent so purple background fills the viewport */
+body.post-type-archive-event #content,
+body.single-event #content,
+body.post-type-archive-event .site-content,
+body.single-event .site-content,
+body.post-type-archive-event .ast-container,
+body.single-event .ast-container,
+body.post-type-archive-event #primary,
+body.single-event #primary,
+body.post-type-archive-event #main,
+body.single-event #main,
+body.post-type-archive-event article,
+body.single-event article {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Ensure Events archive and single pages use standard Astra 1000px container width */
+.post-type-archive-event .site-content .ast-container,
+.single-event .site-content .ast-container,
+body.post-type-archive-event .ast-container,
+body.single-event .ast-container {
+  max-width: 1000px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.post-type-archive-event #primary,
+body.single-event #primary,
+body.post-type-archive-event #content,
+body.single-event #content,
+body.post-type-archive-event .site-content,
+body.single-event .site-content,
+body.post-type-archive-event #main,
+body.single-event #main {
+  max-width: 100% !important;
+  width: 100% !important;
+  flex: 1 1 100% !important;
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.donktoss-events-page-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.donktoss-breadcrumbs {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.donktoss-breadcrumbs a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.donktoss-breadcrumbs a:hover {
+  color: #fd6d25;
+}
+
+.donktoss-page-title {
+  font-family: 'Karla', sans-serif !important;
+  font-size: 2.75rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+}
+
+.donktoss-title-orange {
+  color: #fd6d25 !important;
+}
+
+.donktoss-page-subtitle {
+  font-size: 1.1rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  line-height: 1.6 !important;
+  max-width: 820px;
+  margin: 0 !important;
+}
+
+.donktoss-events-section {
+  margin-bottom: 3.5rem;
+  width: 100%;
+}
+
+.donktoss-section-heading {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin-bottom: 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  border-bottom: 3px solid #fd6d25 !important;
+  padding-bottom: 0.5rem !important;
+  width: fit-content !important;
+}
+
+.donktoss-section-heading .dashicons {
+  color: #fd6d25 !important;
+  font-size: 1.5rem !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+/* Horizontal Event Cards for Wide Screens */
+.donktoss-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.donktoss-event-horizontal-card {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.donktoss-event-horizontal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.18);
+}
+
+.donktoss-event-card-media {
+  position: relative;
+  width: 240px;
+  min-width: 240px;
+  aspect-ratio: 1 / 1;
+  background: #0f172a;
+  display: flex;
+  overflow: hidden;
+}
+
+.donktoss-event-card-media .donktoss-event-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.donktoss-event-card-media .donktoss-event-img,
+.donktoss-img-square {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+.donktoss-event-img-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #94a3b8;
+}
+
+.donktoss-event-img-placeholder .dashicons {
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Date Badge */
+.donktoss-event-date-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  line-height: 1;
+  z-index: 2;
+}
+
+.donktoss-badge-month {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fd6d25;
+}
+
+.donktoss-badge-day {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 2px;
+}
+
+/* Single Event Detail Page (100% Natural Image Height Hero & Promo Graphic After Content) */
+.donktoss-single-event {
+  padding-bottom: 4rem;
+  width: 100%;
+}
+
+.donktoss-single-event-featured-media {
+  margin-bottom: 2rem;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+  width: 100%;
+}
+
+.donktoss-single-hero-img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.donktoss-single-promo-wrap {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  width: 100%;
+}
+
+.donktoss-single-promo-img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  display: block !important;
+}
+
+/* Horizontal Card Body */
+.donktoss-event-card-body {
+  flex: 1;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+}
+
+.donktoss-event-card-header {
+  margin-bottom: 0.5rem;
+}
+
+.donktoss-event-types {
+  margin-bottom: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.donktoss-type-pill {
+  display: inline-block;
+  background: #fff7ed;
+  color: #c2410c;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid #ffedd5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.donktoss-type-pill-sm {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+}
+
+.donktoss-event-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0.35rem 0 0.5rem 0;
+  line-height: 1.35;
+}
+
+.donktoss-event-card-title a {
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.donktoss-event-card-title a:hover {
+  color: #fd6d25;
+}
+
+.donktoss-event-meta-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0.75rem;
+}
+
+.donktoss-event-excerpt {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.donktoss-event-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.donktoss-btn-primary,
+.donktoss-grid-btn {
+  background-color: #fd6d25 !important;
+  color: #ffffff !important;
+  border-color: #fd6d25 !important;
+  text-decoration: none !important;
+}
+
+.donktoss-btn-primary:hover,
+.donktoss-btn-primary:focus,
+.donktoss-grid-btn:hover,
+.donktoss-grid-btn:focus {
+  background-color: #ea580c !important;
+  border-color: #ea580c !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.donktoss-btn-secondary {
+  background-color: #f1f5f9 !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
+  text-decoration: none !important;
+}
+
+.donktoss-btn-secondary:hover,
+.donktoss-btn-secondary:focus {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  text-decoration: none !important;
+}
+
+/* Past Events List */
+.donktoss-past-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.donktoss-past-event-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.donktoss-past-date {
+  font-weight: 700;
+  color: #fd6d25;
+  min-width: 100px;
+  font-size: 0.9rem;
+}
+
+.donktoss-past-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-grow: 1;
+  flex-wrap: wrap;
+}
+
+.donktoss-past-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.donktoss-past-title a {
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.donktoss-past-title a:hover {
+  color: #fd6d25;
+}
+
+.donktoss-past-location {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.donktoss-link-arrow {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #fd6d25;
+  text-decoration: none;
+}
+
+.donktoss-link-arrow:hover {
+  text-decoration: underline;
+}
+
+.donktoss-no-events-notice {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  color: #ffffff;
+  text-align: center;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+/* Single Event Detail Page */
+.donktoss-single-event {
+  padding-bottom: 4rem;
+  width: 100%;
+}
+
+.donktoss-single-event-featured-media {
+  margin-bottom: 2rem;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+}
+
+.donktoss-single-hero-img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+.donktoss-single-event-meta-card {
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.donktoss-meta-card-col {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.donktoss-meta-card-icon {
+  font-size: 1.75rem;
+}
+
+.donktoss-meta-card-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.donktoss-meta-card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.donktoss-meta-card-cta {
+  margin-left: auto;
+}
+
+.donktoss-single-event-body-wrap {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.donktoss-single-event-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 3rem;
+}
+
+.donktoss-single-event-footer {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 2rem;
+}
+
+.donktoss-social-share-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.donktoss-share-label {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 0.95rem;
+  margin-right: 0.5rem;
+}
+
+.donktoss-share-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.donktoss-share-btn:hover {
+  opacity: 0.9;
+  color: #ffffff;
+}
+
+.donktoss-share-fb { background-color: #1877f2; }
+.donktoss-share-x { background-color: #0f172a; }
+.donktoss-share-email { background-color: #ea4335; }
+.donktoss-share-copy { background-color: #475569; }
+
+/* Homepage Upcoming Events Block Widget Grid */
+.donktoss-homepage-events-section {
+  margin: 3rem 0;
+  width: 100%;
+}
+
+.donktoss-homepage-events-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.donktoss-view-all-link {
+  color: #fd6d25 !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.donktoss-view-all-link:hover {
+  text-decoration: underline;
+  transform: translateX(4px);
+}
+
+.donktoss-homepage-events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.donktoss-event-grid-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.donktoss-event-grid-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+}
+
+.donktoss-grid-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.donktoss-grid-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.donktoss-grid-img {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.3s ease;
+}
+
+.donktoss-event-grid-card:hover .donktoss-grid-img {
+  transform: scale(1.04);
+}
+
+.donktoss-grid-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.donktoss-grid-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0.5rem 0;
+}
+
+.donktoss-grid-card-title a {
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.donktoss-grid-card-title a:hover {
+  color: #fd6d25;
+}
+
+.donktoss-grid-meta-line {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  color: #475569;
+  margin-bottom: 1.25rem;
+}
+
+.donktoss-grid-card-footer {
+  margin-top: auto;
+}
+
+.donktoss-grid-btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+/* Responsive Breakpoints: Collapse Horizontal Cards to Vertical Cards on Mobile */
+@media (max-width: 768px) {
+  .donktoss-event-horizontal-card {
+    flex-direction: column;
+  }
+
+  .donktoss-event-card-media {
+    width: 100%;
+    min-width: 100%;
+    height: 200px;
+  }
+
+  .donktoss-page-title {
+    font-size: 2rem !important;
+  }
+
+  .donktoss-event-meta-line {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .donktoss-single-event-meta-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .donktoss-meta-card-cta {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .donktoss-meta-card-cta a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .donktoss-past-event-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .donktoss-past-date {
+    min-width: unset;
+  }
+
+  .donktoss-past-action {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 544px) {
+  .donktoss-page-title {
+    font-size: 1.75rem !important;
+  }
+
+  .donktoss-event-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .donktoss-event-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .donktoss-single-event-body-wrap {
+    padding: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Donk Toss Rules & Resources Page - Responsive Modern Layout & In-Page Nav
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Page Hero Header */
+.donktoss-rr-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.donktoss-rr-title {
+  color: #ffffff !important;
+  font-size: 2.75rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 0.75rem !important;
+  letter-spacing: -0.02em;
+}
+
+.donktoss-rr-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.15rem;
+  max-width: 720px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.6;
+}
+
+/* In-Page Sticky Navigation Bar */
+.donktoss-rr-nav-sticky-wrap {
+  position: sticky;
+  top: 20px;
+  z-index: 99;
+  margin-bottom: 2.5rem;
+}
+
+.donktoss-rr-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(45, 18, 82, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.6rem;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  flex-wrap: wrap;
+}
+
+.donktoss-rr-nav-link {
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.donktoss-rr-nav-link:hover,
+.donktoss-rr-nav-link.active {
+  background: #ff5722;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(255, 87, 34, 0.35);
+}
+
+/* Quick Action Cards Grid */
+.donktoss-rr-quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.donktoss-rr-quick-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donktoss-rr-quick-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ff5722;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.donktoss-rr-card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.donktoss-rr-card-title {
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.donktoss-rr-card-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Page Section Wrappers */
+.donktoss-rr-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.donktoss-rr-section-heading {
+  color: #ffffff !important;
+  font-size: 1.85rem !important;
+  font-weight: 800 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #ff5722;
+  padding-bottom: 10px;
+}
+
+/* Rules Grid Layout */
+.donktoss-rr-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.donktoss-rr-rule-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.donktoss-rr-rule-card h3 {
+  color: #ff5722 !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.donktoss-rr-rule-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.donktoss-rr-rule-card li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Scoring Positions Feature Cards */
+.donktoss-rr-scoring-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.donktoss-rr-score-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 87, 34, 0.4);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.donktoss-rr-score-pts {
+  color: #ff5722;
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: block;
+}
+
+.donktoss-rr-score-name {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+.donktoss-rr-score-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.82rem;
+}
+
+/* Resources & Downloads Cards */
+.donktoss-rr-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.donktoss-rr-resource-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s ease;
+}
+
+.donktoss-rr-resource-card:hover {
+  border-color: #ff5722;
+}
+
+.donktoss-rr-resource-card h3 {
+  color: #ffffff !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.donktoss-rr-resource-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.donktoss-rr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ff5722;
+  color: #ffffff !important;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(255, 87, 34, 0.3);
+}
+
+.donktoss-rr-btn:hover {
+  background: #e64a19;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.45);
+}
+
+.donktoss-rr-btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+.donktoss-rr-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Shop Products Grid */
+.donktoss-rr-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.donktoss-rr-shop-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.donktoss-rr-shop-card:hover {
+  transform: translateY(-4px);
+  border-color: #ff5722;
+}
+
+.donktoss-rr-shop-card h3 {
+  color: #ffffff !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.donktoss-rr-shop-card .price {
+  color: #ff5722;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Rules & Nav Adjustments */
+@media (max-width: 768px) {
+  .donktoss-rr-title {
+    font-size: 2.1rem !important;
+  }
+  .donktoss-rr-nav-bar {
+    border-radius: 16px;
+    padding: 0.4rem;
+  }
+  .donktoss-rr-nav-link {
+    font-size: 0.82rem;
+    padding: 6px 12px;
+  }
+  .donktoss-rr-section {
+    padding: 1.5rem;
+  }
+  .donktoss-rr-section-heading {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* ==========================================================================
+   WooCommerce Embedded FAQ Blocks Container
+   ========================================================================== */
+
+.donktoss-woocommerce-faq-wrap {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 4rem auto 2.5rem auto !important;
+  padding: 2.25rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+  clear: both !important;
+  display: block !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  float: none !important;
+  flex: 0 0 100% !important;
+  grid-column: 1 / -1 !important;
+}
+
+
+
+.donktoss-woocommerce-faq-wrap h2,
+.donktoss-woocommerce-faq-wrap h3 {
+  color: #ffffff !important;
+  font-size: 1.75rem !important;
+  font-weight: 800 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 2px solid #ff5722 !important;
+  padding-bottom: 8px !important;
+  display: inline-block !important;
+}
+
+/* FAQ Question Row Alignment & UX States */
+.donktoss-faq-question {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 20px !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  list-style: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.donktoss-faq-question::-webkit-details-marker,
+.donktoss-faq-question::marker {
+  display: none !important;
+  content: "" !important;
+}
+
+/* Rollover / Hover State */
+.donktoss-faq-question:hover,
+.donktoss-faq-item:hover .donktoss-faq-question {
+  background-color: rgba(255, 87, 34, 0.08) !important;
+}
+
+.donktoss-faq-question:hover .donktoss-faq-question-text,
+.donktoss-faq-item:hover .donktoss-faq-question-text {
+  color: #ff5722 !important;
+}
+
+.donktoss-faq-question:hover .donktoss-faq-icon,
+.donktoss-faq-item:hover .donktoss-faq-icon {
+  color: #ff5722 !important;
+}
+
+/* Open / Active State */
+.donktoss-faq-item[open] {
+  border-color: rgba(255, 87, 34, 0.5) !important;
+  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.14) !important;
+}
+
+.donktoss-faq-item[open] .donktoss-faq-question {
+  background-color: rgba(255, 87, 34, 0.14) !important;
+}
+
+.donktoss-faq-item[open] .donktoss-faq-question-text {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* WooCommerce Embedded Shop FAQ Sections - Dark Mode / White Question Text */
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-question-text {
+  color: #ffffff !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-icon {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Hover Rollover State - Orange */
+.donktoss-woocommerce-faq-wrap .donktoss-faq-question:hover .donktoss-faq-question-text,
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item:hover .donktoss-faq-question-text {
+  color: #ff5722 !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-question:hover .donktoss-faq-icon,
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item:hover .donktoss-faq-icon {
+  color: #ff5722 !important;
+}
+
+/* Activated / Open State - White Text, Orange Chevron */
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] {
+  border-color: rgba(255, 87, 34, 0.5) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] .donktoss-faq-question-text {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-item[open] .donktoss-faq-icon {
+  color: #ff5722 !important;
+}
+
+
+.donktoss-woocommerce-faq-wrap .donktoss-faq-answer {
+  color: #e2e8f0 !important;
+  padding: 10px 24px 22px 24px !important;
+  box-sizing: border-box !important;
+}
+
+
+/* Footer CTA Spacing */
+.donktoss-faq-footer-cta {
+  margin-top: 42px !important;
+  padding-top: 24px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+/* ==========================================================================
+   Classic WooCommerce Checkout Styling for Purple Background (#5d279e)
+   ========================================================================== */
+
+.woocommerce-checkout {
+  color: #ffffff !important;
+}
+
+/* Coupon Notice & Entry Form */
+.woocommerce-checkout .woocommerce-form-coupon-toggle {
+  margin-bottom: 1.5rem !important;
+}
+
+.woocommerce-checkout .woocommerce-form-coupon-toggle .woocommerce-info {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 12px !important;
+  padding: 1rem 1.5rem !important;
+  font-size: 1rem !important;
+}
+
+.woocommerce-checkout .woocommerce-form-coupon-toggle a.showcoupon {
+  color: #fd6d25 !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+}
+
+/* Hide "Pay with cash upon delivery" text on Order Received page */
+.woocommerce-order-received .woocommerce-order > p,
+.woocommerce-order-received .woocommerce-thankyou-order-received + p {
+  display: none !important;
+}
+
+.woocommerce-checkout form.checkout_coupon {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 14px !important;
+  padding: 1.5rem !important;
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.woocommerce-checkout form.checkout_coupon p {
+  width: 100% !important;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.woocommerce-checkout form.checkout_coupon input.input-text {
+  flex: 1 !important;
+  min-width: 200px !important;
+}
+
+.woocommerce-checkout form.checkout_coupon button.button {
+  background-color: #fd6d25 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  height: 48px !important;
+}
+
+/* ALL LABELS ON PURPLE BACKGROUND ARE BRIGHT WHITE (#ffffff) */
+.woocommerce-checkout label,
+.woocommerce-checkout .form-row label,
+.woocommerce form .form-row label,
+.woocommerce-checkout p.form-row label,
+.woocommerce-checkout #ship-to-different-address,
+.woocommerce-checkout #ship-to-different-address label,
+.woocommerce-checkout #ship-to-different-address span,
+.woocommerce-checkout .woocommerce-billing-fields label,
+.woocommerce-checkout .woocommerce-shipping-fields label,
+.woocommerce-checkout .woocommerce-additional-fields label,
+.woocommerce-checkout label.checkbox,
+.woocommerce-checkout .create-account label {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  pointer-events: auto !important;
+  background: transparent !important;
+  line-height: 1.4 !important;
+}
+
+/* Input Fields - White Fill with Dark Text */
+.woocommerce-checkout input.input-text,
+.woocommerce-checkout textarea,
+.woocommerce-checkout select {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  font-size: 0.95rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 48px !important;
+  line-height: 1.4 !important;
+}
+
+.woocommerce-checkout input.input-text:focus,
+.woocommerce-checkout textarea:focus,
+.woocommerce-checkout select:focus {
+  border-color: #fd6d25 !important;
+  box-shadow: 0 0 0 3px rgba(253, 109, 37, 0.3) !important;
+  outline: none !important;
+}

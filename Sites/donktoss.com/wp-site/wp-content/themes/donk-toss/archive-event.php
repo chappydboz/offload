@@ -87,8 +87,9 @@ usort( $past_events, function( $a, $b ) {
 						<?php foreach ( $upcoming_events as $event ) :
 							$month_abbr     = $event['start_date'] ? date( 'M', strtotime( $event['start_date'] ) ) : 'TBD';
 							$day_num        = $event['start_date'] ? date( 'd', strtotime( $event['start_date'] ) ) : '--';
-							$formatted_date = $event['start_date'] ? date( 'F j, Y', strtotime( $event['start_date'] ) ) : 'Date TBD';
+							$formatted_date = $event['start_date'] ? date( 'l, F j, Y', strtotime( $event['start_date'] ) ) : 'Date TBD';
 							?>
+
 							<article class="donktoss-event-horizontal-card">
 								
 								<!-- Left Media / Date Badge Column -->

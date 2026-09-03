@@ -218,16 +218,37 @@ function donktoss_render_woocommerce_shop_faq_blocks() {
 	// Check for per-product override if on single product page
 	if ( is_product() ) {
 		global $post;
-		if ( $post && function_exists( 'get_field' ) ) {
-			$custom_product_block = get_field( 'product_custom_faq_block', $post->ID );
-			if ( $custom_product_block && is_object( $custom_product_block ) && ! empty( $custom_product_block->post_content ) ) {
-				echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-custom">';
-				echo donktoss_parse_and_render_gutenberg( $custom_product_block->post_content );
+		if ( $post ) {
+			if ( function_exists( 'get_field' ) ) {
+				$custom_product_block = get_field( 'product_custom_faq_block', $post->ID );
+				if ( $custom_product_block && is_object( $custom_product_block ) && ! empty( $custom_product_block->post_content ) ) {
+					echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-custom">';
+					echo donktoss_parse_and_render_gutenberg( $custom_product_block->post_content );
+					echo '</div>';
+					return;
+				}
+			}
+
+			// Check for product specific block slug by post name or slug match
+			$prod_slug = $post->post_name;
+			$product_specific_block = null;
+			if ( false !== strpos( $prod_slug, 'table-top' ) ) {
+				$product_specific_block = get_page_by_path( 'product-tabletop-faq', OBJECT, 'donk_shop_block' );
+			} elseif ( false !== strpos( $prod_slug, 'dice' ) ) {
+				$product_specific_block = get_page_by_path( 'product-dice-faq', OBJECT, 'donk_shop_block' );
+			} elseif ( false !== strpos( $prod_slug, 'tournament-kit' ) || false !== strpos( $prod_slug, 'pro' ) ) {
+				$product_specific_block = get_page_by_path( 'product-pro-faq', OBJECT, 'donk_shop_block' );
+			}
+
+			if ( $product_specific_block && ! empty( $product_specific_block->post_content ) ) {
+				echo '<div class="donktoss-woocommerce-faq-wrap donktoss-faq-location-product">';
+				echo donktoss_parse_and_render_gutenberg( $product_specific_block->post_content );
 				echo '</div>';
 				return;
 			}
 		}
 	}
+
 
 	$shop_block_post = get_page_by_path( $block_slug, OBJECT, 'donk_shop_block' );
 
@@ -336,12 +357,16 @@ function donktoss_seed_faq_categories() {
 	}
 
 	$default_categories = array(
-		'Merch & Shop'         => 'Questions about Donk Toss merchandise, board orders, shipping, and returns.',
-		'DONK Gameplay'        => 'Rules of play, court distances, scoring system, and tournament regulations.',
+		'DONK Pro'             => 'Sales, setup, durability, and tournament questions for the DONK Pro Official Tournament Kit.',
+		'DONK Table-Top'       => 'Questions and quick-start details for the DONK Table-Top Edition.',
+		'DONK Dice'            => 'Gameplay, travel specs, and scoring details for DONK Dice.',
+		'Merch & Shop'         => 'Questions about Donk Toss merchandise, orders, shipping, and returns.',
+		'DONK Gameplay'        => 'General rules of play, scoring systems, and regulations.',
 		'Events & Tournaments' => 'Information on attending, participating in, or hosting Donk Toss events.',
-		'General & Support'    => 'General inquiries and customer support questions.',
+		'General & Support'    => 'General inquiries, equipment care, and customer support questions.',
 		'Affiliates'           => 'Frequently asked questions for Donk Toss affiliates, referral tracking, and commission payouts.',
 	);
+
 
 	foreach ( $default_categories as $term_name => $term_desc ) {
 		if ( ! term_exists( $term_name, 'faq_category' ) ) {
@@ -798,4 +823,17 @@ function donktoss_faq_accordion_shortcode( $atts ) {
 }
 add_shortcode( 'donktoss_faqs', 'donktoss_faq_accordion_shortcode' );
 add_shortcode( 'donk_faqs', 'donktoss_faq_accordion_shortcode' );
+
+
+/**
+ * Redirect /faqs/, /faq/, and FAQ Taxonomies directly to /about/faq/
+ */
+function donktoss_redirect_faq_archive_to_about_faq() {
+	if ( is_post_type_archive( 'faq' ) || is_tax( 'faq_category' ) ) {
+		wp_safe_redirect( home_url( '/about/faq/' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'donktoss_redirect_faq_archive_to_about_faq' );
+
 

@@ -120,31 +120,36 @@ function donktoss_render_upcoming_events_html( $attributes = array(), $events = 
 				</a>
 			</div>
 
-			<div class="donktoss-homepage-events-grid">
+			<div class="donktoss-events-list">
 				<?php foreach ( $events as $event ) : ?>
 					<?php
-					$event_id    = ! empty( $event['id'] ) ? $event['id'] : 0;
-					$title       = ! empty( $event['title'] ) ? $event['title'] : '';
-					$permalink   = ! empty( $event['permalink'] ) ? $event['permalink'] : '#';
-					$start_date  = ! empty( $event['start_date'] ) ? $event['start_date'] : '';
-					$start_time  = ! empty( $event['start_time'] ) ? $event['start_time'] : '';
-					$loc_name    = ! empty( $event['loc_name'] ) ? $event['loc_name'] : '';
-					$btn_text    = ! empty( $event['btn_text'] ) ? $event['btn_text'] : __( 'Event Details', 'donk-toss' );
-					$btn_link    = ! empty( $event['btn_link'] ) ? $event['btn_link'] : $permalink;
-					$types       = ! empty( $event['types'] ) ? $event['types'] : array();
-					$thumb_url   = ! empty( $event['thumbnail_url'] ) ? $event['thumbnail_url'] : '';
+					$event_id       = ! empty( $event['id'] ) ? $event['id'] : 0;
+					$title          = ! empty( $event['title'] ) ? $event['title'] : '';
+					$permalink      = ! empty( $event['permalink'] ) ? $event['permalink'] : '#';
+					$excerpt        = ! empty( $event['excerpt'] ) ? $event['excerpt'] : '';
+					$start_date     = ! empty( $event['start_date'] ) ? $event['start_date'] : '';
+					$start_time     = ! empty( $event['start_time'] ) ? $event['start_time'] : '';
+					$loc_name       = ! empty( $event['loc_name'] ) ? $event['loc_name'] : '';
+					$loc_addr       = ! empty( $event['loc_addr'] ) ? $event['loc_addr'] : '';
+					$btn_text       = ! empty( $event['btn_text'] ) ? $event['btn_text'] : __( 'Event Details', 'donk-toss' );
+					$btn_link       = ! empty( $event['btn_link'] ) ? $event['btn_link'] : $permalink;
+					$types          = ! empty( $event['types'] ) ? $event['types'] : array();
+					$thumb_url      = ! empty( $event['thumbnail_url'] ) ? $event['thumbnail_url'] : '';
 
-					$month_abbr  = $start_date ? date( 'M', strtotime( $start_date ) ) : 'UP';
-					$day_num     = $start_date ? date( 'd', strtotime( $start_date ) ) : 'COMING';
-					$date_format = $start_date ? date( 'F j, Y', strtotime( $start_date ) ) : '';
-					$is_external = ! empty( $event['btn_link'] ) && ( strpos( $event['btn_link'], 'http' ) === 0 );
+					$month_abbr     = $start_date ? date( 'M', strtotime( $start_date ) ) : 'TBD';
+					$day_num        = $start_date ? date( 'd', strtotime( $start_date ) ) : '--';
+					$formatted_date = $start_date ? date( 'l, F j, Y', strtotime( $start_date ) ) : 'Date TBD';
+					$is_external    = ! empty( $event['btn_link'] ) && ( strpos( $event['btn_link'], 'http' ) === 0 );
+
 					?>
 
-					<div class="donktoss-event-grid-card">
-						<div class="donktoss-grid-card-media">
-							<a href="<?php echo esc_url( $permalink ); ?>" class="donktoss-grid-image-link">
-								<?php if ( $thumb_url ) : ?>
-									<img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="donktoss-grid-img" />
+					<article class="donktoss-event-horizontal-card">
+						
+						<!-- Left Media / Date Badge Column -->
+						<div class="donktoss-event-card-media">
+							<a href="<?php echo esc_url( $permalink ); ?>" class="donktoss-event-image-link">
+								<?php if ( ! empty( $thumb_url ) ) : ?>
+									<img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="donktoss-event-img donktoss-img-square" />
 								<?php else : ?>
 									<div class="donktoss-event-img-placeholder">
 										<span class="dashicons dashicons-tickets-alt"></span>
@@ -157,38 +162,60 @@ function donktoss_render_upcoming_events_html( $attributes = array(), $events = 
 							</div>
 						</div>
 
-						<div class="donktoss-grid-card-body">
-							<?php if ( ! empty( $types ) && ! is_wp_error( $types ) ) : ?>
-								<div class="donktoss-event-types">
-									<?php foreach ( $types as $type_term ) : ?>
-										<span class="donktoss-type-pill donktoss-type-pill-sm"><?php echo esc_html( is_object( $type_term ) ? $type_term->name : $type_term ); ?></span>
-									<?php endforeach; ?>
+						<!-- Right Content Details Column -->
+						<div class="donktoss-event-card-body">
+							<div class="donktoss-event-card-header">
+								<?php if ( ! empty( $types ) && ! is_wp_error( $types ) ) : ?>
+									<div class="donktoss-event-types">
+										<?php foreach ( $types as $type_term ) : ?>
+											<span class="donktoss-type-pill"><?php echo esc_html( is_object( $type_term ) ? $type_term->name : $type_term ); ?></span>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+
+								<h3 class="donktoss-event-card-title">
+									<a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a>
+								</h3>
+							</div>
+
+							<div class="donktoss-event-meta-line">
+								<span class="donktoss-meta-item">
+									<strong>📅 Date:</strong> <?php echo esc_html( $formatted_date ); ?>
+									<?php if ( $start_time ) : ?>
+										• <?php echo esc_html( $start_time ); ?>
+									<?php endif; ?>
+								</span>
+								<?php if ( $loc_name || $loc_addr ) : ?>
+									<span class="donktoss-meta-item">
+										<strong>📍 Location:</strong> 
+										<?php echo esc_html( trim( $loc_name . ( $loc_name && $loc_addr ? ' — ' : '' ) . $loc_addr ) ); ?>
+									</span>
+								<?php endif; ?>
+							</div>
+
+							<?php if ( ! empty( $excerpt ) ) : ?>
+								<div class="donktoss-event-excerpt">
+									<?php echo wp_kses_post( $excerpt ); ?>
 								</div>
 							<?php endif; ?>
 
-							<h3 class="donktoss-grid-card-title">
-								<a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a>
-							</h3>
-
-							<div class="donktoss-grid-meta-line">
-								<?php if ( $date_format ) : ?>
-									<span class="donktoss-meta-item">📅 <?php echo esc_html( $date_format . ( $start_time ? ' • ' . $start_time : '' ) ); ?></span>
-								<?php endif; ?>
-								<?php if ( $loc_name ) : ?>
-									<span class="donktoss-meta-item">📍 <?php echo esc_html( $loc_name ); ?></span>
-								<?php endif; ?>
-							</div>
-
-							<div class="donktoss-grid-card-footer">
-								<a href="<?php echo esc_url( $btn_link ); ?>" <?php echo $is_external ? 'target="_blank" rel="noopener noreferrer"' : ''; ?> class="ast-button donktoss-btn-primary donktoss-grid-btn">
-									<?php echo esc_html( $btn_text ); ?> <?php echo $is_external ? '↗' : '→'; ?>
+							<div class="donktoss-event-actions">
+								<a href="<?php echo esc_url( $permalink ); ?>" class="ast-button donktoss-btn-secondary">
+									<?php esc_html_e( 'Event Details', 'donk-toss' ); ?>
 								</a>
+								<?php if ( ! empty( $btn_link ) && $btn_link !== $permalink ) : ?>
+									<a href="<?php echo esc_url( $btn_link ); ?>" <?php echo $is_external ? 'target="_blank" rel="noopener noreferrer"' : ''; ?> class="ast-button donktoss-btn-primary">
+										<?php echo esc_html( $btn_text ); ?> <?php echo $is_external ? '↗' : '→'; ?>
+									</a>
+								<?php endif; ?>
 							</div>
 						</div>
-					</div>
+
+					</article>
 
 				<?php endforeach; ?>
 			</div>
+
 
 		</div>
 	</section>
