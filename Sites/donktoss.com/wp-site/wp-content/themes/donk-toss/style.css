@@ -6519,18 +6519,36 @@ ul.products li.product .ast-on-card-button {
 /* ==========================================================================
    17. WooCommerce Single Product Gallery Zoom Background
    ========================================================================== */
-.woocommerce div.product div.images .woocommerce-product-gallery__image img.zoomImg,
-.woocommerce-product-gallery__image img.zoomImg,
-.woocommerce-product-gallery img.zoomImg,
-img.zoomImg {
-  background-color: var(--ast-global-color-4, #5d279e) !important;
-  background: var(--ast-global-color-4, #5d279e) !important;
+body.single-product .woocommerce div.product div.images .woocommerce-product-gallery__image img.zoomImg,
+body.single-product .woocommerce-product-gallery__image img.zoomImg,
+body.single-product .woocommerce-product-gallery img.zoomImg,
+body.single-product img.zoomImg,
+body.single-product .woocommerce-product-gallery,
+body.single-product .woocommerce-product-gallery__wrapper,
+body.single-product .woocommerce-product-gallery__image,
+body.single-product .flex-viewport {
+  background-color: var(--ast-global-color-4, #5d279e);
+  background: var(--ast-global-color-4, #5d279e);
 }
 
-.woocommerce-product-gallery,
-.woocommerce-product-gallery__wrapper,
-.woocommerce-product-gallery__image,
-.flex-viewport {
-  background-color: var(--ast-global-color-4, #5d279e) !important;
-  background: var(--ast-global-color-4, #5d279e) !important;
+/* ==========================================================================
+   18. WooCommerce Single Product Gallery Thumbnail Focus / Outline Cleanup
+   ========================================================================== */
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image:focus,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image:focus-visible,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image:focus-within,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image a:focus,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image a:focus-visible,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs li,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs li:focus,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs li:focus-visible,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs img,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs img:focus,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs img:focus-visible,
+body.single-product .woocommerce-product-gallery .woocommerce-product-gallery__image:focus,
+body.single-product .woocommerce-product-gallery .woocommerce-product-gallery__image:focus-visible {
+  outline: none;
+  outline-style: none;
+  box-shadow: none;
 }
