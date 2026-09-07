@@ -11,7 +11,7 @@
 /**
  * Define Constants
  */
-define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.9.2' );
+define( 'CHILD_THEME_DONK_TOSS_VERSION', '4.9.3' );
 
 /**
  * Include Custom Post Type & ACF Events definitions
@@ -27,6 +27,11 @@ require_once get_theme_file_path( '/cpt-faq.php' );
  * Include Outgoing Email Rate Limiter & Background Throttling (SendLayer 50/min protection)
  */
 require_once get_theme_file_path( '/inc/rate-limiter.php' );
+
+/**
+ * Include Duplicate Order Prevention & Checkout Idempotency Guard
+ */
+require_once get_theme_file_path( '/inc/duplicate-order-prevention.php' );
 
 /**
  * Include PostHog WooCommerce Ecommerce & Conversion Tracking
@@ -78,6 +83,11 @@ function child_enqueue_styles() {
 	$gallery_sync_js = get_stylesheet_directory() . '/assets/js/wc-variation-gallery-sync.js';
 	if ( file_exists( $gallery_sync_js ) ) {
 		wp_enqueue_script( 'donk-toss-wc-gallery-sync', get_stylesheet_directory_uri() . '/assets/js/wc-variation-gallery-sync.js', array('jquery'), filemtime( $gallery_sync_js ), true );
+	}
+
+	$checkout_lock_js = get_stylesheet_directory() . '/assets/js/wc-checkout-duplicate-lock.js';
+	if ( file_exists( $checkout_lock_js ) ) {
+		wp_enqueue_script( 'donk-toss-wc-checkout-lock', get_stylesheet_directory_uri() . '/assets/js/wc-checkout-duplicate-lock.js', array('jquery'), filemtime( $checkout_lock_js ), true );
 	}
 }
 

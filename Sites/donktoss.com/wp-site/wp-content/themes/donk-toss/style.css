@@ -6552,3 +6552,31 @@ body.single-product .woocommerce-product-gallery .woocommerce-product-gallery__i
   outline-style: none;
   box-shadow: none;
 }
+
+/* ==========================================================================
+   19. WooCommerce Duplicate Order Prevention & Checkout Locking UI
+   ========================================================================== */
+body.woocommerce-checkout .woocommerce-error .donktoss-view-receipt-btn,
+body.woocommerce-checkout .woocommerce-NoticeGroup-checkout .donktoss-view-receipt-btn {
+  background-color: var(--ast-global-color-0, #fd6d25);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+body.woocommerce-checkout .woocommerce-error .donktoss-view-receipt-btn:hover,
+body.woocommerce-checkout .woocommerce-NoticeGroup-checkout .donktoss-view-receipt-btn:hover {
+  background-color: #e55613;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+body.woocommerce-checkout form.checkout #place_order.donktoss-submitting-locked {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+}
