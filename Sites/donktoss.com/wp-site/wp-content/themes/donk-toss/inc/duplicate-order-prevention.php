@@ -133,8 +133,17 @@ function donktoss_checkout_concurrency_guard() {
 		return;
 	}
 
-	$cart_hash = WC()->cart->get_cart_hash();
-	$lock_key  = 'donk_chk_lock_' . md5( strtolower( trim( $email ) ) . '_' . $cart_hash );
+	$total          = (float) WC()->cart->get_total( 'edit' );
+	$cart_hash      = WC()->cart->get_cart_hash();
+	$cart_signature = donktoss_get_cart_signature( WC()->cart );
+	$lock_key       = 'donk_chk_lock_' . md5( strtolower( trim( $email ) ) . '_' . $cart_hash );
+
+	// If an identical order was already placed, let woocommerce_after_checkout_validation display the rich receipt link
+	$existing_duplicate = donktoss_find_recent_duplicate_order( $email, $cart_signature, $cart_hash, $total, 600 );
+	if ( $existing_duplicate ) {
+		delete_transient( $lock_key );
+		return;
+	}
 
 	if ( get_transient( $lock_key ) ) {
 		wc_add_notice(
@@ -144,7 +153,7 @@ function donktoss_checkout_concurrency_guard() {
 		return;
 	}
 
-	// Set a 30-second transient lock
+	// Set a 30-second transient lock for in-flight request
 	set_transient( $lock_key, time(), 30 );
 }
 add_action( 'woocommerce_checkout_process', 'donktoss_checkout_concurrency_guard', 5 );
