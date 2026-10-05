@@ -40,6 +40,21 @@ require_once get_theme_file_path( '/inc/gmc-schema.php' );
 require_once get_theme_file_path( '/inc/gmc-feed.php' );
 
 /**
+ * Include Google Customer Reviews (Thank You Survey Opt-In & Badge)
+ */
+require_once get_theme_file_path( '/inc/google-customer-reviews.php' );
+
+/**
+ * Include Sales Tax Exemption & Coupon Waiver Module
+ */
+require_once get_theme_file_path( '/inc/tax-exemption.php' );
+
+/**
+ * Include Customer Pickup & ShipStation Exclusion Module
+ */
+require_once get_theme_file_path( '/inc/customer-pickup.php' );
+
+/**
  * Meta / Facebook Domain Verification Tag
  */
 function donktoss_facebook_domain_verification_tag() {
