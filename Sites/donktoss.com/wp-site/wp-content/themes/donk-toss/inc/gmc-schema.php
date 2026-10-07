@@ -26,12 +26,71 @@ class DonkToss_GMC_Schema {
 	}
 
 	/**
+	 * Dynamically determine standard US shipping cost for a given product
+	 * based on its WooCommerce shipping class and US flat rate configuration.
+	 */
+	public static function get_product_shipping_cost( $product ) {
+		if ( ! is_a( $product, 'WC_Product' ) ) {
+			return 0.00;
+		}
+
+		$shipping_class_id = $product->get_shipping_class_id();
+
+		// Check WooCommerce US shipping zones
+		if ( class_exists( 'WC_Shipping_Zones' ) ) {
+			$zones = WC_Shipping_Zones::get_zones();
+			foreach ( $zones as $zone ) {
+				if ( isset( $zone['zone_name'] ) && ( stripos( $zone['zone_name'], 'United States' ) !== false || stripos( $zone['zone_name'], 'US' ) !== false ) ) {
+					if ( ! empty( $zone['shipping_methods'] ) ) {
+						foreach ( $zone['shipping_methods'] as $method ) {
+							if ( $method->id === 'flat_rate' && $method->enabled === 'yes' ) {
+								$settings = isset( $method->instance_settings ) ? $method->instance_settings : array();
+								if ( $shipping_class_id && ! empty( $settings[ "class_cost_{$shipping_class_id}" ] ) ) {
+									$raw_cost = preg_replace( '/[^0-9\.]/', '', $settings[ "class_cost_{$shipping_class_id}" ] );
+									if ( is_numeric( $raw_cost ) ) {
+										return (float) $raw_cost;
+									}
+								}
+								if ( ! empty( $settings['no_class_cost'] ) ) {
+									$raw_cost = preg_replace( '/[^0-9\.]/', '', $settings['no_class_cost'] );
+									if ( is_numeric( $raw_cost ) ) {
+										return (float) $raw_cost;
+									}
+								}
+								if ( isset( $settings['cost'] ) && is_numeric( $settings['cost'] ) && (float) $settings['cost'] > 0 ) {
+									return (float) $settings['cost'];
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Fallback mapping based on configured Donk Toss shipping classes
+		$class_cost_map = array(
+			25 => 50.00, // Donk Pro Kit
+			38 => 15.00, // Donk TableTop Kit
+			37 => 10.00, // Donk Dice Kit
+			60 => 20.00, // Donk Pro Single
+		);
+
+		if ( $shipping_class_id && isset( $class_cost_map[ $shipping_class_id ] ) ) {
+			return (float) $class_cost_map[ $shipping_class_id ];
+		}
+
+		return 0.00;
+	}
+
+	/**
 	 * Enrich WooCommerce standard structured data
 	 */
 	public static function enrich_product_schema( $markup, $product ) {
 		if ( ! is_a( $product, 'WC_Product' ) ) {
 			return $markup;
 		}
+
+		$shipping_cost = self::get_product_shipping_cost( $product );
 
 		$markup['brand'] = array(
 			'@type' => 'Brand',
@@ -51,19 +110,12 @@ class DonkToss_GMC_Schema {
 					'url'   => home_url( '/' ),
 				);
 
-				// Merchant Return Policy
+				// Merchant Return Policy (All standard sales final; replacements for defective/damaged items)
 				$offer['hasMerchantReturnPolicy'] = array(
 					'@type'                => 'MerchantReturnPolicy',
 					'applicableCountry'    => 'US',
-					'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
-					'merchantReturnDays'   => 30,
-					'returnMethod'         => 'https://schema.org/ReturnByMail',
-					'returnFees'           => 'https://schema.org/FreeReturn',
-					'returnShippingFeesAmount' => array(
-						'@type'    => 'MonetaryAmount',
-						'value'    => '0.00',
-						'currency' => 'USD',
-					),
+					'returnPolicyCategory' => 'https://schema.org/MerchantReturnNotPermitted',
+					'merchantReturnLink'   => home_url( '/refund_returns/' ),
 				);
 
 				// Shipping Details
@@ -71,7 +123,7 @@ class DonkToss_GMC_Schema {
 					'@type'               => 'OfferShippingDetails',
 					'shippingRate'        => array(
 						'@type'    => 'MonetaryAmount',
-						'value'    => '0.00',
+						'value'    => number_format( $shipping_cost, 2, '.', '' ),
 						'currency' => 'USD',
 					),
 					'shippingDestination' => array(
@@ -114,10 +166,11 @@ class DonkToss_GMC_Schema {
 			return;
 		}
 
-		$image_id  = $product->get_image_id();
-		$image_url = $image_id ? wp_get_attachment_url( $image_id ) : '';
-		$sku       = $product->get_sku() ? $product->get_sku() : 'DONK-' . $product->get_id();
-		$price     = (float) $product->get_price();
+		$shipping_cost = self::get_product_shipping_cost( $product );
+		$image_id      = $product->get_image_id();
+		$image_url     = $image_id ? wp_get_attachment_url( $image_id ) : '';
+		$sku           = $product->get_sku() ? $product->get_sku() : 'DONK-' . $product->get_id();
+		$price         = (float) $product->get_price();
 
 		$schema = array(
 			'@context'    => 'https://schema.org/',
@@ -149,16 +202,14 @@ class DonkToss_GMC_Schema {
 				'hasMerchantReturnPolicy'  => array(
 					'@type'                => 'MerchantReturnPolicy',
 					'applicableCountry'    => 'US',
-					'returnPolicyCategory' => 'https://schema.org/MerchantReturnFiniteReturnWindow',
-					'merchantReturnDays'   => 30,
-					'returnMethod'         => 'https://schema.org/ReturnByMail',
-					'returnFees'           => 'https://schema.org/FreeReturn',
+					'returnPolicyCategory' => 'https://schema.org/MerchantReturnNotPermitted',
+					'merchantReturnLink'   => home_url( '/refund_returns/' ),
 				),
 				'shippingDetails'          => array(
 					'@type'               => 'OfferShippingDetails',
 					'shippingRate'        => array(
 						'@type'    => 'MonetaryAmount',
-						'value'    => '0.00',
+						'value'    => number_format( $shipping_cost, 2, '.', '' ),
 						'currency' => 'USD',
 					),
 					'shippingDestination' => array(

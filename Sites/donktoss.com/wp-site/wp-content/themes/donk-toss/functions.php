@@ -55,6 +55,11 @@ require_once get_theme_file_path( '/inc/tax-exemption.php' );
 require_once get_theme_file_path( '/inc/customer-pickup.php' );
 
 /**
+ * Include Pre-Order Management & Safe Fulfillment Module
+ */
+require_once get_theme_file_path( '/inc/pre-order.php' );
+
+/**
  * Meta / Facebook Domain Verification Tag
  */
 function donktoss_facebook_domain_verification_tag() {
@@ -346,6 +351,8 @@ add_filter( 'render_block_woocommerce/product-image', function( $block_content, 
 	$product_id = 0;
 	if ( isset( $block['context']['productId'] ) ) {
 		$product_id = absint( $block['context']['productId'] );
+	} elseif ( isset( $block['context']['postId'] ) ) {
+		$product_id = absint( $block['context']['postId'] );
 	} elseif ( isset( $block['attrs']['productId'] ) ) {
 		$product_id = absint( $block['attrs']['productId'] );
 	} else {
@@ -359,13 +366,18 @@ add_filter( 'render_block_woocommerce/product-image', function( $block_content, 
 		return $block_content;
 	}
 
-	$custom_label_text = get_post_meta( $product_id, '_custom_product_label_text', true );
-	if ( empty( $custom_label_text ) ) {
-		$product = wc_get_product( $product_id );
-		if ( $product && ! $product->is_in_stock() ) {
-			$custom_label_text = get_post_meta( $product_id, '_custom_out_of_stock_text', true );
-			if ( empty( $custom_label_text ) ) {
-				$custom_label_text = __( 'Out of stock', 'woocommerce' );
+	// 1. Check Pre-Order override
+	if ( class_exists( 'DonkToss_Preorder' ) && DonkToss_Preorder::is_product_preorder_enabled( $product_id ) ) {
+		$custom_label_text = DonkToss_Preorder::override_product_badge_label( '', $product_id );
+	} else {
+		$custom_label_text = get_post_meta( $product_id, '_custom_product_label_text', true );
+		if ( empty( $custom_label_text ) ) {
+			$product = wc_get_product( $product_id );
+			if ( $product && ! $product->is_in_stock() ) {
+				$custom_label_text = get_post_meta( $product_id, '_custom_out_of_stock_text', true );
+				if ( empty( $custom_label_text ) ) {
+					$custom_label_text = __( 'Out of stock', 'woocommerce' );
+				}
 			}
 		}
 	}

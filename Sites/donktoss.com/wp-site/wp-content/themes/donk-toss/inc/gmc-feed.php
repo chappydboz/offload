@@ -65,7 +65,8 @@ class DonkToss_GMC_Feed {
     	$image_url   = $image_id ? wp_get_attachment_url( $image_id ) : '';
     	$price       = number_format( (float) $product->get_price(), 2, '.', '' ) . ' ' . get_woocommerce_currency();
     	$avail       = $product->is_in_stock() ? 'in_stock' : 'out_of_stock';
-    	$category    = wp_strip_all_tags( wc_get_product_category_list( $prod_id ) );
+    	$category      = wp_strip_all_tags( wc_get_product_category_list( $prod_id ) );
+    	$shipping_cost = class_exists( 'DonkToss_GMC_Schema' ) ? DonkToss_GMC_Schema::get_product_shipping_cost( $product ) : 0.00;
 
     	// Additional gallery images
     	$gallery_ids = $product->get_gallery_image_ids();
@@ -95,7 +96,7 @@ class DonkToss_GMC_Feed {
       <g:shipping>
         <g:country>US</g:country>
         <g:service>Standard Ground</g:service>
-        <g:price>0.00 USD</g:price>
+        <g:price><?php echo esc_xml( number_format( $shipping_cost, 2, '.', '' ) . ' USD' ); ?></g:price>
       </g:shipping>
     </item>
     <?php } ?>
