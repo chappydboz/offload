@@ -23,9 +23,44 @@ while ( have_posts() ) :
 	$share_title    = rawurlencode( get_the_title() );
 	$share_url      = rawurlencode( $permalink );
 
-	// Image fields (Hero 16:9/natural, Promo graphic)
-	$hero_url       = donktoss_get_event_image_url( 'event_hero_image', $post_id, 'full' );
-	$promo_url      = donktoss_get_event_image_url( 'event_promo_image', $post_id, 'full' );
+	// Image fields (Hero 16:9/natural, Promo graphic) with featured image fallback
+	$hero_url  = donktoss_get_event_image_url( 'event_hero_image', $post_id, 'full' );
+	$promo_url = donktoss_get_event_image_url( 'event_promo_image', $post_id, 'full' );
+
+	// Resolve Location & Address cleanly
+	$location_raw = $location_name ? $location_name : $location_addr;
+	$loc_venue    = '';
+	$loc_address  = '';
+
+	if ( $location_name && $location_addr && $location_name !== $location_addr ) {
+		$loc_venue   = $location_name;
+		$loc_address = $location_addr;
+	} elseif ( $location_raw ) {
+		if ( strpos( $location_raw, ',' ) !== false ) {
+			$parts       = explode( ',', $location_raw, 2 );
+			$loc_venue   = trim( $parts[0] );
+			$loc_address = trim( $parts[1] );
+		} else {
+			$loc_venue = $location_raw;
+		}
+	}
+
+	// Smart button text default
+	if ( empty( $btn_text ) && ! empty( $btn_link ) ) {
+		if ( preg_match( '/(ticket|eventbrite|dice\.fm|ticketmaster|axs|stubhub)/i', $btn_link ) ) {
+			$btn_text = __( 'Get Tickets', 'donk-toss' );
+		} elseif ( preg_match( '/(espn|youtube|twitch|stream|live)/i', $btn_link ) ) {
+			$btn_text = __( 'Watch Live', 'donk-toss' );
+		} elseif ( preg_match( '/(celis|brewery|bar|venue)/i', $btn_link ) ) {
+			$btn_text = __( 'Visit Venue Website', 'donk-toss' );
+		} else {
+			$btn_text = __( 'Event Website / Info', 'donk-toss' );
+		}
+	}
+
+	// Google Maps query URL
+	$maps_query = rawurlencode( trim( ( $loc_venue ? $loc_venue . ' ' : '' ) . $loc_address ) );
+	$maps_url   = $maps_query ? 'https://www.google.com/maps/search/?api=1&query=' . $maps_query : '';
 	?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'donktoss-single-event' ); ?>>
@@ -69,14 +104,21 @@ while ( have_posts() ) :
 							</div>
 						</div>
 
-						<?php if ( $location_name || $location_addr ) : ?>
-							<div class="donktoss-meta-card-col">
+						<?php if ( $loc_venue || $loc_address ) : ?>
+							<div class="donktoss-meta-card-col donktoss-meta-card-location">
 								<div class="donktoss-meta-card-icon">📍</div>
 								<div class="donktoss-meta-card-text">
-									<span class="donktoss-meta-card-label"><?php esc_html_e( 'Location', 'donk-toss' ); ?></span>
-									<strong><?php echo esc_html( $location_name ? $location_name : $location_addr ); ?></strong>
-									<?php if ( $location_name && $location_addr ) : ?>
-										<span><?php echo esc_html( $location_addr ); ?></span>
+									<span class="donktoss-meta-card-label"><?php esc_html_e( 'Location / Venue', 'donk-toss' ); ?></span>
+									<?php if ( $loc_venue ) : ?>
+										<strong><?php echo esc_html( $loc_venue ); ?></strong>
+									<?php endif; ?>
+									<?php if ( $loc_address ) : ?>
+										<span><?php echo esc_html( $loc_address ); ?></span>
+									<?php endif; ?>
+									<?php if ( $maps_url ) : ?>
+										<a href="<?php echo esc_url( $maps_url ); ?>" target="_blank" rel="noopener noreferrer" class="donktoss-meta-card-directions">
+											<?php esc_html_e( 'Get Directions', 'donk-toss' ); ?> ↗
+										</a>
 									<?php endif; ?>
 								</div>
 							</div>
@@ -85,7 +127,7 @@ while ( have_posts() ) :
 						<?php if ( $btn_link ) : ?>
 							<div class="donktoss-meta-card-col donktoss-meta-card-cta">
 								<a href="<?php echo esc_url( $btn_link ); ?>" target="_blank" rel="noopener noreferrer" class="ast-button donktoss-btn-primary">
-									<?php echo esc_html( $btn_text ? $btn_text : __( 'Get Tickets / Watch Live', 'donk-toss' ) ); ?> ↗
+									<?php echo esc_html( $btn_text ); ?> ↗
 								</a>
 							</div>
 						<?php endif; ?>

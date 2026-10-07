@@ -132,10 +132,14 @@ usort( $past_events, function( $a, $b ) {
 												• <?php echo esc_html( $event['start_time'] ); ?>
 											<?php endif; ?>
 										</span>
-										<?php if ( $event['loc_name'] || $event['loc_addr'] ) : ?>
+										<?php if ( $event['loc_name'] || $event['loc_addr'] ) : 
+											$loc_display = ( $event['loc_name'] && $event['loc_addr'] && $event['loc_name'] !== $event['loc_addr'] ) 
+												? $event['loc_name'] . ' — ' . $event['loc_addr'] 
+												: ( $event['loc_name'] ? $event['loc_name'] : $event['loc_addr'] );
+										?>
 											<span class="donktoss-meta-item">
 												<strong>📍 Location:</strong> 
-												<?php echo esc_html( trim( $event['loc_name'] . ( $event['loc_name'] && $event['loc_addr'] ? ' — ' : '' ) . $event['loc_addr'] ) ); ?>
+												<?php echo esc_html( $loc_display ); ?>
 											</span>
 										<?php endif; ?>
 									</div>
@@ -150,7 +154,7 @@ usort( $past_events, function( $a, $b ) {
 										</a>
 										<?php if ( $event['btn_link'] ) : ?>
 											<a href="<?php echo esc_url( $event['btn_link'] ); ?>" target="_blank" rel="noopener noreferrer" class="ast-button donktoss-btn-primary">
-												<?php echo esc_html( $event['btn_text'] ? $event['btn_text'] : __( 'Get Tickets / Watch', 'donk-toss' ) ); ?>
+												<?php echo esc_html( $event['btn_text'] ? $event['btn_text'] : __( 'Event Info / Tickets', 'donk-toss' ) ); ?> ↗
 											</a>
 										<?php endif; ?>
 									</div>

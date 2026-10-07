@@ -341,19 +341,45 @@ function donktoss_register_acf_event_fields() {
 add_action( 'acf/init', 'donktoss_register_acf_event_fields' );
 
 /**
- * Helper function to retrieve event field values with fallback
+ * Helper function to retrieve event field values with fallback and alias resolution
  */
 function donktoss_get_event_field( $field_name, $post_id = null ) {
-	if ( function_exists( 'get_field' ) ) {
-		$val = get_field( $field_name, $post_id );
-		if ( ! empty( $val ) ) {
-			return $val;
-		}
-	}
 	if ( ! $post_id ) {
 		$post_id = get_the_ID();
 	}
-	return get_post_meta( $post_id, $field_name, true );
+	if ( ! $post_id ) {
+		return '';
+	}
+
+	$aliases = array(
+		'event_start_date'       => array( 'event_start_date', 'start_date', 'date' ),
+		'event_start_time'       => array( 'event_start_time', 'start_time', 'time' ),
+		'event_end_time'         => array( 'event_end_time', 'end_time' ),
+		'event_location_name'    => array( 'event_location_name', 'event_location', 'location_name', 'location', 'venue_name', 'venue' ),
+		'event_location_address' => array( 'event_location_address', 'event_address', 'location_address', 'address' ),
+		'event_button_link'      => array( 'event_button_link', 'event_link', 'button_link', 'ticket_link', 'tickets_url', 'event_url', 'website', 'url' ),
+		'event_button_text'      => array( 'event_button_text', 'button_text', 'link_text' ),
+		'event_hero_image'       => array( 'event_hero_image', 'hero_image', 'banner_image' ),
+		'event_thumbnail_image'  => array( 'event_thumbnail_image', 'thumbnail_image' ),
+		'event_promo_image'      => array( 'event_promo_image', 'promo_image', 'flyer_image' ),
+	);
+
+	$keys_to_check = isset( $aliases[ $field_name ] ) ? $aliases[ $field_name ] : array( $field_name );
+
+	foreach ( $keys_to_check as $key ) {
+		if ( function_exists( 'get_field' ) ) {
+			$val = get_field( $key, $post_id );
+			if ( ! empty( $val ) ) {
+				return $val;
+			}
+		}
+		$meta_val = get_post_meta( $post_id, $key, true );
+		if ( ! empty( $meta_val ) ) {
+			return $meta_val;
+		}
+	}
+
+	return '';
 }
 
 /**
@@ -363,6 +389,10 @@ function donktoss_get_event_image_url( $field_name, $post_id = null, $fallback_s
 	if ( ! $post_id ) {
 		$post_id = get_the_ID();
 	}
+	if ( ! $post_id ) {
+		return '';
+	}
+
 	$val = donktoss_get_event_field( $field_name, $post_id );
 	if ( ! empty( $val ) ) {
 		if ( is_array( $val ) && isset( $val['url'] ) ) {

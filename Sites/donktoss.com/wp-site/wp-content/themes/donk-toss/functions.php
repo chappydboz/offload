@@ -55,6 +55,11 @@ require_once get_theme_file_path( '/inc/tax-exemption.php' );
 require_once get_theme_file_path( '/inc/customer-pickup.php' );
 
 /**
+ * Include Automated Coupon Pruner & Garbage Collector
+ */
+require_once get_theme_file_path( '/inc/coupon-pruner.php' );
+
+/**
  * Include Pre-Order Management & Safe Fulfillment Module
  */
 require_once get_theme_file_path( '/inc/pre-order.php' );

@@ -3,7 +3,7 @@ Theme Name: Donk Toss
 Author: Brainstorm Force
 Author URI: https://airshp.com
 Description: Donk Toss - an Astra child theme
-Version: 4.9.2
+Version: 4.9.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: donk-toss
@@ -585,6 +585,22 @@ body.single-event #main {
   font-weight: 700;
   color: #64748b;
   letter-spacing: 0.05em;
+}
+
+.donktoss-single-event-meta-card .donktoss-meta-card-directions {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fd6d25;
+  text-decoration: none;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.donktoss-single-event-meta-card .donktoss-meta-card-directions:hover,
+.donktoss-single-event-meta-card .donktoss-meta-card-directions:focus {
+  color: #e0530e;
+  text-decoration: underline;
 }
 
 .donktoss-meta-card-cta {
@@ -6519,18 +6535,64 @@ ul.products li.product .ast-on-card-button {
 /* ==========================================================================
    17. WooCommerce Single Product Gallery Zoom Background
    ========================================================================== */
-.woocommerce div.product div.images .woocommerce-product-gallery__image img.zoomImg,
-.woocommerce-product-gallery__image img.zoomImg,
-.woocommerce-product-gallery img.zoomImg,
-img.zoomImg {
-  background-color: var(--ast-global-color-4, #5d279e) !important;
-  background: var(--ast-global-color-4, #5d279e) !important;
+body.single-product .woocommerce div.product div.images .woocommerce-product-gallery__image img.zoomImg,
+body.single-product .woocommerce-product-gallery__image img.zoomImg,
+body.single-product .woocommerce-product-gallery img.zoomImg,
+body.single-product img.zoomImg,
+body.single-product .woocommerce-product-gallery,
+body.single-product .woocommerce-product-gallery__wrapper,
+body.single-product .woocommerce-product-gallery__image,
+body.single-product .flex-viewport {
+  background-color: var(--ast-global-color-4, #5d279e);
+  background: var(--ast-global-color-4, #5d279e);
 }
 
-.woocommerce-product-gallery,
-.woocommerce-product-gallery__wrapper,
-.woocommerce-product-gallery__image,
-.flex-viewport {
-  background-color: var(--ast-global-color-4, #5d279e) !important;
-  background: var(--ast-global-color-4, #5d279e) !important;
+/* ==========================================================================
+   18. WooCommerce Single Product Gallery Thumbnail Focus / Outline Cleanup
+   ========================================================================== */
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image:focus,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image:focus-visible,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image:focus-within,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image a:focus,
+body.single-product .woocommerce-product-gallery .ast-woocommerce-product-gallery__image a:focus-visible,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs li,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs li:focus,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs li:focus-visible,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs img,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs img:focus,
+body.single-product .woocommerce-product-gallery .flex-control-thumbs img:focus-visible,
+body.single-product .woocommerce-product-gallery .woocommerce-product-gallery__image:focus,
+body.single-product .woocommerce-product-gallery .woocommerce-product-gallery__image:focus-visible {
+  outline: none;
+  outline-style: none;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   19. WooCommerce Duplicate Order Prevention & Checkout Locking UI
+   ========================================================================== */
+body.woocommerce-checkout .woocommerce-error .donktoss-view-receipt-btn,
+body.woocommerce-checkout .woocommerce-NoticeGroup-checkout .donktoss-view-receipt-btn {
+  background-color: var(--ast-global-color-0, #fd6d25);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+body.woocommerce-checkout .woocommerce-error .donktoss-view-receipt-btn:hover,
+body.woocommerce-checkout .woocommerce-NoticeGroup-checkout .donktoss-view-receipt-btn:hover {
+  background-color: #e55613;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+body.woocommerce-checkout form.checkout #place_order.donktoss-submitting-locked {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
 }
