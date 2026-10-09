@@ -98,6 +98,14 @@ class DonkToss_Preorder {
 
 		// 10. Front-End Styles (Zero !important)
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_preorder_styles' ), 110 );
+
+		// 11. Admin Stock & Backorder Notification Suppression for Pre-Orders
+		add_filter( 'woocommerce_should_send_no_stock_notification', array( __CLASS__, 'suppress_no_stock_notification' ), 20, 2 );
+		add_filter( 'woocommerce_should_send_backorder_notification', array( __CLASS__, 'suppress_backorder_notification' ), 20, 2 );
+		add_filter( 'woocommerce_should_send_low_stock_notification', array( __CLASS__, 'suppress_low_stock_notification' ), 20, 2 );
+		add_filter( 'woocommerce_email_recipient_no_stock', array( __CLASS__, 'suppress_stock_email_recipient' ), 20, 2 );
+		add_filter( 'woocommerce_email_recipient_backorder', array( __CLASS__, 'suppress_backorder_email_recipient' ), 20, 2 );
+		add_filter( 'woocommerce_email_recipient_low_stock', array( __CLASS__, 'suppress_stock_email_recipient' ), 20, 2 );
 	}
 
 	/**
@@ -132,6 +140,14 @@ class DonkToss_Preorder {
 				if ( 'outofstock' === $product->get_stock_status() ) {
 					return true;
 				}
+			}
+		}
+
+		// 3. Variation fallback to parent product
+		if ( $product->is_type( 'variation' ) && $product->get_parent_id() ) {
+			$parent = wc_get_product( $product->get_parent_id() );
+			if ( $parent && self::is_product_preorder_enabled( $parent ) ) {
+				return true;
 			}
 		}
 
@@ -1058,6 +1074,76 @@ class DonkToss_Preorder {
 		';
 
 		wp_add_inline_style( 'donk-toss-theme-css', $custom_css );
+	}
+
+	/**
+	 * 11a. Suppress core out-of-stock admin email notification for pre-order products
+	 *
+	 * @param bool $should_send Whether to send notification.
+	 * @param int  $product_id Out of stock product ID.
+	 * @return bool
+	 */
+	public static function suppress_no_stock_notification( $should_send, $product_id ) {
+		if ( self::is_product_preorder_enabled( $product_id ) ) {
+			return false;
+		}
+		return $should_send;
+	}
+
+	/**
+	 * 11b. Suppress core backorder admin email notification for pre-order products
+	 *
+	 * @param bool $should_send Whether to send notification.
+	 * @param int  $product_id Backordered product ID.
+	 * @return bool
+	 */
+	public static function suppress_backorder_notification( $should_send, $product_id ) {
+		if ( self::is_product_preorder_enabled( $product_id ) ) {
+			return false;
+		}
+		return $should_send;
+	}
+
+	/**
+	 * 11c. Suppress core low-stock admin email notification for pre-order products
+	 *
+	 * @param bool $should_send Whether to send notification.
+	 * @param int  $product_id Low stock product ID.
+	 * @return bool
+	 */
+	public static function suppress_low_stock_notification( $should_send, $product_id ) {
+		if ( self::is_product_preorder_enabled( $product_id ) ) {
+			return false;
+		}
+		return $should_send;
+	}
+
+	/**
+	 * 11d. Recipient filter fallback: Empty out recipient for no_stock & low_stock if pre-order active
+	 *
+	 * @param string          $recipient Recipient email address(es).
+	 * @param WC_Product|null $product   Product object.
+	 * @return string
+	 */
+	public static function suppress_stock_email_recipient( $recipient, $product ) {
+		if ( $product && self::is_product_preorder_enabled( $product ) ) {
+			return '';
+		}
+		return $recipient;
+	}
+
+	/**
+	 * 11e. Recipient filter fallback: Empty out recipient for backorder if pre-order active
+	 *
+	 * @param string $recipient Recipient email address(es).
+	 * @param array  $args      Backorder email arguments containing 'product'.
+	 * @return string
+	 */
+	public static function suppress_backorder_email_recipient( $recipient, $args ) {
+		if ( ! empty( $args['product'] ) && self::is_product_preorder_enabled( $args['product'] ) ) {
+			return '';
+		}
+		return $recipient;
 	}
 }
 
